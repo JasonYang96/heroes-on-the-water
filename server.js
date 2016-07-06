@@ -41,18 +41,14 @@ console.log("App listening on port 8080");
 
 // routes ======================================================================
 
-var getEvents = function(res) {
+// get all events
+app.get('/api/events', function(req, res) {
     Region.find(function(err, events) {
         if (err)
             res.send(err)
 
         res.json(events);
     });
-};
-
-// get all events
-app.get('/api/events', function(req, res) {
-    getEvents(res);
 });
 
 // region api ---------------------------------------------------------------------
@@ -66,7 +62,12 @@ app.post('/api/events/', function(req, res) {
         if (err)
             res.send(err);
 
-        getEvents(res);
+        Region.find(function(err, events) {
+            if (err)
+                res.send(err)
+
+            res.json(events);
+        });
     })
 });
 
@@ -114,12 +115,17 @@ app.post('/api/events/:region_name', function(req, res) {
         events: []
     });
 
+    console.log(req.params);
     Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
         if (err)
             res.send(err);
 
-        console.log(regions);
-        res.json(regions);
+        Region.find(function(err, events) {
+                if (err)
+                    res.send(err)
+
+                res.json(events);
+            });
     })
 });
 
@@ -129,7 +135,12 @@ app.delete('/api/events/:region_name', function(req, res) {
         if (err)
             res.send(err);
 
-        getEvents(res);
+        Region.find(function(err, events) {
+                if (err)
+                    res.send(err)
+
+                res.json(events);
+            });
     });
 });
 
@@ -163,14 +174,18 @@ app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
 
     Region.findOneAndUpdate(
         {"name": req.params.region_name, "chapters.name": req.params.chapter_name}, 
-        {$addToSet: {"chapters.events": event}}, 
+        {$addToSet: {"chapters.$.events": event}}, 
         {upsert: true}, 
-        function(err, regions) {
+        function(err, event) {
             if (err)
                 res.send(err);
 
-            console.log(regions);
-            res.json(regions);
+            Region.find(function(err, events) {
+                if (err)
+                    res.send(err)
+
+                res.json(events);
+            });
         }
     );
 });
@@ -181,7 +196,12 @@ app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
         if (err)
             res.send(err);
 
-        getEvents(res);
+        Region.find(function(err, events) {
+            if (err)
+                res.send(err)
+
+            res.json(events);
+        });
     });
 });
 

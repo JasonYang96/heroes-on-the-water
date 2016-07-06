@@ -72,7 +72,7 @@ function chapterController($scope, $http) {
     // param: name from chapter-creation-form input, region_name from input
     // return: list of all events in every chapter in every chapter
     $scope.createChapter = function(region_name) {
-        $http.post('/api/events/testingtestingtesting/', $scope.formData)
+        $http.post('/api/events/' + region_name, $scope.formData)
             .success(function(data) {
                 $scope.name = null;
                 $scope.location = null;
@@ -122,7 +122,7 @@ function eventController($scope, $http) {
     // param: name from event-creation-form input, region and chapter name from input
     // return: list of all events in every chapter in every event
     $scope.createEvent = function(region_name, chapter_name) {
-        $http.post('/api/events/testingtestingtesting/testtest/', $scope.formData)
+        $http.post('/api/events/' + region_name + '/' + chapter_name, $scope.formData)
             .success(function(data) {
                 $scope.name = null;
                 $scope.events = data;
