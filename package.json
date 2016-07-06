@@ -1,0 +1,14 @@
+{
+    "name"        : "how-website",
+    "version"     : "0.0.0",
+    "description" : "HOW website remade",
+    "main"        : "server.js",
+    "author"      : "Swag Ramon",
+    "dependencies": {
+        "body-parser"    : "^1.4.3",
+        "express"        : "^4.13.4",
+        "method-override": "^2.1.3",
+        "mongoose"       : "^4.4.12",
+        "morgan"         : "^1.1.1"
+    }
+}
