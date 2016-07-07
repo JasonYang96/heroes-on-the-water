@@ -17,7 +17,6 @@ function mainController($scope, $http) {
 // controller to handle listing, creating, and deleting of regions
 function regionController($scope, $http) {
     $scope.formData = {};
-    $scope.regions = null;
 
     // creates a region if it does not already exist then returns regions
     // param: name from region-creation-form input
@@ -25,7 +24,7 @@ function regionController($scope, $http) {
     $scope.createRegion = function() {
         $http.post('/api/events/', $scope.formData)
             .success(function(data) {
-                $scope.name = null;
+                $scope.formData = {};
                 $scope.regions = data;
                 console.log(data);
             })
@@ -40,7 +39,6 @@ function regionController($scope, $http) {
     $scope.grabRegion = function(region_name) {
         $http.get('/api/events/' + region_name)
             .success(function(data) {
-                $scope.regions = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -66,7 +64,6 @@ function regionController($scope, $http) {
 // controller to handle listing, creating, and deleting of chapters
 function chapterController($scope, $http) {
     $scope.formData = {};
-    $scope.chapters = null;
 
     // creates a chapter if it does not already exist then returns chapters
     // param: name from chapter-creation-form input, region_name from input
@@ -74,9 +71,8 @@ function chapterController($scope, $http) {
     $scope.createChapter = function(region_name) {
         $http.post('/api/events/' + region_name, $scope.formData)
             .success(function(data) {
-                $scope.name = null;
-                $scope.location = null;
-                $scope.chapters = data;
+                $scope.formData = {};
+                $scope.regions = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -90,7 +86,6 @@ function chapterController($scope, $http) {
     $scope.grabChapter = function(region_name, chapter_name) {
         $http.get('/api/events/' + region_name + '/' + chapter_name)
             .success(function(data) {
-                $scope.chapters = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -104,7 +99,7 @@ function chapterController($scope, $http) {
     $scope.deleteChapter = function(region_name, chapter_name) {
         $http.delete('/api/events/' + region_name + '/' + chapter_name)
             .success(function(data) {
-                $scope.chapters = data;
+                $scope.regions = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -116,7 +111,6 @@ function chapterController($scope, $http) {
 // controller to handle listing, creating, and deleting of events
 function eventController($scope, $http) {
     $scope.formData = {};
-    $scope.events = null;
 
     // creates a event if it does not already exist then returns events
     // param: name from event-creation-form input, region and chapter name from input
@@ -124,8 +118,8 @@ function eventController($scope, $http) {
     $scope.createEvent = function(region_name, chapter_name) {
         $http.post('/api/events/' + region_name + '/' + chapter_name, $scope.formData)
             .success(function(data) {
-                $scope.name = null;
-                $scope.events = data;
+                $scope.formData = {};
+                $scope.regions = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -139,7 +133,6 @@ function eventController($scope, $http) {
     $scope.grabEvent = function(region_name, chapter_name, event_name) {
         $http.get('/api/events/' + region_name + '/' + chapter_name + '/' + event_name)
             .success(function(data) {
-                $scope.events = data;
                 console.log(data);
             })
             .error(function(data) {
@@ -153,7 +146,7 @@ function eventController($scope, $http) {
     $scope.deleteEvent = function(region_name, chapter_name, event_name) {
         $http.delete('/api/events/' + region_name + '/' + chapter_name + '/' + event_name)
             .success(function(data) {
-                $scope.events = data;
+                $scope.regions = data;
                 console.log(data);
             })
             .error(function(data) {
