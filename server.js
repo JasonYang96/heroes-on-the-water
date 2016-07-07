@@ -83,11 +83,13 @@ app.get('/api/events/:region_name', function(req, res) {
 
 // delete a region
 app.delete('/api/events/:region_name', function(req, res) {
-    Region.findOneAndUpdate({}, {$pull: {name: req.params.region_name}}, function(err, regions) {
-        if (err)
-            res.send(err);
+    Region.find({name: req.params.region_name}).remove().exec();
 
-        res.json(regions);
+    Region.find(function(err, events) {
+        if (err)
+            res.send(err)
+
+        res.json(events);
     });
 });
 
@@ -136,11 +138,11 @@ app.delete('/api/events/:region_name', function(req, res) {
             res.send(err);
 
         Region.find(function(err, events) {
-                if (err)
-                    res.send(err)
+            if (err)
+                res.send(err)
 
-                res.json(events);
-            });
+            res.json(events);
+        });
     });
 });
 
