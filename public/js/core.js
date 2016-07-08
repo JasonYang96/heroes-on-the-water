@@ -1,5 +1,4 @@
 var heroesOnTheWater = angular.module('heroesOnTheWater', []);
-
 function mainController($scope, $http) {
     // lists all events in every chapter in every region
     // returns: list of all events in every chapter in every region
@@ -16,7 +15,7 @@ function mainController($scope, $http) {
 var eventsService = angular.module('regionsService', [])
 var eventsController = angular.module('regionsController', [])
 
-angular.module('regions', ['regionsController', 'regionsService'])
+angular.module('Regions', ['regionsController', 'regionsService'])
 
 
 // controller to handle listing, creating, and deleting of chapters

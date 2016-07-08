@@ -148,6 +148,6 @@ module.exports = function(app) {
 
 	// landing page redirect
 	app.get('*', function(req, res) {
-	    res.sendfile(__dirname + '/public/index.html');
+	    res.sendfile('./public/index.html');
 	});
 }

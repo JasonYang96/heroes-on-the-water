@@ -1,7 +1,5 @@
-var eventsController = angular.module('eventsController', [])
-
 // controller to handle listing, creating, and deleting of regions
-eventsController.controller('regionController', function($scope, $http, Regions) {
+eventsController.controller('regionsController', function($scope, $http, Regions) {
 	$scope.formData = {};
 
 	// grabs a region from mongoDB
