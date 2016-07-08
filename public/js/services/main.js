@@ -1,5 +1,5 @@
 // Regions factory for get/create/delete functions
-angular.module('eventsService', [])
+angular.module('mainService', [])
 .factory('Regions', function($http) {
 	return {
 		get : function(region_name) {
@@ -26,3 +26,16 @@ angular.module('eventsService', [])
 		}
 	}
 })
+.factory('Events', function($http) {
+	return {
+		get : function(region_name, chapter_name, event_name) {
+			return $http.get('/api/events/' + region_name + '/' + chapter_name + '/' + event_name)
+		},
+		create : function(region_name, chapter_name, formData) {
+			return $http.post('/api/events/' + region_name + '/' + chapter_name, formData)
+		},
+		delete: function(region_name, chapter_name, event_name) {
+			return $http.delete('/api/events/' + region_name + '/' + chapter_name + '/' + event_name)
+		}
+	}
+});

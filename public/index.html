@@ -28,7 +28,8 @@
     <script src="js/core.js"></script>
     <script src="js/controllers/regionsController.js"></script>
     <script src="js/controllers/chaptersController.js"></script>
-    <script src="js/services/events.js"></script>
+    <script src="js/controllers/eventsController.js"></script>
+    <script src="js/services/main.js"></script>
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
@@ -54,7 +55,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chapterController">
+                <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chaptersController">
                     <div>
                         <div class="col-sm-9">
                             <h2>Chapter: {{chapter.name}}</h2>
@@ -66,7 +67,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventController">
+                    <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
                             <div class="col-sm-9">
                                 <h3>Name: {{event.name}}</h3>
                                 <h4>Venue: {{event.venue}}</h4>
@@ -98,7 +99,7 @@
         </div>
 
         <!-- FORM TO CREATE CHAPTERS -->
-        <div id="chapter-creation-form" class="row creation-form" ng-controller="chapterController">
+        <div id="chapter-creation-form" class="row creation-form" ng-controller="chaptersController">
             <h1 class="text-center"> CHAPTER CREATION </h1>
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
@@ -118,7 +119,7 @@
 
 
         <!-- FORM TO CREATE EVENTS -->
-        <div id="event-creation-form" class="row creation-form" ng-controller="eventController">
+        <div id="event-creation-form" class="row creation-form" ng-controller="eventsController">
             <h1 class="text-center"> EVENT CREATION </h1>
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
