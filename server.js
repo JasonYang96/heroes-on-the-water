@@ -122,8 +122,8 @@ app.post('/api/events/:region_name', function(req, res) {
 });
 
 // delete a chapter
-app.delete('/api/events/:region_name', function(req, res) {
-    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"chapters.name": req.body.name}}, function(err, regions) {
+app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
+    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"chapters.name": req.params.chapter_name}}, function(err, regions) {
         if (err)
             res.send(err);
 
@@ -173,12 +173,16 @@ app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
 });
 
 // delete an event and send back all events after deletion
-app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
-    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"chapters.name": req.body.name}}, function(err, regions) {
-        if (err)
-            res.send(err);
+app.delete('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
+    Region.findOneAndUpdate(
+        {"name": req.params.region_name,
+         "chapters.name": req.params.chapter_name}, 
+        {$pull: {"chapters.?.events.name": req.params.chapter_name}}, 
+        function(err, regions) {
+            if (err)
+                res.send(err);
 
-        getEvents(res)
+            getEvents(res)
     });
 });
 
