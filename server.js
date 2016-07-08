@@ -41,14 +41,19 @@ console.log("App listening on port 8080");
 
 // routes ======================================================================
 
-// get all events
-app.get('/api/events', function(req, res) {
+function getEvents(res) {
     Region.find(function(err, events) {
-        if (err)
-            res.send(err)
+        if (err) {
+            res.send(err);
+        }
 
         res.json(events);
     });
+}
+
+// get all events
+app.get('/api/events', function(req, res) {
+    getEvents(res);
 });
 
 // region api ---------------------------------------------------------------------
@@ -62,12 +67,7 @@ app.post('/api/events/', function(req, res) {
         if (err)
             res.send(err);
 
-        Region.find(function(err, events) {
-            if (err)
-                res.send(err)
-
-            res.json(events);
-        });
+        getEvents(res);
     })
 });
 
@@ -83,14 +83,9 @@ app.get('/api/events/:region_name', function(req, res) {
 
 // delete a region
 app.delete('/api/events/:region_name', function(req, res) {
-    Region.find({name: req.params.region_name}).remove().exec();
+    Region.find({"name": req.params.region_name}).remove().exec();
 
-    Region.find(function(err, events) {
-        if (err)
-            res.send(err)
-
-        res.json(events);
-    });
+    getEvents(res);
 });
 
 // chapter api ---------------------------------------------------------------------
@@ -122,12 +117,7 @@ app.post('/api/events/:region_name', function(req, res) {
         if (err)
             res.send(err);
 
-        Region.find(function(err, events) {
-                if (err)
-                    res.send(err)
-
-                res.json(events);
-            });
+        getEvents(res);
     })
 });
 
@@ -137,12 +127,7 @@ app.delete('/api/events/:region_name', function(req, res) {
         if (err)
             res.send(err);
 
-        Region.find(function(err, events) {
-            if (err)
-                res.send(err)
-
-            res.json(events);
-        });
+        getEvents(res);
     });
 });
 
@@ -182,12 +167,7 @@ app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
             if (err)
                 res.send(err);
 
-            Region.find(function(err, events) {
-                if (err)
-                    res.send(err)
-
-                res.json(events);
-            });
+            getEvents(res);
         }
     );
 });
@@ -198,16 +178,11 @@ app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
         if (err)
             res.send(err);
 
-        Region.find(function(err, events) {
-            if (err)
-                res.send(err)
-
-            res.json(events);
-        });
+        getEvents(res)
     });
 });
 
 // landing page redirect
 app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendfile(__dirname + '/public/index.html');
 });
