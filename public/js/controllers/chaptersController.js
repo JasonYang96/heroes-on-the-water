@@ -40,7 +40,7 @@ angular.module('chaptersController', [])
     $scope.deleteChapter = function(region_name, chapter_name, region_id, chapter_id) {
         $scope.idData.region_id = region_id;
         $scope.idData.chapter_id = chapter_id;
-        Chapters.delete(region_name, chapter_name, $scope.idData)
+        Chapters.delete(region_name, chapter_id, $scope.idData)
             .success(function(data) {
                 $scope.regions = data;
                 console.log(data);

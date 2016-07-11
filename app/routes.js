@@ -16,8 +16,8 @@ var Chapter = mongoose.model('chapter', {
 
 var Region = mongoose.model('region', {
     name : String,
-    //chapters : []
-    chapters : [{type: Schema.Types.ObjectId, ref:'Chapter'}]
+    chapters : []
+    //chapters : [{type: Schema.Types.ObjectId, ref:'Chapter'}]
 });
 
 module.exports = function(app) {
@@ -86,41 +86,41 @@ module.exports = function(app) {
 
 	// create a new chapter
 	app.post('/api/events/:region_name', function(req, res) {
-		Chapter.create({
-			name: req.body.name,
+		// Chapter.create({
+		// 	name: req.body.name,
+	 //        location: req.body.location,
+	 //        events: []
+		// }, function(err, chapter) {
+		// 	if (err) {
+		// 		res.send(err);
+		// 	}
+
+		// 	console.log(chapter);
+		// 	Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
+		// 	    if (err)
+		// 	        res.send(err);
+
+		// 	    getEvents(res);
+		// 	});
+		// });
+
+	    var chapter = new Chapter({
+	        name: req.body.name,
 	        location: req.body.location,
 	        events: []
-		}, function(err, chapter) {
-			if (err) {
-				res.send(err);
-			}
+	    });
 
-			console.log(chapter);
-			Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
-			    if (err)
-			        res.send(err);
+	    console.log(req.params);
+	    Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
+	        if (err)
+	            res.send(err);
 
-			    getEvents(res);
-			});
-		});
-
-	    // var chapter = new Chapter({
-	    //     name: req.body.name,
-	    //     location: req.body.location,
-	    //     events: []
-	    // });
-
-	    // console.log(req.params);
-	    // Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
-	    //     if (err)
-	    //         res.send(err);
-
-	    //     getEvents(res);
-	    // })
+	        getEvents(res);
+	    })
 	});
 
 	// delete a chapter
-	app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
+	app.delete('/api/events/:region_name/:chapter_id', function(req, res) {
 		// Chapter.remove({
 		// 	"name": req.params.chapter_name
 		// }, function(err, chapter) {
@@ -133,14 +133,27 @@ module.exports = function(app) {
 		// 	getEvents(res);
 		// })
 		// console.log(req.params);
-	    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"$chapters": {"chapters.name": req.params.chapter_name}}}, {new: true}, function(err, regions) {
-	        if (err) {
-	            res.send(err);
-	        }
+	    // Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"$chapters": {"chapters.name": req.params.chapter_name}}}, {new: true}, function(err, regions) {
+	    //     if (err) {
+	    //         res.send(err);
+	    //     }
 
-	        console.log(regions);
-	        getEvents(res);
-	    });
+	    //     console.log(regions);
+	    //     getEvents(res);
+	    // });
+
+	    Region.findOne({"name": req.params.region_name}).exec(function(err, region) {
+	    	if (err) {
+	    		res.send(err);
+	    	}
+
+	    	console.log(region);
+
+	    	region.chapters.id(req.params.chapter_id).remove();
+	    	region.save();
+
+	    	getEvents(res);
+	    })
 	});
 
 	// event api ---------------------------------------------------------------------
