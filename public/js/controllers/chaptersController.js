@@ -22,7 +22,7 @@ angular.module('chaptersController', [])
     // return: list of all events in every region in every chapter
     $scope.createChapter = function(region_name) {
     	if (!$.isEmptyObject($scope.formData.name)) {
-    		Chapters.create(region_name, $scope.formData)
+    		Chapters.create("fdsa", $scope.formData)
     			.success(function(data) {
     			    $scope.formData = {};
     			    $scope.regions = data;

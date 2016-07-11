@@ -37,9 +37,9 @@ angular.module('eventsController', [])
     // param: event_name from html div, region, chapter name from input
     // return: list of all events in every chapter in every event
     $scope.deleteEvent = function(region_name, chapter_name, event_name, region_id, chapter_id, event_id) {
-        idData.region_id = region_id;
-        idData.chapter_id = chapter_id;
-        idData.event_id = event_id;
+        $scope.idData.region_id = region_id;
+        $scope.idData.chapter_id = chapter_id;
+        $scope.idData.event_id = event_id;
         Events.delete(region_name, chapter_name, event_name, $scope.idData)
             .success(function(data) {
                 $scope.regions = data;
