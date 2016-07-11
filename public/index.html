@@ -30,6 +30,7 @@
     <script src="js/controllers/chaptersController.js"></script>
     <script src="js/controllers/eventsController.js"></script>
     <script src="js/services/main.js"></script>
+    <script src="app/donorRoutes.js"></script>
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
@@ -40,7 +41,8 @@
 
         <!-- HEADER AND EVENT COUNT -->
         <div class="jumbotron text-center">
-            <h1>Heroes on the Water<span class="label label-info">{{ regions.length }}</span></h1>
+            <h1>Heroes on the Water<span class="label label-info">{{ events.length }}</span></h1>
+            <h2><a href="/donate.html">Donate</a></h2>
         </div>
 
         <!-- EVENT LIST -->
