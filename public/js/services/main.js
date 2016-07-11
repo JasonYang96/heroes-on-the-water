@@ -21,8 +21,8 @@ angular.module('mainService', [])
 		create: function(region_name, formData) {
 			return $http.post('/api/events/' + region_name, formData)
 		},
-		delete: function(region_name, chapter_name) {
-			return $http.delete('/api/events/' + region_name + '/' + chapter_name)
+		delete: function(region_name, chapter_name, idData) {
+			return $http.delete('/api/events/' + region_name + '/' + chapter_name, idData)
 		}
 	}
 })
@@ -34,8 +34,8 @@ angular.module('mainService', [])
 		create : function(region_name, chapter_name, formData) {
 			return $http.post('/api/events/' + region_name + '/' + chapter_name, formData)
 		},
-		delete: function(region_name, chapter_name, event_name) {
-			return $http.delete('/api/events/' + region_name + '/' + chapter_name + '/' + event_name)
+		delete: function(region_name, chapter_name, event_name, idData) {
+			return $http.delete('/api/events/' + region_name + '/' + chapter_name + '/' + event_name, idData);
 		}
 	}
 });

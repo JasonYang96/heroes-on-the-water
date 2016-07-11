@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label>
-                                <input type="checkbox" ng-click="deleteChapter(region.name)">Click to delete chapter
+                                <input type="checkbox" ng-click="deleteChapter(region.name, chapter.name, region._id, chapter._id)">Click to delete chapter
                             </label>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <label>
-                                    <input type="checkbox" ng-click="deleteEvent(event.name)">Click to delete event
+                                    <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
                                 </label>
                             </div>
                     </div>

@@ -1,4 +1,22 @@
-var Region = require('./models/events');
+var mongoose = require('mongoose');
+
+// define models =================
+var Event = mongoose.model('event', {
+    description : String,
+    name : String,
+    venue : String
+});
+
+var Chapter = mongoose.model('chapter', {
+    name: String,
+    location: String,
+    events: []
+});
+
+var Region = mongoose.model('region', {
+    name : String,
+    chapters : []
+});
 
 module.exports = function(app) {
 	function getEvents(res) {
@@ -134,16 +152,39 @@ module.exports = function(app) {
 
 	// delete an event and send back all events after deletion
 	app.delete('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
-	    Region.findOneAndUpdate(
-	        {"name": req.params.region_name,
-	         "chapters.name": req.params.chapter_name}, 
-	        {$pull: {"chapters.?.events.name": req.params.chapter_name}}, 
-	        function(err, regions) {
-	            if (err)
-	                res.send(err);
+		console.log(req.body);
+		Event.findByIdAndRemove(req.body.event_id, function(err, event) {
+			if (err)
+				res.send(err);
 
-	            getEvents(res)
-	    });
+			getEvents(res);
+		})
+
+		// Region.findOneAndUpdate(
+		//     {"name": req.params.region_name,
+		//      "chapters.name": req.params.chapter_name}, 
+		//     {$pull: {"chapters.event.name": req.params.event_name}}, 
+		//     function(err, regions) {
+		//         if (err)
+		//             res.send(err);
+
+		//         console.log(regions);
+
+		//         getEvents(res)
+		// });
+
+	    // Event.findOneAndRemove(
+	    //     {"name": req.params.region_name,
+	    //      "chapters.name": req.params.chapter_name, 
+	    //      "chapters.events.name" : req.params.event_name},
+	    //     function(err, regions) {
+	    //         if (err)
+	    //             res.send(err);
+
+	    //         console.log(regions);
+
+	    //         getEvents(res)
+	    // });
 	});
 
 	// landing page redirect

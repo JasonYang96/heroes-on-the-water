@@ -2,6 +2,7 @@
 angular.module('chaptersController', [])
 .controller('chaptersController', function($scope, $http, Chapters) {
 	$scope.formData = {};
+    $scope.idData = {};
 
 	// grabs a chapter from mongoDB
     // param: chapter_name, region_name from input
@@ -36,8 +37,10 @@ angular.module('chaptersController', [])
     // deletes a chapter then returns remaining chapters
     // param: chapter_name, region_name from html div
     // return: list of all events in every chapter in every chapter
-    $scope.deleteChapter = function(region_name, chapter_name) {
-        Chapters.delete(region_name, chapter_name)
+    $scope.deleteChapter = function(region_name, chapter_name, region_id, chapter_id) {
+        $scope.idData.region_id = region_id;
+        $scope.idData.chapter_id = chapter_id;
+        Chapters.delete(region_name, chapter_name, $scope.idData)
             .success(function(data) {
                 $scope.regions = data;
                 console.log(data);
