@@ -19,6 +19,7 @@ app.use(methodOverride());
 
 // load the routes
 require('./app/eventRoutes.js')(app);
+require('./app/donorRoutes.js')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(8080);

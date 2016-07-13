@@ -1,4 +1,5 @@
 angular.module('HOW', ['regionsController','chaptersController', 'eventsController', 'mainService'])
+angular.module('Donor', []);
 
 function mainController($scope, $http) {
     // lists all events in every chapter in every region
@@ -22,7 +23,7 @@ function donorController($scope, $http) {
     // param: donor-creation-form input
     // return: list of all donors
     $scope.createDonor = function() {
-        $http.post('/api/donorsList/', $scope.formData)
+        $http.post('/api/donors/', $scope.formData)
             .success(function(data) {
                 console.log('createDonor - donorCore');
                 console.log(data);
@@ -38,7 +39,7 @@ function donorController($scope, $http) {
 function donorsListController($scope, $http) {
     // lists all events in every chapter in every region
     // returns: list of all events in every chapter in every region
-    $http.get('/api/donorsList')
+    $http.get('/api/donors')
         .success(function(data) {
             $scope.donors = data;
             console.log("=== donor List Controller ===")
