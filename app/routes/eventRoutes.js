@@ -158,9 +158,12 @@ module.exports = function(app) {
 	app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
 
 	    var event = new Model.event({
-	        description : req.body.description,
 	        name : req.body.name,
+	        date : req.body.date,
+	        start: req.body.start,
+	        end  : req.body.end,
 	        venue: req.body.venue,
+	        description : req.body.description,
 	        done : false
 	    });
 
@@ -212,10 +215,5 @@ module.exports = function(app) {
 
 	    //         getEvents(res)
 	    // });
-	});
-
-	// landing page redirect
-	app.get('/', function(req, res) {
-	    res.sendfile('./public/index.html');
 	});
 }
