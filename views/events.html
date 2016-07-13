@@ -71,8 +71,13 @@
                     <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
                             <div class="col-sm-9">
                                 <h3>Name: {{event.name}}</h3>
+                                <h4>Date: {{event.date}}</h4>
+                                <h4>Start: {{event.start}}</h4>
+                                <h4>End: {{event.end}}</h4>
                                 <h4>Venue: {{event.venue}}</h4>
-                                <p>Description: {{event.description}}</p>
+                                <p>Description:
+                                <br>
+                                {{event.description}}</p>
                             </div>
                             <div class="col-sm-3">
                                 <label>
