@@ -21,12 +21,12 @@ var getDonors = function(res) {
 // -------------------------DONOR API -------------------------------------//
 
 // get all donors
-app.get('/api/donors', function(req, res) {
+app.get('/api/donorsList', function(req, res) {
     getDonors(res);
 });
 
 // create a new donor
-app.post('/api/donors/', function(req, res) {
+app.post('/api/donorsList/', function(req, res) {
     console.log("donor Server -- ")
     console.log(req);
     Donor.create({
