@@ -4,18 +4,36 @@ var Schema = mongoose.Schema, ObjectId = Schema.ObjectId;
 // define models =================
 var Event = mongoose.model('event', {
     description : String,
-    name : String,
-    venue : String
+    name : {
+        type: String,
+        required: true,
+        unique: true
+    },
+    venue : {
+        type: String,
+        required: true
+    }
 });
 
 var Chapter = mongoose.model('chapter', {
-    name: String,
-    location: String,
-    events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    events: []
 });
 
 var Region = mongoose.model('region', {
-    name : String,
+    name : {
+       type: String,
+       required: true,
+       unique: true
+     },
     chapters : []
 });
 
