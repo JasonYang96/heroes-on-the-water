@@ -1,0 +1,147 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <style>
+        body        { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+<!--     <form action="/signup" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+    </form> -->
+
+    <form action='/signup' method='post'>
+      <div class="form-group"><br>
+        <div style="text-align:center !important; ">
+        <p style="font-size:20px !important;">You are a...</p>
+        <input class='' type="radio" name="type" value="participant" checked>Participant
+        <input style="text-align:left;" type="radio" name="type" value="volunteer" > Volunteer
+        <input class='' type="radio" name="type" value="manager"> Manager
+        <input class='' type="radio" name="type" value="founder"> Chapter Founder <br>
+        </div>
+      </div>
+
+      <p id="blurb" class="blurb">Heroes on the Water helps our Nation’s warriors and veterans from all branches of the United States military unwind using the therapeutic qualities of fishing from kayaks. What looks like a day trip of paddling and fishing is in fact something much deeper and long-lasting.<br><br> Participants receive basic kayak fishing and paddling instruction, angling clinics and paddling classes for participants with skill sets ranging from beginners to the most experienced paddlers. <br><br> Our program is unique in that it is a long-term activity, not a one-time event. We believe that the effectiveness of the program is a direct result of engaging the wounded military personnel for the long-term. <br><br> Let us know how a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
+
+      <script type="text/javascript">
+        $('input[name="type"]').on('change', function() {
+          if ($(this).val()=='participant') {
+            $("#blurb").html("Heroes on the Water helps our Nation’s warriors and veterans from all branches of the United States military unwind using the therapeutic qualities of fishing from kayaks. What looks like a day trip of paddling and fishing is in fact something much deeper and long-lasting.<br><br> Participants receive basic kayak fishing and paddling instruction, angling clinics and paddling classes for participants with skill sets ranging from beginners to the most experienced paddlers. <br><br> Our program is unique in that it is a long-term activity, not a one-time event. We believe that the effectiveness of the program is a direct result of engaging the wounded military personnel for the long-term. <br><br> Let us know how a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
+          }
+          else if ($(this).val()=='volunteer' || $(this).val()=='manager') {
+            $("#blurb").html("The Heroes on the Water program is carried out across the country by dedicated volunteers seeking to make a difference in the lives of our warriors and their families.<br><br>There are many ways you can help Heroes on the Water whether it is assisting with taking injured service men and women on kayak fishing excursions, helping with the administrative tasks of planning and carrying out an outing, assisting with registration or coordinating the food at an event, or to start up a Heroes on the Water Chapter in your area.<br><br>If you are interested in learning more about volunteer opportunities, we encourage you to contact us.<br><br>Let us know how a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
+          }
+          else if ($(this).val() == 'founder') {
+            $("#blurb").html("Heroes on the Water is experiencing tremendous growth with individuals and groups in local areas across the country organizing to start a local chapter.<br><br> If you are interested in starting a local chapter, send us an email and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. Fill out the form below if you’re interested in starting a chapter. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
+          }
+        });
+
+      </script>
+
+
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='name' placeholder='Full name' />
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='email' placeholder="Email"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='tel' name='phone' placeholder="Phone Number" />
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='city' placeholder="City" />
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='state' placeholder="State"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='zip' placeholder="Zip Code"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control" 
+        type='password' name='password' placeholder="Password" />
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='password' name='password_confirm' placeholder='Confirm Password' />
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='description' placeholder="Tell us a little about yourself"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control"
+        type='text' name='howdidyouhear' placeholder="How did you hear about Heroes on the Water?"/>
+      </div>        
+
+     <div class="form-group" id="specialBoxID" >
+        <input class="form-control"
+        type='text' id="specialQBox" name='specialQ' placeholder="Why do you want to volunteer with Heroes on the Water?"/>
+      </div>
+
+
+      <script type="text/javascript">
+        $("#specialBoxID").hide();
+        //$("#specialQBox").val("Null");
+        $('input[name="type"]').on('change', function() {
+          if ($(this).val()=='participant' || $(this).val()=='manager') {
+            $("#specialBoxID").hide();
+           //$("#specialQBox").val("Null");
+          }
+          else if ($(this).val()=='volunteer') {
+            $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
+            $("#specialBoxID").show();
+          }
+          else if ($(this).val()=='founder') {
+            $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
+            $("#specialBoxID").show();
+          }
+        });
+      </script>
+
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+
+      </form>
+    <hr>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+
+</div>
+
+</div>
+</body>
+</html>

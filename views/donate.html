@@ -1,0 +1,160 @@
+<!-- donor.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="Donor">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Donate | Heroes on the Water</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <style>
+        html            { overflow-y:scroll; }
+        body            { padding-top:50px;}
+        #todo-list      { margin-bottom:30px; }
+        .creation-form  { margin: 20px; }
+        .region-list    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
+        .chapter-list   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
+        .event-list     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script src="js/core.js"></script>
+
+    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
+
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER AND EVENT COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Donate to HOW</h1>
+            <h2><a href="/donors.html">List of Donors</a></h2>
+        </div>
+
+        <!-- EVENT LIST -->
+        <div class="col-sm-12 row" ng-controller="mainController">
+            <p>Thank you for your interest in Heroes on the Water. We are dedicated to the physical and emotional rehabilitation of disabled active military service personnel and veterans through the sport of kayak fishing. Heroes on the Water is a registered 501(c)(3) nonprofit and all donations are tax deductible.
+                <br><br>
+                Please consider a recurring donation to automatically give on a monthly basis by clicking on the SUBSCRIBE button to the right. One time gifts can be made by clicking the DONATE NOW button below.
+                <br><br>
+                Our nation’s warriors face a new battle as they return home. You can give them and their families peace and hope for a brighter future by making a donation today. Your gift provides the HOW kayak fishing program to warriors at no charge to them or their families.
+                <br><br>
+                Contributions can be directed to a HOW Chapter by entering the chapter name in the PayPal message field in the secure checkout or in the check’s memo field.
+                <br><br>
+                Thank you for choosing to support those we serve.</p>
+
+            <!--<h1 class="text-center">Donate via PayPal</h1>
+            <a class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5WAD6PF3BUHPE" target="_blank">DONATE NOW</a>-->
+            <br> 
+            <br><br>
+            <h1 class="text-center">Corporate Matching Gifts</h1>
+            <p>Corporate matching gifts are a great way to maximize a personal contribution to increase the impact of your gift. By tapping into an employer’s matching gift benefit, donation amounts may double or even triple!</p>
+            <p>How do I get my gift matched?</p>
+            <p>First, find out if your company has a matching gift program.(<a href="https://www.dropbox.com/s/44d0amxfi02v98e/Corporate_Matching_List.pdf">Corporate Match List</a>) Each company has its own guidelines for employees, spouses, retirees, and widows/widowers. Most corporate procedures are simple:</p>
+            <ul>
+                <li>Request a Matching Form from Human Resources or your company website.</li>
+                <li>Complete and submit the form to your employer or HOW, according to the directions on the form.</li>
+                <li>HOW will verify the form with the company.</li>
+                <li>Company issues a matching gift contribution to HOW.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- FORM TO DONATE -->
+        <div id="donor-creation-form" class="row creation-form" ng-controller="donorController">
+            <h1 class="text-center"> Honor And Memorial Giving </h1>
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="Donor First Name" ng-model="formData.fName">
+                        <br>
+                        <input type="text" class="form-control input-lg text-center" placeholder="Donor Last Name" ng-model="formData.lName">
+                        <br>
+                        <input type="tel" class="form-control input-lg text-center" placeholder="Phone" ng-model="formData.phone">
+                        <br>
+                        <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
+                        <br>
+                        <select class="form-control input-lg text-center" ng-model="formData.donation">
+                            <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
+                            <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
+                            <option value="2">$50 -- Provides coffee for an event</option>
+                            <option value="3">$100 -- Provides breakfast for an event</option>
+                            <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
+                            <option value="5">$200 -- Provides lunch for an event</option>
+                            <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
+                        </select> 
+                        <br>
+                        <select class="form-control input-lg text-center" ng-model="formData.description">
+                            <option value="0">Support a HOW chapter</option>
+                            <option value="1">In memory of a loved one</option>
+                            <option value="2">In honor of someone</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- WILL CREATE NEW DONOR -->
+            <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createDonor()">Donate Now</button>
+            <br>
+
+    <!--======== paypal stuff ============-->
+            <br>
+
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                <!-- Identify your business so that you can collect the payments. -->
+                <input type="hidden" name="business"
+                    value="donations@HOW.org">
+
+                <!-- Specify a Donate button. -->
+                <input type="hidden" name="cmd" value="_donations">
+
+                <!-- Specify details about the contribution -->
+                <input type="hidden" name="item_name" value="Heroes on the Water">
+                <input type="hidden" name="item_number" value="Fall Cleanup Campaign">
+                <input type="hidden" name="amount" value="25" id = "paypalAmnt">
+                <input type="hidden" name="currency_code" value="USD">
+
+                <!-- Display the payment button. -->
+                <input type="image" name="submit"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                alt="PayPal - The safer, easier way to pay online">
+                <img alt="" width="1" height="1"
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+            </form>
+
+
+
+
+            <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" >
+                <input type="hidden" name="cmd" value="_donations">
+                <input type="hidden" name="business" value="how@how.com">
+                <input type="hidden" name="lc" value="US">
+                <input type="hidden" name="item_name" value="Heroes On The Water">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>-->
+
+
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>

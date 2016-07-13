@@ -1,191 +1,59 @@
-// set up ========================
+// server.js
+
+// set up ======================================================================
+// get all the tools we need
 var express  = require('express');
-var app      = express();                               // create our app w/ express
-var mongoose = require('mongoose');                     // mongoose for mongodb
+var app      = express();
+var port     = process.env.PORT || 3000;
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash    = require('connect-flash');
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
-// configuration =================
 
-mongoose.connect('mongodb://localhost::27017/test');     // connect to mongoDB database on modulus.io
 
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
-app.use(morgan('dev'));                                         // log every request to the console
-app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-app.use(methodOverride());
+var configDB = require('./config/database.js');
 
-// define model =================
-var Event = mongoose.model('event', {
-    description : String,
-    name : String,
-    venue : String
+// configuration ===============================================================
+mongoose.connect(configDB.url); // connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+app.configure(function() {
+
+	// set up our express application
+	app.use(express.logger('dev')); // log every request to the console
+	app.use(express.cookieParser()); // read cookies (needed for auth)
+	app.use(express.bodyParser()); // get information from html forms
+
+	// app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
+	// app.use(bodyParser.json());                                     // parse application/json
+	// app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+	// app.use(cookieParser());
+	app.set('view engine', 'ejs'); // set up ejs for templating
+	app.use(express.static(__dirname + '/views'));                 // set the static files location /public/img will be /img for users
+	app.use(morgan('dev'));                                         // log every request to the console
+	app.use(methodOverride());
+
+	// required for passport
+	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+	app.use(passport.initialize());
+	app.use(passport.session()); // persistent login sessions
+	app.use(flash()); // use connect-flash for flash messages stored in session
+
 });
-
-var Chapter = mongoose.model('chapter', {
-    name: String,
-    location: String,
-    events: [Event.schema]
-})
-
-var Region = mongoose.model('region', {
-    name : String,
-    chapters : [Chapter.schema]
-});
-
-// listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
 
 // routes ======================================================================
+require('./app/routes/userRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes/eventRoutes.js')(app);
+require('./app/routes/donorRoutes.js')(app);
 
-var getEvents = function(res) {
-    Region.find(function(err, events) {
-        if (err)
-            res.send(err)
+// launch ======================================================================
+app.listen(port);
+console.log('The magic happens on port ' + port);
 
-        res.json(events);
-    });
-};
 
-// get all events
-app.get('/api/events', function(req, res) {
-    getEvents(res);
-});
-
-// region api ---------------------------------------------------------------------
-
-// create a new region
-app.post('/api/events/', function(req, res) {
-    Region.create({
-        name: req.body.name,
-        chapters: []
-    }, function(err, regions) {
-        if (err)
-            res.send(err);
-
-        getEvents(res);
-    })
-});
-
-// get a specific region
-app.get('/api/events/:region_name', function(req, res) {
-    Region.findOne({"name": req.params.region_name}, function(err, region) {
-        if (err)
-            res.send(err)
-
-        res.json(region);
-    });
-});
-
-// delete a region
-app.delete('/api/events/:region_name', function(req, res) {
-    Region.findOneAndUpdate({}, {$pull: {name: req.params.region_name}}, function(err, regions) {
-        if (err)
-            res.send(err);
-
-        res.json(regions);
-    });
-});
-
-// chapter api ---------------------------------------------------------------------
-
-// get a specific region's chapter
-app.get('/api/events/:region_name/:chapter_name', function(req, res) {
-    Region.aggregate([
-        { $match: {"name": req.params.region_name}},
-        { $unwind: "$chapters"},
-        { $match: {"chapters.name": req.params.chapter_name}},
-    ]).exec(function(err, chapter) {
-        if (err)
-            res.send(err);
-
-        res.json(chapter);
-    });
-})
-
-// create a new chapter
-app.post('/api/events/:region_name', function(req, res) {
-    var chapter = new Chapter({
-        name: req.body.name,
-        location: req.body.location,
-        events: []
-    });
-
-    Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
-        if (err)
-            res.send(err);
-
-        console.log(regions);
-        res.json(regions);
-    })
-});
-
-// delete a chapter
-app.delete('/api/events/:region_name', function(req, res) {
-    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"chapters.name": req.body.name}}, function(err, regions) {
-        if (err)
-            res.send(err);
-
-        getEvents(res);
-    });
-});
-
-// event api ---------------------------------------------------------------------
-
-// get a specific region's chapter's event
-app.get('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
-    Region.aggregate([
-        { $match: {"name": req.params.region_name}},
-        { $unwind: "$chapters"},
-        { $match: {"chapters.name": req.params.chapter_name}},
-        { $unwind: "$chapters.events"},
-        { $match: {"chapters.events.name" : req.params.event_name}}
-    ]).exec(function(err, event) {
-        if (err)
-            res.send(err);
-
-        res.json(event);
-    });
-})
-
-// create event and send back all events after creation
-app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
-
-    var event = new Event({
-        description : req.body.description,
-        name : req.body.name,
-        venue: req.body.venue,
-        done : false
-    });
-
-    Region.findOneAndUpdate(
-        {"name": req.params.region_name, "chapters.name": req.params.chapter_name}, 
-        {$addToSet: {"chapters.events": event}}, 
-        {upsert: true}, 
-        function(err, regions) {
-            if (err)
-                res.send(err);
-
-            console.log(regions);
-            res.json(regions);
-        }
-    );
-});
-
-// delete an event and send back all events after deletion
-app.delete('/api/events/:region_name/:chapter_name', function(req, res) {
-    Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"chapters.name": req.body.name}}, function(err, regions) {
-        if (err)
-            res.send(err);
-
-        getEvents(res);
-    });
-});
-
-// landing page redirect
-app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-});
