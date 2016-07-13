@@ -13,14 +13,10 @@ var bodyParser = require('body-parser');    // pull information from HTML POST (
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
-
-
 var configDB = require('./config/database.js');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
-
 require('./config/passport')(passport); // pass passport for configuration
 
 app.configure(function() {
