@@ -35,7 +35,7 @@ app.configure(function() {
 	// app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 	// app.use(cookieParser());
 	app.set('view engine', 'ejs'); // set up ejs for templating
-	app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+	app.use(express.static(__dirname + '/views'));                 // set the static files location /public/img will be /img for users
 	app.use(morgan('dev'));                                         // log every request to the console
 	app.use(methodOverride());
 
@@ -48,9 +48,9 @@ app.configure(function() {
 });
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/eventRoutes.js')(app);
-require('./app/donorRoutes.js')(app);
+require('./app/routes/userRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes/eventRoutes.js')(app);
+require('./app/routes/donorRoutes.js')(app);
 
 // launch ======================================================================
 app.listen(port);
