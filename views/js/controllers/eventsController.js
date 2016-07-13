@@ -21,7 +21,7 @@ angular.module('eventsController', [])
     // return: list of all events in every chapter in every event
     $scope.createEvent = function(region_name, chapter_name) {
         if (!$.isEmptyObject($scope.formData.name)) {
-            Events.create(region_name, chapter_name, $scope.formData)
+            Events.create("testRegion", "testChapter", $scope.formData)
                 .success(function(data) {
                     $scope.formData = {};
                     $scope.regions = data;
