@@ -38,7 +38,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // load the routes
-//require('./app/eventRoutes.js')(app);
+require('./app/eventRoutes.js')(app);       // <---- was commented out when Rak pushed
 require('./app/donorRoutes.js')(app);
 
 // listen (start app with node server.js) ======================================
