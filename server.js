@@ -1,46 +1,59 @@
-// set up ========================
+// server.js
+
+// set up ======================================================================
+// get all the tools we need
 var express  = require('express');
-var app      = express();                               // create our app w/ express
-var mongoose = require('mongoose');                     // mongoose for mongodb
+var app      = express();
+var port     = process.env.PORT || 3000;
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash    = require('connect-flash');
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-var passport = require('passport');
-var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 
 
-// database configuration
-var database = require('./config/database');
-mongoose.connect(database.url);
+var configDB = require('./config/database.js');
 
-app.use(cookieParser());
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
-app.use(morgan('dev'));                                         // log every request to the console
-app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-app.use(methodOverride());
-app.set('view engine', 'ejs');
+// configuration ===============================================================
+mongoose.connect(configDB.url); // connect to our database
 
-//set up passport
 require('./config/passport')(passport); // pass passport for configuration
 
-// required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.configure(function() {
 
-//load-routes
+	// set up our express application
+	app.use(express.logger('dev')); // log every request to the console
+	app.use(express.cookieParser()); // read cookies (needed for auth)
+	app.use(express.bodyParser()); // get information from html forms
+
+	// app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
+	// app.use(bodyParser.json());                                     // parse application/json
+	// app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+	// app.use(cookieParser());
+	app.set('view engine', 'ejs'); // set up ejs for templating
+	app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+	app.use(morgan('dev'));                                         // log every request to the console
+	app.use(methodOverride());
+
+	// required for passport
+	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+	app.use(passport.initialize());
+	app.use(passport.session()); // persistent login sessions
+	app.use(flash()); // use connect-flash for flash messages stored in session
+
+});
+
+// routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
-// load the routes
-//require('./app/eventRoutes.js')(app);
+require('./app/eventRoutes.js')(app);
 require('./app/donorRoutes.js')(app);
 
-// listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+// launch ======================================================================
+app.listen(port);
+console.log('The magic happens on port ' + port);
+
+
