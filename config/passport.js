@@ -67,8 +67,7 @@ module.exports = function(passport) {
                 newUser.local.description = req.body.description;
                 newUser.local.howdidyouhear = req.body.howdidyouhear;
                 newUser.local.type = req.body.type;
-                if (!(!req.body.specialQ || req.body.specialQ == "null" ||
-                 req.body.specialQ == "undefined")) {
+                if (req.body.specialQ) {
                     newUser.local.specialQ = req.body.specialQ;
                 }
                 // save the user
