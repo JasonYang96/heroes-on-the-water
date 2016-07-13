@@ -3,16 +3,28 @@ var Schema = mongoose.Schema, ObjectId = Schema.ObjectId;
 
 // define models =================
 var Event = mongoose.model('event', {
-    description : String,
     name : {
         type: String,
         required: true,
         unique: true
     },
+    date : {
+        type: String,
+        required: true
+    },
+    start : {
+        type: String,
+        required: true
+    },
+    end : {
+        type: String,
+    },
     venue : {
         type: String,
         required: true
-    }
+    },
+    description : String,
+
 });
 
 var Chapter = mongoose.model('chapter', {
