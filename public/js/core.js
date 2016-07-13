@@ -1,4 +1,5 @@
 angular.module('HOW', ['regionsController','chaptersController', 'eventsController', 'mainService'])
+angular.module('Donor', []);
 
 function mainController($scope, $http) {
     // lists all events in every chapter in every region
@@ -11,7 +12,7 @@ function mainController($scope, $http) {
         .error(function(data) {
             console.log('Error: ' + data);
         });
-}
+};
 
 // controller to handle listing, creating, and deleting of donors
 function donorController($scope, $http) {
@@ -33,4 +34,18 @@ function donorController($scope, $http) {
                 console.log('Error: ' + data);
             });
     }
+};
+
+function donorsListController($scope, $http) {
+    // lists all events in every chapter in every region
+    // returns: list of all events in every chapter in every region
+    $http.get('/api/donors')
+        .success(function(data) {
+            $scope.donors = data;
+            console.log("=== donor List Controller ===")
+            console.log(data);
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
 };

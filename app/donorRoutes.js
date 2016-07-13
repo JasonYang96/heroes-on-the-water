@@ -9,38 +9,39 @@ var Donor = mongoose.model('donor', {
     description: Number
 });
 
-var getDonors = function(res) {
-    Donor.find(function(err, donors) {
-        if (err)
-            res.send(err)
-
-        res.json(donors);
-    });
-};
-
 // -------------------------DONOR API -------------------------------------//
+module.exports = function(app) {
+    var getDonors = function(res) {
+        Donor.find(function(err, donors) {
+            if (err)
+                res.send(err)
 
-// get all donors
-app.get('/api/donors', function(req, res) {
-    getDonors(res);
-});
-
-// create a new donor
-app.post('/api/donors/', function(req, res) {
-    console.log("donor Server -- ")
-    console.log(req);
-    Donor.create({
-        fName: req.body.fName,
-        lName: req.body.lName,
-        phone: req.body.phone,
-        email: req.body.email,
-        donation: req.body.donation,
-        description: req.body.description
+            res.json(donors);
+        });
+    };
     
-    }, function(err, regions) {
-        if (err)
-            res.send(err);
-
+    // get all donors
+    app.get('/api/donors', function(req, res) {
         getDonors(res);
-    })
-});
+    });
+
+    // create a new donor
+    app.post('/api/donors/', function(req, res) {
+        console.log("donor Server -- ")
+        console.log(req);
+        Donor.create({
+            fName: req.body.fName,
+            lName: req.body.lName,
+            phone: req.body.phone,
+            email: req.body.email,
+            donation: req.body.donation,
+            description: req.body.description
+        
+        }, function(err, regions) {
+            if (err)
+                res.send(err);
+
+            getDonors(res);
+        })
+    });
+}
