@@ -1,28 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema, ObjectId = Schema.ObjectId;
-
-// define models =================
-var Event = mongoose.model('event', {
-    description : String,
-    name : String,
-    venue : String
-});
-
-var Chapter = mongoose.model('chapter', {
-    name: String,
-    location: String,
-    events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
-});
-
-var Region = mongoose.model('region', {
-    name : String,
-    chapters : []
-    //chapters : [{type: Schema.Types.ObjectId, ref:'Chapter'}]
-});
+var Model = require('../models/event');
 
 module.exports = function(app) {
 	function getEvents(res) {
-	    Region.find(function(err, events) {
+	    Model.region.find(function(err, events) {
 	        if (err) {
 	            res.send(err);
 	        }
@@ -40,7 +20,7 @@ module.exports = function(app) {
 
 	// create a new region
 	app.post('/api/events/', function(req, res) {
-	    Region.create({
+	    Model.region.create({
 	        name: req.body.name,
 	        chapters: []
 	    }, function(err, regions) {
@@ -53,7 +33,7 @@ module.exports = function(app) {
 
 	// get a specific region
 	app.get('/api/events/:region_name', function(req, res) {
-	    Region.findOne({"name": req.params.region_name}, function(err, region) {
+	    Model.region.findOne({"name": req.params.region_name}, function(err, region) {
 	        if (err)
 	            res.send(err)
 
@@ -63,7 +43,7 @@ module.exports = function(app) {
 
 	// delete a region
 	app.delete('/api/events/:region_name', function(req, res) {
-	    Region.find({"name": req.params.region_name}).remove().exec();
+	    Model.region.find({"name": req.params.region_name}).remove().exec();
 
 	    getEvents(res);
 	});
@@ -72,7 +52,7 @@ module.exports = function(app) {
 
 	// get a specific region's chapter
 	app.get('/api/events/:region_name/:chapter_name', function(req, res) {
-	    Region.aggregate([
+	    Model.region.aggregate([
 	        { $match: {"name": req.params.region_name}},
 	        { $unwind: "$chapters"},
 	        { $match: {"chapters.name": req.params.chapter_name}},
@@ -96,7 +76,7 @@ module.exports = function(app) {
 		// 	}
 
 		// 	console.log(chapter);
-		// 	Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
+		// 	Model.region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
 		// 	    if (err)
 		// 	        res.send(err);
 
@@ -104,14 +84,14 @@ module.exports = function(app) {
 		// 	});
 		// });
 
-	    var chapter = new Chapter({
+	    var chapter = new Model.chapter({
 	        name: req.body.name,
 	        location: req.body.location,
 	        events: []
 	    });
 
 	    console.log(req.params);
-	    Region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
+	    Model.region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
 	        if (err)
 	            res.send(err);
 
@@ -133,7 +113,7 @@ module.exports = function(app) {
 		// 	getEvents(res);
 		// })
 		// console.log(req.params);
-	    // Region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"$chapters": {"chapters.name": req.params.chapter_name}}}, {new: true}, function(err, regions) {
+	    // Model.region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"$chapters": {"chapters.name": req.params.chapter_name}}}, {new: true}, function(err, regions) {
 	    //     if (err) {
 	    //         res.send(err);
 	    //     }
@@ -142,7 +122,7 @@ module.exports = function(app) {
 	    //     getEvents(res);
 	    // });
 
-	    Region.findOne({"name": req.params.region_name}).exec(function(err, region) {
+	    Model.region.findOne({"name": req.params.region_name}).exec(function(err, region) {
 	    	if (err) {
 	    		res.send(err);
 	    	}
@@ -160,7 +140,7 @@ module.exports = function(app) {
 
 	// get a specific region's chapter's event
 	app.get('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
-	    Region.aggregate([
+	    Model.region.aggregate([
 	        { $match: {"name": req.params.region_name}},
 	        { $unwind: "$chapters"},
 	        { $match: {"chapters.name": req.params.chapter_name}},
@@ -177,14 +157,14 @@ module.exports = function(app) {
 	// create event and send back all events after creation
 	app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
 
-	    var event = new Event({
+	    var event = new Model.event({
 	        description : req.body.description,
 	        name : req.body.name,
 	        venue: req.body.venue,
 	        done : false
 	    });
 
-	    Region.findOneAndUpdate(
+	    Model.region.findOneAndUpdate(
 	        {"name": req.params.region_name, "chapters.name": req.params.chapter_name}, 
 	        {$addToSet: {"chapters.$.events": event}}, 
 	        {upsert: true}, 
@@ -207,7 +187,7 @@ module.exports = function(app) {
 			getEvents(res);
 		})
 
-		// Region.findOneAndUpdate(
+		// Model.region.findOneAndUpdate(
 		//     {"name": req.params.region_name,
 		//      "chapters.name": req.params.chapter_name}, 
 		//     {$pull: {"chapters.event.name": req.params.event_name}}, 
