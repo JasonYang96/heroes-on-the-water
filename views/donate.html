@@ -93,19 +93,59 @@
                     </div>
                 </form>
             </div>
+
+    <!--===========---   jQuery to set donation AMOUNT for paypal   ---=========-->
+            <script>
+            var donateVal;
+            var description;
+            var reason;
+            $(document).ready(function(){
+                $("#donationSelect").change(function(){
+                    donateVal = $("#donationSelect").val();
+                    // console.log("paypal jQuery handler: Selected: ");
+                    console.log("paypal jQuery handler: Selected: " + donateVal);
+
+                    // set paypal amount
+                    switch(donateVal){
+                        case '0': donateVal = 25; break;
+                        case '1': donateVal = 50; break;
+                        case '2': donateVal = 50; break;
+                        case '3': donateVal = 100; break;
+                        case '4': donateVal = 100; break;
+                        case '5': donateVal = 200; break;
+                        case '6': donateVal = 1000; break;
+                        default: donateVal = 0;
+                    }
+                    console.log("amount set: " + donateVal);
+                    $("#paypalAmnt").attr("value", donateVal);
+
+    // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                    // grab description
+                    description = $("#donationSelect option:selected").html();
+                    console.log("description: " + description);
+                    // set description in paypal form
+                     $("#item_name").attr("value", description);
+
+                });
+            });
+
+    // ========-   jQuery to set donation IN MEM OF... for paypal   -======
+            $(document).ready(function(){
+                $("#reasonSelect").change(function(){
+                     reason = $("#reasonSelect option:selected").html();
+                    console.log("reason: " + reason);
+                    // set description in paypal form
+                     $("#item_reason").attr("value", reason);
                 });
             });
             </script>
+<!--========================--------------------    END jQuery  -----------------=========================-->
 
-            <!-- BUTTON WILL CREATE NEW DONOR -->
-            <!--<button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createDonor()" id = donorButton>Donate Now</button>-->
             <br>
-            <br>
-
 
     <!--======== PAYPAL PAGE REDIRECT ============--> 
 
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
 
                 <!-- Identify your business so that you can collect the payments. -->
                 <input type="hidden" name="business"
@@ -121,11 +161,12 @@
                 <input type="hidden" name="currency_code" value="USD">
 
                 <!-- Display the payment button. -->
-                <span><input type="image" name="submit"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" id = "donorButton" ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
-                <img alt="" width="1" height="1"
-                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
+                    <span><input type="image" name="submit"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                    alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
+                        ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
+                    <img alt="" width="1" height="1"
+                    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
             </form>
 
 
@@ -133,7 +174,6 @@
             <!--html reference: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_reference_landing/-->
             <!--to write own url: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_example_donate/-->
             <!--checkout vars: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/#auto-fill-paypal-checkout-page-variables-->
-
 
         <!-- CORPOATE DONATION-->
             <br><br>
