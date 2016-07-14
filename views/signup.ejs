@@ -1,53 +1,46 @@
 <!-- views/signup.ejs -->
-<!doctype html>
-<html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Heroes on the Water</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <style>
-        body        { padding-top:80px; }
-    </style>
+  <!--Styles-->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+  <link rel="stylesheet" href="css/signup.css">
+
+  <!--Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <!--jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 </head>
+
+
+
 <body>
-<div class="container">
-
-<div class="col-sm-6 col-sm-offset-3">
-
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+<div class="login-page">
+  <div class="form">
+    <h1><span class="fa fa-user-plus"></span></h1>
 
     <!-- show any messages that come back with authentication -->
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
-    <!-- LOGIN FORM -->
-<!--     <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+    <!--Sign Up Form-->
+    <form action='/signup' method='post' class="login-form">
+        <p>You are a...</p>
+        <div class="radiobuttons">
+          <input type="radio" name="type" value="participant" checked>Participant
+          <input type="radio" name="type" value="volunteer" > Volunteer
+          <input type="radio" name="type" value="manager"> Manager
+          <input type="radio" name="type" value="founder"> Chapter Founder <br>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form> -->
-
-    <form action='/signup' method='post'>
-      <div class="form-group"><br>
-        <div style="text-align:center !important; ">
-        <p style="font-size:20px !important;">You are a...</p>
-        <input class='' type="radio" name="type" value="participant" checked>Participant
-        <input style="text-align:left;" type="radio" name="type" value="volunteer" > Volunteer
-        <input class='' type="radio" name="type" value="manager"> Manager
-        <input class='' type="radio" name="type" value="founder"> Chapter Founder <br>
-        </div>
-      </div>
-
       <p id="blurb" class="blurb">Heroes on the Water helps our Nation’s warriors and veterans from all branches of the United States military unwind using the therapeutic qualities of fishing from kayaks. What looks like a day trip of paddling and fishing is in fact something much deeper and long-lasting.<br><br> Participants receive basic kayak fishing and paddling instruction, angling clinics and paddling classes for participants with skill sets ranging from beginners to the most experienced paddlers. <br><br> Our program is unique in that it is a long-term activity, not a one-time event. We believe that the effectiveness of the program is a direct result of engaging the wounded military personnel for the long-term. <br><br> Let us know how a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
 
       <script type="text/javascript">
@@ -65,6 +58,7 @@
 
       </script>
 
+      <br>
 
       <div class="form-group">
         <input class="form-control"
@@ -132,16 +126,11 @@
         });
       </script>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-
-      </form>
-    <hr>
-
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
-
-</div>
-
+      <button type="submit">Signup</button>
+      <p class="message">Already have an account? <a href="/login">Login</a></p>
+      <p class="message">Or go <a href="/">home</a>.</p>
+    </form>
+    </div>
 </div>
 </body>
 </html>
