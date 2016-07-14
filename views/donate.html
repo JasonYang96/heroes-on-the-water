@@ -33,7 +33,7 @@
 <body>
     <div class="container">
 
-        <!-- HEADER AND EVENT COUNT -->
+        <!-- HEADER -->
         <div class="jumbotron text-center">
             <h1>Donate to HOW</h1>
             <h2><a href="/donors.html">List of Donors</a></h2>
@@ -58,10 +58,11 @@
 
         </div>
 
-
+        <hr>
         <!-- FORM TO DONATE -->
         <div id="donor-creation-form" class="row creation-form" ng-controller="donorController">
             <h1 class="text-center"> Donate </h1>
+            <p>Remember and celebrate the life of a loved one while also supporting our wounded troops. Let us know who you want to honor or memorialize and we will send a letter informing them of your donation on their behalf.<br>For a donation honoring or celebrating someone special – submit the form below and provide us with the person’s name and address for the letter to be sent.<br>For a donation in memory of a loved one – submit the form below and provide us with the individual’s name and the name and address for the person or family to which the letter is to be sent.</p>
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
                     <div class="form-group">
@@ -74,7 +75,8 @@
                         <input type="tel" class="form-control input-lg text-center" placeholder="Phone" ng-model="formData.phone">
                         <br>
                         <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
-                        <br>
+                    <!--Select Gift-->
+                        <h3> Select Gift Amount</h3>
                         <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
                             <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
                             <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
@@ -83,67 +85,132 @@
                             <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
                             <option value="5">$200 -- Provides lunch for an event</option>
                             <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
+                            <option value="7">Other</option>
                         </select> 
-                        <br>
+                    <!--Select Donation Type-->
+                        <h3>Donation Type</h3>
                         <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
-                            <option value="0">Support a HOW chapter</option>
+                            <option value="0">Support a specific HOW chapter</option>
                             <option value="1">In memory of a loved one</option>
                             <option value="2">In honor of someone</option>
+                            <option value="3">Support HOW</option>
                         </select>
+                        <br>
+                    <!--Select Chaper-->
+                        <select class="form-control input-lg text-center" id = "select_chapter">
+                            <option selected>some chapter</option>
+                        </select>
+                    <!--Loved One Form-->
+                        <div id = "loved_one_form">
+                            <h2> In Memory of a Loved One</h2>
+                            <hr><hr>
+                            <input type="text" class="form-control input-lg text-center" placeholder="In memory of...">
+                            <h2> Person/Family to Recieve the Letter</h2>
+                            <hr><hr>
+                            <input type="text" class="form-control input-lg text-center" placeholder="First Name">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Address">
+                            <input type="text" class="form-control input-lg text-center" placeholder="City">
+                            <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                            <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                        </div>
+                    <!--In honor of Someone-->
+                        <div id = "honor_form">
+                            <h2> In Honor of Someone</h2>
+                            <input type="text" class="form-control input-lg text-center" placeholder="In honor of...">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Address">
+                            <input type="text" class="form-control input-lg text-center" placeholder="City">
+                            <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                            <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                        </div>
+                        
                     </div>
                 </form>
             </div>
 
     <!--===========---   jQuery to set donation AMOUNT for paypal   ---=========-->
             <script>
-            var donateVal;
-            var description;
-            var reason;
-            $(document).ready(function(){
-                $("#donationSelect").change(function(){
-                    donateVal = $("#donationSelect").val();
-                    // console.log("paypal jQuery handler: Selected: ");
-                    console.log("paypal jQuery handler: Selected: " + donateVal);
+                var donateVal;
+                var description;
+                var reason;
+                $(document).ready(function(){
+                    $("#donationSelect").change(function(){
+                        donateVal = $("#donationSelect").val();
+                        // console.log("paypal jQuery handler: Selected: ");
+                        console.log("paypal jQuery handler: Selected: " + donateVal);
 
-                    // set paypal amount
-                    switch(donateVal){
-                        case '0': donateVal = 25; break;
-                        case '1': donateVal = 50; break;
-                        case '2': donateVal = 50; break;
-                        case '3': donateVal = 100; break;
-                        case '4': donateVal = 100; break;
-                        case '5': donateVal = 200; break;
-                        case '6': donateVal = 1000; break;
-                        default: donateVal = 0;
-                    }
-                    console.log("amount set: " + donateVal);
-                    $("#paypalAmnt").attr("value", donateVal);
+                        // set paypal amount
+                        switch(donateVal){
+                            case '0': donateVal = 25; break;
+                            case '1': donateVal = 50; break;
+                            case '2': donateVal = 50; break;
+                            case '3': donateVal = 100; break;
+                            case '4': donateVal = 100; break;
+                            case '5': donateVal = 200; break;
+                            case '6': donateVal = 1000; break;
+                            default: donateVal = 0;
+                        }
+                        console.log("amount set: " + donateVal);
+                        $("#paypalAmnt").attr("value", donateVal);
 
-    // ========-   jQuery to set donation DESCRIPTION for paypal   -======
-                    // grab description
-                    description = $("#donationSelect option:selected").html();
-                    console.log("description: " + description);
-                    // set description in paypal form
-                     $("#item_name").attr("value", description);
+        // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                        // grab description
+                        description = $("#donationSelect option:selected").html();
+                        console.log("description: " + description);
+                        // set description in paypal form
+                        $("#item_name").attr("value", description);
 
+                    });
                 });
-            });
 
     // ========-   jQuery to set donation IN MEM OF... for paypal   -======
-            $(document).ready(function(){
-                $("#reasonSelect").change(function(){
-                     reason = $("#reasonSelect option:selected").html();
-                    console.log("reason: " + reason);
-                    // set description in paypal form
-                     $("#item_reason").attr("value", reason);
+                $(document).ready(function(){
+                    $("#reasonSelect").change(function(){
+                        reason = $("#reasonSelect option:selected").html();
+                        console.log("reason: " + reason);
+                        // set description in paypal form
+                        $("#item_reason").attr("value", reason);
+
+                //========------ FORM HIDE/SHOW LOGIC ------=============
+                        if($(this).val() == '1')
+                        {
+                            $("#loved_one_form").show();
+                            $("#honor_form").hide();
+                            $("#select_chapter").hide();
+                        }
+                        else if($(this).val() == '2')
+                        {
+                            $("#honor_form").show();
+                            $("#loved_one_form").hide();
+                            $("#select_chapter").hide();
+                        }
+                        else if($(this).val() == '0')
+                        {
+                            $("#honor_form").hide();
+                            $("#loved_one_form").hide();
+                            $("#select_chapter").show();
+                        }
+                        else if($(this).val() == '3')
+                        {
+                            $("#honor_form").hide();
+                            $("#loved_one_form").hide();
+                            $("#select_chapter").hide();
+                        }
+                        
+                    });
                 });
-            });
+    
+                $("#loved_one_form").hide();
+                $("#honor_form").hide();
+                $("#select_chapter").hide();
             </script>
 <!--========================--------------------    END jQuery  -----------------=========================-->
 
             <br>
 
-    <!--======== PAYPAL PAGE REDIRECT ============--> 
+    <!--======== PAYPAL PAGE REDIRECT BUTTON============--> 
 
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
 
@@ -155,9 +222,9 @@
                 <input type="hidden" name="cmd" value="_donations">
 
                 <!-- Specify details about the contribution -->
-                <input type="hidden" name="item_name" value="Item name"  id = "item_name">
-                <input type="hidden" name="item_number" value="itme num" id = "item_reason">
-                <input type="hidden" name="amount" value="25" id = "paypalAmnt">
+                <input type="hidden" name="item_name" value="Heroes on the Water"  id = "item_name">
+                <input type="hidden" name="item_number" value="Donation" id = "item_reason">
+                <input type="hidden" name="amount" value="0" id = "paypalAmnt">
                 <input type="hidden" name="currency_code" value="USD">
 
                 <!-- Display the payment button. -->
@@ -174,6 +241,7 @@
             <!--html reference: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_reference_landing/-->
             <!--to write own url: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_example_donate/-->
             <!--checkout vars: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/#auto-fill-paypal-checkout-page-variables-->
+
 
         <!-- CORPOATE DONATION-->
             <br><br>
