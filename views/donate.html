@@ -95,7 +95,7 @@
                             <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
                         </select> 
                         <br>
-                        <select class="form-control input-lg text-center" ng-model="formData.description">
+                        <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
                             <option value="0">Support a HOW chapter</option>
                             <option value="1">In memory of a loved one</option>
                             <option value="2">In honor of someone</option>
@@ -104,11 +104,13 @@
                 </form>
             </div>
 
-    <!--========-   jQuery to set donation amount for paypal   -======-->
+    <!--===========---   jQuery to set donation AMOUNT for paypal   ---=========-->
             <script>
             var donateVal;
+            var description;
+            var reason;
             $(document).ready(function(){
-                $("#donorButton").click(function(){
+                $("#donationSelect").change(function(){
                     donateVal = $("#donationSelect").val();
                     // console.log("paypal jQuery handler: Selected: ");
                     console.log("paypal jQuery handler: Selected: " + donateVal);
@@ -126,19 +128,35 @@
                     }
                     console.log("amount set: " + donateVal);
                     $("#paypalAmnt").attr("value", donateVal);
+
+    // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                    // grab description
+                    description = $("#donationSelect option:selected").html();
+                    console.log("description: " + description);
+                    // set description in paypal form
+                     $("#item_name").attr("value", description);
+
+                });
+            });
+
+    // ========-   jQuery to set donation IN MEM OF... for paypal   -======
+            $(document).ready(function(){
+                $("#reasonSelect").change(function(){
+                     reason = $("#reasonSelect option:selected").html();
+                    console.log("reason: " + reason);
+                    // set description in paypal form
+                     $("#item_reason").attr("value", reason);
+
                 });
             });
             </script>
+<!--========================--------------------    END jQuery  -----------------=========================-->
 
-            <!-- BUTTON WILL CREATE NEW DONOR -->
-            <!--<button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createDonor()" id = donorButton>Donate Now</button>-->
             <br>
-            <br>
-
 
     <!--======== PAYPAL PAGE REDIRECT ============--> 
 
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
 
                 <!-- Identify your business so that you can collect the payments. -->
                 <input type="hidden" name="business"
@@ -148,35 +166,25 @@
                 <input type="hidden" name="cmd" value="_donations">
 
                 <!-- Specify details about the contribution -->
-                <input type="hidden" name="item_name" value="Heroes on the Water">
-                <input type="hidden" name="item_number" value="Fall Cleanup Campaign">
+                <input type="hidden" name="item_name" value="Item name"  id = "item_name">
+                <input type="hidden" name="item_number" value="itme num" id = "item_reason">
                 <input type="hidden" name="amount" value="25" id = "paypalAmnt">
                 <input type="hidden" name="currency_code" value="USD">
 
                 <!-- Display the payment button. -->
-                <span><input type="image" name="submit"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" id = "donorButton" ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
-                <img alt="" width="1" height="1"
-                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
+                    <span><input type="image" name="submit"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                    alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
+                        ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
+                    <img alt="" width="1" height="1"
+                    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
             </form>
 
 
-
-
-            <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" >
-                <input type="hidden" name="cmd" value="_donations">
-                <input type="hidden" name="business" value="how@how.com">
-                <input type="hidden" name="lc" value="US">
-                <input type="hidden" name="item_name" value="Heroes On The Water">
-                <input type="hidden" name="no_note" value="0">
-                <input type="hidden" name="currency_code" value="USD">
-                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form>-->
-
-
+<!--======= PAYPAL INFO =========-->
+            <!--html reference: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_reference_landing/-->
+            <!--to write own url: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_example_donate/-->
+            <!--checkout vars: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/#auto-fill-paypal-checkout-page-variables-->
 
 
 
