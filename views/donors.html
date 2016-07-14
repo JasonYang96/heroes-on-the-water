@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <style>
         html            { overflow-y:scroll; }
-        body            { padding-top:50px;}
         #todo-list      { margin-bottom:30px; }
         .creation-form  { margin: 20px; }
         .region-list    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
@@ -32,33 +31,39 @@
 
 </head>
 <body>
-    <div class="container">
 
-        <!-- HEADER AND EVENT COUNT -->
-        <div class="jumbotron text-center">
-            <h1>Heroes on the Water<span class="label label-info"></span></h1>
-            <h2><a href="/donate.html">Donate</a></h2>
-            <h2><a href="/index.html">Home</a></h2>
-            <!--<p>{{donors.length}}</p>-->
-        </div>
 
-        <!-- DONOR LIST -->
-        <div class="col-sm-12 row" ng-controller="donorsListController">
-            <!-- LOOP OVER THE EVENTS IN $scope.regions -->
-            <h1>Thanks to those who have donated</h1><br>
-            <div class="col-sm-12 region-list" ng-repeat="donor in donors">
-                <div>
-                    <div class="col-sm-9">
-                        <h1>Donor: {{donor.fName}} {{donor.lName}}</h1>
-                    </div>
-                    
-                </div>
+<!--YouTube Player-->
+<div style="position: fixed; z-index: -99; width: 100% !important; height: 100% !important">
+    <iframe id="ytplayer" type="text/html" style="width: 100%; height:100%;" src="https://www.youtube.com/embed/vFVHFfk0rjM?rel=0&enablejsapi=1&autoplay=1&controls=0&showinfo=0&loop=1&iv_load_policy=3&playlist=vFVHFfk0rjM" frameborder="0" allowfullscreen ></iframe>
+</div>
+
+<!--Transparent Div So User Cannot Manipulate Video-->
+<div style="position: fixed; z-index: -98; width:100%; height:100%;"></div>
+
+<div class="container" style="background-color: rgba(0,0,0,0) !important;">
+    <!-- HEADER AND EVENT COUNT -->
+    <div class="jumbotron text-center">
+        <h1>Heroes on the Water<span class="label label-info"></span></h1>
+        <h2><a href="/donate.html">Donate</a></h2>
+        <h2><a href="/index.html">Home</a></h2>
+        <!--<p>{{donors.length}}</p>-->
+    </div>
+
+    <!-- DONOR LIST -->
+    <div class="col-sm-12 row" ng-controller="donorsListController">
+        <!-- LOOP OVER THE EVENTS IN $scope.regions -->
+        <h1>Thanks to those who have donated</h1><br>
+        <div class="col-sm-12 region-list" ng-repeat="donor in donors">
+            <div>
+                <div class="col-sm-9">
+                    <h1>Donor: {{donor.fName}} {{donor.lName}}</h1>
+                </div>  
             </div>
         </div>
-
-      
-
     </div>
+</div>
+
 </body>
 >>>>>>> Donate page redirects to paypal with correct amount selected.:public/donors.html
 </html>
