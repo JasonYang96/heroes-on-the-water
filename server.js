@@ -51,5 +51,3 @@ require('./app/routes/managerRoutes.js')(app);
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
-
-

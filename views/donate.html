@@ -85,7 +85,7 @@
                         <br>
                         <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
                         <br>
-                        <select class="form-control input-lg text-center" ng-model="formData.donation">
+                        <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
                             <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
                             <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
                             <option value="2">$50 -- Provides coffee for an event</option>
@@ -104,14 +104,41 @@
                 </form>
             </div>
 
-            <!-- WILL CREATE NEW DONOR -->
-            <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createDonor()">Donate Now</button>
+    <!--========-   jQuery to set donation amount for paypal   -======-->
+            <script>
+            var donateVal;
+            $(document).ready(function(){
+                $("#donorButton").click(function(){
+                    donateVal = $("#donationSelect").val();
+                    // console.log("paypal jQuery handler: Selected: ");
+                    console.log("paypal jQuery handler: Selected: " + donateVal);
+
+                    // set paypal amount
+                    switch(donateVal){
+                        case '0': donateVal = 25; break;
+                        case '1': donateVal = 50; break;
+                        case '2': donateVal = 50; break;
+                        case '3': donateVal = 100; break;
+                        case '4': donateVal = 100; break;
+                        case '5': donateVal = 200; break;
+                        case '6': donateVal = 1000; break;
+                        default: donateVal = 0;
+                    }
+                    console.log("amount set: " + donateVal);
+                    $("#paypalAmnt").attr("value", donateVal);
+                });
+            });
+            </script>
+
+            <!-- BUTTON WILL CREATE NEW DONOR -->
+            <!--<button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createDonor()" id = donorButton>Donate Now</button>-->
+            <br>
             <br>
 
-    <!--======== paypal stuff ============-->
-            <br>
 
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <!--======== PAYPAL PAGE REDIRECT ============--> 
+
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
                 <!-- Identify your business so that you can collect the payments. -->
                 <input type="hidden" name="business"
@@ -127,11 +154,11 @@
                 <input type="hidden" name="currency_code" value="USD">
 
                 <!-- Display the payment button. -->
-                <input type="image" name="submit"
+                <span><input type="image" name="submit"
                 src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                alt="PayPal - The safer, easier way to pay online">
+                alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" id = "donorButton" ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
                 <img alt="" width="1" height="1"
-                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
             </form>
 
 
