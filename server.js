@@ -45,7 +45,7 @@ app.configure(function() {
 
 // routes ======================================================================
 require('./app/routes/userRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/routes/eventRoutes.js')(app);
+require('./app/routes/creationRoutes.js')(app);
 require('./app/routes/donorRoutes.js')(app);
 
 // launch ======================================================================
