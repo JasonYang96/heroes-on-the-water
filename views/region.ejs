@@ -35,10 +35,11 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" ng-controller="chaptersController">
 
+        <h1 class="text-center"><%= region.name %></h1>
         <!-- FORM TO CREATE CHAPTERS -->
-        <div id="chapter-creation-form" class="row creation-form" ng-controller="chaptersController">
+        <div id="chapter-creation-form" class="row creation-form">
             <h1 class="text-center"> CHAPTER CREATION </h1>
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
@@ -52,41 +53,44 @@
                 </form>
             </div>
 
-            <!-- createToDo() WILL CREATE NEW TODOS -->
-            <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createChapter()">Add Chapter</button>
+            <!-- createChapter() WILL CREATE NEW Chapter -->
+            <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createChapter(<%= JSON.stringify(region) %>)">Add Chapter</button>
         </div>
 
-        <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chaptersController">
-            <div>
-                <div class="col-sm-9">
-                    <h2>Chapter: {{chapter.name}}</h2>
-                    <p>Location: {{chapter.location}}</p>
-                </div>
-                <div class="col-sm-3">
-                    <label>
-                        <input type="checkbox" ng-click="deleteChapter(region.name, chapter.name, region._id, chapter._id)">Click to delete chapter
-                    </label>
-                </div>
-            </div>
-            <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
+        <!-- list of chapters and events in each chapter -->
+        <% for(var i=0; i < region.chapters.length; i++) {%>
+            <div class="col-sm-12 chapter-list">
+                <div>
                     <div class="col-sm-9">
-                        <h3>Name: {{event.name}}</h3>
-                        <h4>Date: {{event.date}}</h4>
-                        <h4>Start: {{event.start}}</h4>
-                        <h4>End: {{event.end}}</h4>
-                        <h4>Venue: {{event.venue}}</h4>
-                        <p>Description:
-                        <br>
-                        {{event.description}}</p>
+                        <h2>Chapter: <%= region.chapters[i].name %></h2>
+                        <p>Location: <%= region.chapters[i].location %></p>
                     </div>
                     <div class="col-sm-3">
                         <label>
-                            <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
+                            <input type="checkbox" ng-click="deleteChapter(region.name, chapter.name, region._id, chapter._id)">Click to delete chapter
                         </label>
                     </div>
+                </div>
+                <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
+                        <div class="col-sm-9">
+                            <h3>Name: {{event.name}}</h3>
+                            <h4>Date: {{event.date}}</h4>
+                            <h4>Start: {{event.start}}</h4>
+                            <h4>End: {{event.end}}</h4>
+                            <h4>Venue: {{event.venue}}</h4>
+                            <p>Description:
+                            <br>
+                            {{event.description}}</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>
+                                <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
+                            </label>
+                        </div>
+                </div>
             </div>
-        </div>
-
+        <% } %>
+        
     </div>
 </body>
 </html>

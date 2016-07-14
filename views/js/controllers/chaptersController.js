@@ -20,9 +20,9 @@ angular.module('chaptersController', [])
     // creates a chapter if it does not already exist then returns chapters
     // param: region_name from input, name from chapter-creation-form input
     // return: list of all events in every region in every chapter
-    $scope.createChapter = function(region_name) {
+    $scope.createChapter = function(region) {
     	if (!$.isEmptyObject($scope.formData.name)) {
-    		Chapters.create("testRegion", $scope.formData)
+    		Chapters.create(region.name, $scope.formData)
     			.success(function(data) {
     			    $scope.formData = {};
     			    $scope.regions = data;
