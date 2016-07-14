@@ -36,7 +36,7 @@ app.configure(function() {
 	app.use(methodOverride());
 
 	// required for passport
-	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+	app.use(express.session({ secret: 'swagramon' })); // session secret
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
 	app.use(flash()); // use connect-flash for flash messages stored in session
@@ -47,6 +47,7 @@ app.configure(function() {
 require('./app/routes/userRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./app/routes/creationRoutes.js')(app);
 require('./app/routes/donorRoutes.js')(app);
+require('./app/routes/managerRoutes.js')(app);
 
 // launch ======================================================================
 app.listen(port);
