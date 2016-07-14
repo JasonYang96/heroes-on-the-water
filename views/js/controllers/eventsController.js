@@ -19,9 +19,9 @@ angular.module('eventsController', [])
     // creates a event if it does not already exist then returns events
     // param: name from event-creation-form input, region and chapter name from input
     // return: list of all events in every chapter in every event
-    $scope.createEvent = function(region_name, chapter_name) {
+    $scope.createEvent = function(region) {
         if (!$.isEmptyObject($scope.formData.name)) {
-            Events.create("testRegion", "testChapter", $scope.formData)
+            Events.create(region.name, region.chapters.name, $scope.formData)
                 .success(function(data) {
                     $scope.formData = {};
                     $scope.regions = data;
