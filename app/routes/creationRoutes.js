@@ -155,8 +155,7 @@ module.exports = function(app) {
 	})
 
 	// create event and send back all events after creation
-	app.post('/api/events/:region_name/:chapter_name/', function(req, res) {
-
+	app.post('/api/events/:region_name/:chapter_name', function(req, res) {
 	    var event = new Model.event({
 	        name : req.body.name,
 	        date : req.body.date,
