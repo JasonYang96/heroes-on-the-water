@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- chapter.ejs -->
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
@@ -14,10 +14,8 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <style>
         html            { overflow-y:scroll; }
-        body            { padding-top:50px;}
+        body            { padding-top:50px; padding-bottom:50px;}
         .creation-form  { margin: 20px; }
-        .region    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
-        .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
         .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
     </style>
 
@@ -37,7 +35,8 @@
 <body>
     <div class="container" ng-controller="eventsController">
 
-        <h1 class="text-center"><%= region.chapters.name %></h1>
+        <h1 class="text-center">Chapter: <%= region.chapters.name %></h1>
+        <p class="text-center">Region: <%= region.name %></p>
         <!-- FORM TO CREATE EVENTS -->
         <div id="event-creation-form" class="row creation-form">
             <h1 class="text-center"> EVENT CREATION </h1>
@@ -64,16 +63,18 @@
 
         <!-- list of events in chapter -->
         <% for(var i=0; i < region.chapters.events.length; i++) {%>
-        <div class="col-sm-12 event-list">
+        <div class="col-sm-12 event">
                 <div class="col-sm-9">
-                    <h3>Name: <%= region.chapters.events[i].name %></h3>
+                    <h3>Event: <%= region.chapters.events[i].name %></h3>
                     <h4>Date: <%= region.chapters.events[i].date %></h4>
                     <h4>Start: <%= region.chapters.events[i].start %></h4>
                     <h4>End: <%= region.chapters.events[i].end %></h4>
                     <h4>Venue: <%= region.chapters.events[i].venue %></h4>
-                    <p>Description:
-                    <br>
-                    {{region.chapters.events[i].description}}</p>
+                    <p>Description: <%= region.chapters.events[i].description %></p>
+                    <p>Inventory:</p>
+                    <% for(var j=0; j < region.chapters.events[i].inventory.length; j++) {%>
+                        <p> <%= region.chapters.events[i].inventory[j].number %> <%= region.chapters.events[i].inventory[j].item %></p>
+                    <%} %>
                 </div>
                 <div class="col-sm-3">
                     <label>

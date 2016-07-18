@@ -52,4 +52,25 @@ module.exports = function(app) {
             });
         });
     });
+
+    // manager view for specific event
+    app.get('/:region_name/:chapter_name/:event_name', function(req, res) {
+        Model.region.aggregate([
+            { $match: {"name": req.params.region_name}},
+            { $unwind: "$chapters"},
+            { $match: {"chapters.name": req.params.chapter_name}},
+            { $unwind: "$chapters.events"},
+            { $match: {"chapters.events.name" : req.params.event_name}}
+        ]).exec(function(err, region) {
+            if (err)
+                res.send(err);
+
+            res.render('./ejs/manager/event.ejs', {region: region[0]}, function(err, html) {
+                if (err) {
+                    res.send(err);
+                }
+                res.send(html);
+            });
+        });
+    });
 }

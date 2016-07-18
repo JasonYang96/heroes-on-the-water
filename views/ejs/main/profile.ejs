@@ -1,42 +1,90 @@
 <!-- views/profile.ejs -->
 <!doctype html>
-<html>
+<html ng-app="User">
 <head>
-    <title>Node Authentication</title>
+    <title>Heroes on the Water</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
         body        { padding-top:80px; word-wrap:break-word; }
     </style>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="http://localhost:8080/js/core.js"></script>
+    <script src="http://localhost:8080/js/controllers/regionsController.js"></script>
+    <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
+    <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
+    <script src="http://localhost:8080/js/services/main.js"></script>
 </head>
 <body>
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1><span class="fa fa-anchor"></span>  Welcome back <%= user.local.name %>!</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
-        <div class="row">
-            <!-- LOCAL INFORMATION -->
-            <div class="col-sm-6">
-                <div class="well">
-                    <h3><span class="fa fa-user"></span> Local</h3>
-                        <p>
-                            <strong>id</strong>: <%= user._id %><br>
-                            <strong>email</strong>: <%= user.local.email %><br>
-                            <strong>password</strong>: <%= user.local.password %>
-                        </p>
+        <div id="profile-form" class="row profile-form">
+            <div class="col-sm-6 col-sm-offset-3" ng-controller="userController">
+                <div class="well text-center">
+                    <h3><span class="fa fa-user"></span> Update Profile Information</h3>
                 </div>
+                    <div class="row col-sm-12 text-center">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" placeholder="<%= user.local.name %>" ng-model="formData.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" placeholder="<%= user.local.email %>" ng-model="formData.email">
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                <label class="col-sm-3 control-label">Description:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" placeholder="<%= user.local.description %>" ng-model="formData.description">
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                <label class="col-sm-3 control-label">Phone Number:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="number" placeholder="<%= user.local.phone %>" ng-model=formData.phone>
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                <label class="col-sm-3 control-label">City:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" placeholder="<%= user.local.city %>" ng-model="formData.city">
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                <label class="col-sm-3 control-label">State:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" placeholder="<%= user.local.state %>" ng-model="formData.state">
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                <label class="col-sm-3 control-label">Zip:</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="number" placeholder="<%= user.local.zip %>" ng-model="formData.zip">
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- updateUser will update user -->
+                        <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="updateUser(<%= JSON.stringify(user) %>)">Update</button>
+                    </div>
             </div>
         </div>
-
+        <br>
         <a href="/admin" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Events</a>
         <br>
         <a href="/donate" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Donate</a>
     </div>
-
-
-
 </body>
 </html>

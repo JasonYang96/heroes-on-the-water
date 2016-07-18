@@ -1,5 +1,6 @@
 angular.module('HOW', ['regionsController','chaptersController', 'eventsController', 'mainService'])
 angular.module('Donor', []);
+angular.module('User', []);
 
 function mainController($scope, $http) {
     // lists all events in every chapter in every region
@@ -49,3 +50,20 @@ function donorsListController($scope, $http) {
             console.log('Error: ' + data);
         });
 };
+
+function userController($scope, $http) {
+    $scope.formData = {};
+
+    // updates user
+    $scope.updateUser = function(user) {
+        $http.post('/api/user/' + user._id, $scope.formData)
+            .success(function(data) {
+                console.log(data);
+                $scope.formData = {};
+                $scope.user = data;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+}

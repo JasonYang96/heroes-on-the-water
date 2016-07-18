@@ -36,6 +36,9 @@ angular.module('mainService', [])
 		},
 		delete: function(region_name, chapter_name, event_name, idData) {
 			return $http.delete('/api/events/' + region_name + '/' + chapter_name + '/' + event_name, idData);
+		},
+		addInventory: function(region_name, chapter_name, event_name, formData) {
+			return $http.post('/api/events/' + region_name + '/' + chapter_name + '/' + event_name, formData);
 		}
 	}
 });

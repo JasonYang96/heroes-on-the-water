@@ -49,4 +49,16 @@ angular.module('eventsController', [])
                 console.log('Error: ' + data);
             });
     };
+
+    $scope.addInventory = function(region) {
+        Events.addInventory(region.name, region.chapters.name, region.chapters.events.name, $scope.formData)
+            .success(function(data) {
+                $scope.formData = {};
+                $scope.regions = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
 })

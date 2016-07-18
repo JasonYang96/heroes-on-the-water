@@ -6,7 +6,6 @@ module.exports = function(app) {
 	        if (err) {
 	            res.send(err);
 	        }
-
 	        res.json(events);
 	    });
 	}
@@ -153,6 +152,31 @@ module.exports = function(app) {
 		        console.log(regions);
 
 		        getEvents(res)
-		});
+			}
+		);
+	});
+
+	// inventory api ----------------------------------------------------------------------
+
+	// create an inventory listing
+	app.post('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
+		var item = {
+			"item": req.body.item,
+			"number": req.body.number
+		}
+
+		Model.region.findOneAndUpdate(
+			{"name": req.params.region_name,
+			 "chapters.name": req.params.chapter_name,
+			 "chapters.events.name": req.params.event_name},
+			{$addToSet: {"chapters.$.events.0.inventory": item}},
+			{upsert: true},
+			function(err, event) {
+				if (err) {
+					res.send(err);
+				}
+				getEvents(res);
+			}
+		);
 	});
 }
