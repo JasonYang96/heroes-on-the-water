@@ -1,4 +1,7 @@
 // app/routes.js
+
+var User = require('../models/user');
+
 module.exports = function(app, passport) {
 
     // =====================================
@@ -24,6 +27,7 @@ module.exports = function(app, passport) {
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+
     // =====================================
     // SIGNUP ==============================
     // =====================================
@@ -59,6 +63,27 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    // =====================================
+    // UPDATE ==============================
+    // =====================================
+    app.post('/api/user/:userid', function(req, res) {
+        User.findOne({ "_id" : req.params.userid }, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            // only update if it is not null
+            user.local.name = req.body.name ? req.body.name : user.local.name;
+            user.local.email = req.body.email ? req.body.email: user.local.email;
+            user.local.description = req.body.description ? req.body.description : user.local.description;
+            user.local.phone = req.body.phone ? req.body.phone : user.local.phone;
+            user.local.city = req.body.city ? req.body.city : user.local.city;
+            user.local.state = req.body.state ? req.body.state : user.local.state;
+            user.local.zip = req.body.zip ? req.body.zip : user.local.zip;
+            user.save();
+        });
     });
 };
 
