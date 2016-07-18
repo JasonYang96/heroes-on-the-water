@@ -41,6 +41,7 @@
 
         <!-- list event details -->
         <div class="col-sm-12 event" ng-controller="eventsController">
+            <div class="row">
                 <div class="col-sm-9">
                     <h4>Date: <%= region.chapters.events.date %></h4>
                     <h4>Start: <%= region.chapters.events.start %></h4>
@@ -53,6 +54,34 @@
                         <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
                     </label>
                 </div>
+            </div>
+            <div class="row">
+                <!-- FORM TO ADD INVENTORY -->
+                <div id="inventory-addition-form" class="row creation-form">
+                    <h1 class="text-center"> ADD INVENTORY </h1>
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <form>
+                            <div class="form-group">
+                                <input type="number" class="form-control input-lg text-center" placeholder="Insert Number" ng-model="formData.number">
+                                <br>
+                                <input type="text" class="form-control input-lg text-center" placeholder="Insert Item" ng-model="formData.item">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Event</button>
+                </div>
+            </div>
+
+            <!-- list of events in chapter -->
+            <%= region.chapters.events.length %>
+            <%= region.chapters.events.inventory[1].boats %>
+            <div class="col-sm-12 event">
+            <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
+                <p> <%= region.chapters.events.inventory[i].number %> <%= region.chapters.events.inventory[i].item %></p>
+            <%} %>
+            </div>
         </div>
     </div>
 </body>

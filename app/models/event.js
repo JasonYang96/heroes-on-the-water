@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema, ObjectId = Schema.ObjectId;
 
-// define models =================
+// event model
 var Event = mongoose.model('event', {
     name : {
         type: String,
@@ -24,9 +23,10 @@ var Event = mongoose.model('event', {
         required: true
     },
     description : String,
-
+    inventory : []
 });
 
+// chapter model
 var Chapter = mongoose.model('chapter', {
     name: {
         type: String,
@@ -40,6 +40,7 @@ var Chapter = mongoose.model('chapter', {
     events: []
 });
 
+// region model
 var Region = mongoose.model('region', {
     name : {
        type: String,
