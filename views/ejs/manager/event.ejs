@@ -75,8 +75,6 @@
             </div>
 
             <!-- list of events in chapter -->
-            <%= region.chapters.events.length %>
-            <%= region.chapters.events.inventory[1].boats %>
             <div class="col-sm-12 event">
             <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
                 <p> <%= region.chapters.events.inventory[i].number %> <%= region.chapters.events.inventory[i].item %></p>
