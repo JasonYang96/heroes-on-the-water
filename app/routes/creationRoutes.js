@@ -165,8 +165,6 @@ module.exports = function(app) {
 			"number": req.body.number
 		}
 
-		console.log(req.body);
-
 		Model.region.findOneAndUpdate(
 			{"name": req.params.region_name,
 			 "chapters.name": req.params.chapter_name,
