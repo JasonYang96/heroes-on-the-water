@@ -16,8 +16,6 @@
         html            { overflow-y:scroll; }
         body            { padding-top:50px;}
         .creation-form  { margin: 20px; }
-        .region    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
-        .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
         .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
     </style>
 
@@ -37,7 +35,8 @@
 <body>
     <div class="container" ng-controller="eventsController">
 
-        <h1 class="text-center"><%= region.chapters.name %></h1>
+        <h1 class="text-center">Chapter: <%= region.chapters.name %></h1>
+        <p class="text-center">Region: <%= region.name %></p>
         <!-- FORM TO CREATE EVENTS -->
         <div id="event-creation-form" class="row creation-form">
             <h1 class="text-center"> EVENT CREATION </h1>
@@ -64,9 +63,9 @@
 
         <!-- list of events in chapter -->
         <% for(var i=0; i < region.chapters.events.length; i++) {%>
-        <div class="col-sm-12 event-list">
+        <div class="col-sm-12 event">
                 <div class="col-sm-9">
-                    <h3>Name: <%= region.chapters.events[i].name %></h3>
+                    <h3>Event: <%= region.chapters.events[i].name %></h3>
                     <h4>Date: <%= region.chapters.events[i].date %></h4>
                     <h4>Start: <%= region.chapters.events[i].start %></h4>
                     <h4>End: <%= region.chapters.events[i].end %></h4>
