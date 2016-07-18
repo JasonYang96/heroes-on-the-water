@@ -35,18 +35,54 @@
     <!--Sign Up Form-->
     <form action='/signup' method='post' class="login-form">
         <legend>You are a...</legend>
-        <fieldset>
+<!--         <fieldset>
           <div class="lol">
             <input style="width: 20px !important; font-size:40px !important;" type="radio" name="type" value="participant" checked/>Participant
             <input style="width: 20px !important;" type="radio" name="type" value="volunteer" /> Volunteer
             <input style="width: 20px !important;" type="radio" name="type" value="manager"/> Manager
             <input style="width: 20px !important;" type="radio" name="type" value="founder"/> Chapter Founder
           </div>
-        </fieldset>
+        </fieldset> -->
                 <legend></legend>
+
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Participant</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">Participant</a>
+          <a href="#">Volunteer</a>
+          <a href="#">Manager</a>
+          <a href="#">Chapter Founder</a>
+        </div>
+      </div>
+
+      <!-- DROPDOWN STUFF -->
+      <script type="text/javascript">
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }       
+      </script>   
+      
+
       <p id="blurb" class="blurb">Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
 
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
         $('input[name="type"]').on('change', function() {
           if ($(this).val()=='participant') {
             $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
@@ -59,7 +95,7 @@
           }
         });
 
-      </script>
+      </script> -->
 
       <br>
 
