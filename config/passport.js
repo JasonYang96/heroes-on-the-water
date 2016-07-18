@@ -60,10 +60,19 @@ module.exports = function(passport) {
                 newUser.local.email    = email;
                 newUser.local.password = newUser.generateHash(password);
                 newUser.local.name = req.body.name; 
-                newUser.local.phone = req.body.phone;
-                newUser.local.city = req.body.city;
-                newUser.local.state = req.body.state;
-                newUser.local.zip = req.body.zip; 
+
+                if (req.body.phone) {
+                    newUser.local.phone = req.body.phone;
+                }
+                if (req.body.city) {
+                    newUser.local.city = req.body.city;
+                }
+                if (req.body.state) {
+                    newUser.local.state = req.body.state;
+                }
+                if (req.body.zip) {
+                    newUser.local.zip = req.body.zip;
+                }
                 newUser.local.description = req.body.description;
                 newUser.local.howdidyouhear = req.body.howdidyouhear;
                 newUser.local.type = req.body.type;
