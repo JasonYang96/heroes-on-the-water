@@ -16,8 +16,6 @@
         html            { overflow-y:scroll; }
         body            { padding-top:50px;}
         .creation-form  { margin: 20px; }
-        .region    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
-        .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
         .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
     </style>
 
@@ -48,9 +46,7 @@
                     <h4>Start: <%= region.chapters.events.start %></h4>
                     <h4>End: <%= region.chapters.events.end %></h4>
                     <h4>Venue: <%= region.chapters.events.venue %></h4>
-                    <p>Description:
-                    <br>
-                    <%= region.chapters.events.description %></p>
+                    <p>Description: <%= region.chapters.events.description %></p>
                 </div>
                 <div class="col-sm-3">
                     <label>
