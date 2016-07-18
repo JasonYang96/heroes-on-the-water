@@ -3,6 +3,7 @@
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="Donor">
+
 <head>
     <!-- META -->
     <meta charset="utf-8">
@@ -10,58 +11,74 @@
 
     <title>Donors | Heroes on the Water</title>
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <style>
-        html            { overflow-y:scroll; }
-        #todo-list      { margin-bottom:30px; }
-        .creation-form  { margin: 20px; }
-        .region-list    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
-        .chapter-list   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
-        .event-list     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
-    </style>
+    <!--Styles-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- load fontawesome -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/donors.css">
 
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="js/core.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="./js/links/wow.min.js"></script>
+    <script src="js/links/bootstrap.min.js"></script>
+    <script src="js/links/main.js"></script>
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
 
 </head>
+
 <body>
-
-<!--YouTube Player-->
-<div style="position: fixed; z-index: -99; width: 100% !important; height: 100% !important">
-    <iframe id="ytplayer" type="text/html" style="width: 100%; height:100%;" src="https://www.youtube.com/embed/vFVHFfk0rjM?rel=0&enablejsapi=1&autoplay=1&controls=0&showinfo=0&loop=1&iv_load_policy=3&playlist=vFVHFfk0rjM" frameborder="0" allowfullscreen ></iframe>
-</div>
-
-<!--Transparent Div So User Cannot Manipulate Video-->
-<div style="position: fixed; z-index: -98; width:100%; height:100%;"></div>
-
-<div class="container" style="background-color: rgba(0,0,0,0) !important;">
-    <!-- HEADER AND EVENT COUNT -->
-    <div class="jumbotron text-center">
-        <h1>Heroes on the Water<span class="label label-info"></span></h1>
-        <h2><a href="/donate">Donate</a></h2>
-        <h2><a href="/">Home</a></h2>
-        <!--<p>{{donors.length}}</p>-->
-    </div>
-
-    <!-- DONOR LIST -->
-    <div class="col-sm-12 row" ng-controller="donorsListController">
-        <!-- LOOP OVER THE EVENTS IN $scope.regions -->
-        <h1>Thanks to those who have donated</h1><br>
-        <div class="col-sm-12 region-list" ng-repeat="donor in donors">
-            <div>
-                <div class="col-sm-9">
-                    <h1>Donor: {{donor.fName}} {{donor.lName}}</h1>
-                </div>  
+    <!--scrolling navbar-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          </button>
+                <a class="logo" href="index.html"><img src="img/home/logo-ready2.png" alt="Logo"></a>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/" class="scroll">Login</a></li>
+                    <li><a href="/">Sign up</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
         </div>
     </div>
-</div>
+
+
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="index.html"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+            </div>
+
+            <!--static navbar-->
+            <div class="col-md-6 signin text-right navbar-nav">
+                <a href="/" class="scroll">Login</a>&nbsp; &nbsp;<a href="/">Sign up</a>
+            </div>
+        </div>
+
+        <div class="text-center">
+       	    <h1>Thank you to our donors</h2>
+        </div>
+    </div>
+
+     
+
+    <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
+        <div ng-repeat="donor in donors">
+            <h2>{{donor.fName}} {{donor.lName}}</h1>
+        </div>
+    </div>
 
 </body>
+
 </html>
