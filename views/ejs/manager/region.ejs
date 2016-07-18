@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <style>
         html            { overflow-y:scroll; }
-        body            { padding-top:50px;}
+        body            { padding-top:50px; padding-bottom: 50px;}
         .creation-form  { margin: 20px; }
         .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
         .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
@@ -70,14 +70,20 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 event" ng-repeat="event in chapter.events" ng-controller="eventsController">
+                <!-- list of events in chapter -->
+                <% for(var j=0; j < region.chapters[i].events.length; j++) {%>
+                <div class="col-sm-12 event">
                         <div class="col-sm-9">
-                            <h3>Name: {{event.name}}</h3>
-                            <h4>Date: {{event.date}}</h4>
-                            <h4>Start: {{event.start}}</h4>
-                            <h4>End: {{event.end}}</h4>
-                            <h4>Venue: {{event.venue}}</h4>
-                            <p>Description: {{event.description}}</p>
+                            <h3>Event: <%= region.chapters[i].events[j].name %></h3>
+                            <h4>Date: <%= region.chapters[i].events[j].date %></h4>
+                            <h4>Start: <%= region.chapters[i].events[j].start %></h4>
+                            <h4>End: <%= region.chapters[i].events[j].end %></h4>
+                            <h4>Venue: <%= region.chapters[i].events[j].venue %></h4>
+                            <p>Description: <%= region.chapters[i].events[j].description %></p>
+                            <p>Inventory:</p>
+                            <% for(var k=0; k < region.chapters[i].events[j].inventory.length; k++) {%>
+                                <p> <%= region.chapters[i].events[j].inventory[k].number %> <%= region.chapters[i].events[j].inventory[k].item %></p>
+                            <%} %>
                         </div>
                         <div class="col-sm-3">
                             <label>
@@ -85,6 +91,7 @@
                             </label>
                         </div>
                 </div>
+                <% } %>
             </div>
         <% } %>        
     </div>

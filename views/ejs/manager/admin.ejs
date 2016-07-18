@@ -88,9 +88,11 @@
                                 <h4>Start: {{event.start}}</h4>
                                 <h4>End: {{event.end}}</h4>
                                 <h4>Venue: {{event.venue}}</h4>
-                                <p>Description:
-                                <br>
-                                {{event.description}}</p>
+                                <p>Description: {{event.description}}</p>
+                                <p>Inventory:</p>
+                                <div class="col-sm-12" ng-repeat="item in event.inventory">
+                                <p> {{item.number}} {{item.item}} </p>
+                                </div>
                             </div>
                             <div class="col-sm-3">
                                 <label>
