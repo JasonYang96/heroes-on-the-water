@@ -1,0 +1,63 @@
+<!-- event.ejs -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="HOW">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Heroes on the Water</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html            { overflow-y:scroll; }
+        body            { padding-top:50px;}
+        .creation-form  { margin: 20px; }
+        .region    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
+        .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
+        .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="http://localhost:8080/js/core.js"></script>
+    <script src="http://localhost:8080/js/controllers/regionsController.js"></script>
+    <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
+    <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
+    <script src="http://localhost:8080/js/services/main.js"></script>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
+
+</head>
+<body>
+    <div class="container" ng-controller="chaptersController">
+
+        <h1 class="text-center">Event: <%= region.chapters.events.name %></h1>
+        <p class="text-center">Region: <%= region.name %></p>
+        <p class="text-center">Chapter: <%= region.chapters.name %></p>
+
+        <!-- list event details -->
+        <div class="col-sm-12 event" ng-controller="eventsController">
+                <div class="col-sm-9">
+                    <h4>Date: <%= region.chapters.events.date %></h4>
+                    <h4>Start: <%= region.chapters.events.start %></h4>
+                    <h4>End: <%= region.chapters.events.end %></h4>
+                    <h4>Venue: <%= region.chapters.events.venue %></h4>
+                    <p>Description:
+                    <br>
+                    <%= region.chapters.events.description %></p>
+                </div>
+                <div class="col-sm-3">
+                    <label>
+                        <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
+                    </label>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
