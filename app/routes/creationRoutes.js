@@ -66,24 +66,6 @@ module.exports = function(app) {
 
 	// create a new chapter
 	app.post('/api/events/:region_name', function(req, res) {
-		// Chapter.create({
-		// 	name: req.body.name,
-	 //        location: req.body.location,
-	 //        events: []
-		// }, function(err, chapter) {
-		// 	if (err) {
-		// 		res.send(err);
-		// 	}
-
-		// 	console.log(chapter);
-		// 	Model.region.findOneAndUpdate({"name": req.params.region_name}, {$addToSet: {chapters: chapter}}, {}, function(err, regions) {
-		// 	    if (err)
-		// 	        res.send(err);
-
-		// 	    getEvents(res);
-		// 	});
-		// });
-
 	    var chapter = new Model.chapter({
 	        name: req.body.name,
 	        location: req.body.location,
@@ -101,27 +83,6 @@ module.exports = function(app) {
 
 	// delete a chapter
 	app.delete('/api/events/:region_name/:chapter_id', function(req, res) {
-		// Chapter.remove({
-		// 	"name": req.params.chapter_name
-		// }, function(err, chapter) {
-		// 	if (err) {
-		// 		res.send(err);
-		// 	}
-
-		// 	console.log(chapter);
-
-		// 	getEvents(res);
-		// })
-		// console.log(req.params);
-	    // Model.region.findOneAndUpdate({"name": req.params.region_name}, {$pull: {"$chapters": {"chapters.name": req.params.chapter_name}}}, {new: true}, function(err, regions) {
-	    //     if (err) {
-	    //         res.send(err);
-	    //     }
-
-	    //     console.log(regions);
-	    //     getEvents(res);
-	    // });
-
 	    Model.region.findOne({"name": req.params.region_name}).exec(function(err, region) {
 	    	if (err) {
 	    		res.send(err);
@@ -181,38 +142,17 @@ module.exports = function(app) {
 
 	// delete an event and send back all events after deletion
 	app.delete('/api/events/:region_name/:chapter_name/:event_name', function(req, res) {
-		console.log(req.body);
-		Event.findByIdAndRemove(req.body.event_id, function(err, event) {
-			if (err)
-				res.send(err);
+		Model.region.findOneAndUpdate(
+		    {"name": req.params.region_name,
+		     "chapters.name": req.params.chapter_name}, 
+		    {$pull: {"chapters.event.name": req.params.event_name}}, 
+		    function(err, regions) {
+		        if (err)
+		            res.send(err);
 
-			getEvents(res);
-		})
+		        console.log(regions);
 
-		// Model.region.findOneAndUpdate(
-		//     {"name": req.params.region_name,
-		//      "chapters.name": req.params.chapter_name}, 
-		//     {$pull: {"chapters.event.name": req.params.event_name}}, 
-		//     function(err, regions) {
-		//         if (err)
-		//             res.send(err);
-
-		//         console.log(regions);
-
-		//         getEvents(res)
-		// });
-
-	    // Event.findOneAndRemove(
-	    //     {"name": req.params.region_name,
-	    //      "chapters.name": req.params.chapter_name, 
-	    //      "chapters.events.name" : req.params.event_name},
-	    //     function(err, regions) {
-	    //         if (err)
-	    //             res.send(err);
-
-	    //         console.log(regions);
-
-	    //         getEvents(res)
-	    // });
+		        getEvents(res)
+		});
 	});
 }

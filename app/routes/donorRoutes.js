@@ -44,4 +44,22 @@ module.exports = function(app) {
             getDonors(res);
         })
     });
+
+    app.get('/donate', function(req, res) {
+        res.render('./ejs/donate/donate.ejs', function(err, html) {
+            if (err) {
+                res.send(err);
+            }
+            res.send(html);
+        });
+    });
+
+    app.get('/donors', function(req, res) {
+        res.render('./ejs/donate/donors.ejs', function(err, html) {
+            if (err) {
+                res.send(err);
+            }
+            res.send(html);
+        });
+    });
 }

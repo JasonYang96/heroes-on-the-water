@@ -9,7 +9,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            res.render('admin.ejs', {region: region}, function(err, html) {
+            res.render('./ejs/manager/admin.ejs', {region: region}, function(err, html) {
                 if (err) {
                     res.send(err);
                 }
@@ -25,7 +25,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
 
-            res.render('region.ejs', {region: region}, function(err, html) {
+            res.render('./ejs/manager/region.ejs', {region: region}, function(err, html) {
                 if (err) {
                     res.send(err);
                 }
@@ -44,7 +44,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
 
-            res.render('chapter.ejs', {region: region[0]}, function(err, html) {
+            res.render('./ejs/manager/chapter.ejs', {region: region[0]}, function(err, html) {
                 if (err) {
                     res.send(err);
                 }
