@@ -2,7 +2,7 @@
 
 .login-page {
   /*width: 360px;*/
-  width: 50%;
+  width: 40%;
   padding: 8% 0 0;
   margin: auto;
 }
@@ -32,6 +32,20 @@
 
 fieldset {
   text-align: center;
+}
+
+.sameline {
+  display: table;
+  width: 100%;
+}
+
+.cell {
+
+  display: table-cell;
+}
+
+.leftcell {
+  padding-right: 15px;
 }
 
 .form button {

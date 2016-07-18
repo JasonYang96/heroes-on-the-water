@@ -17,19 +17,19 @@ var userSchema = mongoose.Schema({
          },
          phone: {
            type: Number,
-           required: true
+           required: false
          },
          city: {
            type: String,
-           required: true
+           required: false
          },
          state: {
            type: String,
-           required: true
+           required: false
          },
          zip: {
            type: Number,
-           required: true
+           required: false
          },
          password: {
            type: String,
