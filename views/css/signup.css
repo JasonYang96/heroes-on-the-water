@@ -1,6 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.title {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 20px !important; 
+}
 
+.bootstrap-select.btn-group .btn .filter-option {
+    text-align: center !important; /* to override text-align: left; */
+}
 
 .customh3 {
   font-size: 24px !important;

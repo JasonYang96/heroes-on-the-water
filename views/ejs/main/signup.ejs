@@ -1,13 +1,14 @@
 <!-- views/signup.ejs -->
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <title>Heroes on the Water</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!--jQuery-->
+  <!--jQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
@@ -22,17 +23,9 @@
 
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
-
-
 </head>
 
-
-
 <body>
-
-
-
-
 <div class="login-page">
   <div class="form">
     <h1><span class="fa fa-user-plus"></span></h1>
@@ -42,27 +35,25 @@
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
-
     <!--Sign Up Form-->
     <form action='/signup' method='post' class="login-form">
 
-      </div> -->
-      <!--Bootstrap DropDown Jquery-->
-      <p> You are a... </p> 
-      <select class="selectpicker" name="type" data-style="btn-info">
-        <option value="participant">Participant</option>
-        <option value="volunteer">Volunteer</option>
-        <option value="manager">Manager</option>
-        <option value="founder">Founder</option>
-      </select>
+    <!--Bootstrap DropDown Jquery-->
+    <br>
+    <p class="title">You want to get involved as a...</p> 
+    <select class="selectpicker" name="type" data-style="btn-info">
+      <option value="participant">Participant</option>
+      <option value="volunteer">Volunteer</option>
+      <option value="manager">Manager</option>
+      <option value="founder">Founder</option>
+    </select>
 
+    <br>
+    <br>
 
-      <br><br>
-
-
-<br<br>
       <p id="blurb" class="blurb">Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
 
+      <!--Changes the blurb text and hides or shows the special question box based on selection in dropdown-->
       <script type="text/javascript">
         $(function(){
           $('.selectpicker').on('change', function() {
@@ -93,6 +84,7 @@
       </script>
       <br>
 
+      <!--Core Fields-->
       <div class="sameline">
         <div class="cell leftcell">
           <div class="form-group">
@@ -137,25 +129,6 @@
         type='text' id="specialQBox" name='specialQ' placeholder="Why do you want to volunteer with Heroes on the Water?"/>
       </div>
 
-      <script type="text/javascript">
-        $("#specialBoxID").hide();
-        //$("#specialQBox").val("Null");
-        $('input[name="type"]').on('change', function() {
-          if ($(this).val()=='participant' || $(this).val()=='manager') {
-            $("#specialBoxID").hide();
-           //$("#specialQBox").val("Null");
-          }
-          else if ($(this).val()=='volunteer') {
-            $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
-            $("#specialBoxID").show();
-          }
-          else if ($(this).val()=='founder') {
-            $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
-            $("#specialBoxID").show();
-          }
-        });
-      </script>
-
       <button type="submit">Signup</button>
       <p class="message">Already have an account? <a href="/login">Login</a></p>
       <p class="message">Or go <a href="/">home</a>.</p>
@@ -163,4 +136,6 @@
     </div>
 </div>
 </body>
-</html>
+</html>      
+
+      
