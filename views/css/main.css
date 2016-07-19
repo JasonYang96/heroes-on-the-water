@@ -523,13 +523,31 @@ footer {
 }
 
 
-.pricing-table:hover li.price  {
-  background: #303236;
+.pricing-table-p:hover li.price  {
+  background: #6d3f96;
   -webkit-transition: all 0.85s ease-in-out;
   -moz-transition: all 0.85s ease-in-out;
   -o-transition: all 0.85s ease-in-out;
   transition: all 0.85s ease-in-out;
 }
+
+.pricing-table-b:hover li.price  {
+  background: #2ecc71;
+  -webkit-transition: all 0.85s ease-in-out;
+  -moz-transition: all 0.85s ease-in-out;
+  -o-transition: all 0.85s ease-in-out;
+  transition: all 0.85s ease-in-out;
+}
+
+
+.pricing-table-y:hover li.price  {
+  background: #fdc05d;
+  -webkit-transition: all 0.85s ease-in-out;
+  -moz-transition: all 0.85s ease-in-out;
+  -o-transition: all 0.85s ease-in-out;
+  transition: all 0.85s ease-in-out;
+}
+
 
 .price small {
   font-weight: 300;
