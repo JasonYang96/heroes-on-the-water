@@ -87,9 +87,31 @@ module.exports = function(app, passport) {
         });
     });
 
-    // add manger permissions
-    app.post('/api/manager/add/:id', function(req, res) {
-        User.findOneAndUpdate({ "local.email" : req.body.email }, { $addToSet: {"manager": req.params.id}}, function(err, user) {
+    // add region manger permissions
+    app.post('/api/manager/:region_id', function(req, res) {
+        User.findOneAndUpdate({ "local.email" : req.body.email }, { "manager.region": req.params.region_id }, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            console.log(user);
+        });
+    });
+
+    // add chapter manger permissions
+    app.post('/api/manager/:region_id/:chapter_id', function(req, res) {
+        User.findOneAndUpdate({ "local.email" : req.body.email }, { "manager.region": req.params.region_id, "manager.chapter": req.params.chapter_id }, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            console.log(user);
+        });
+    });
+
+    // add event manger permissions
+    app.post('/api/manager/:region_id/:chapter_id/:event_id', function(req, res) {
+        User.findOneAndUpdate({ "local.email" : req.body.email }, { "manager.region": req.params.region_id, "manager.chapter": req.params.chapter_id, "manager.event": req.params.event_id }, function(err, user) {
             if (err) {
                 res.send(err);
             }
@@ -99,7 +121,7 @@ module.exports = function(app, passport) {
     });
 
     // delete manger permissions
-    app.post('/api/manager/del/:id', function(req, res) {
+    app.post('/api/manager/', function(req, res) {
         User.findOneAndUpdate({ "local.email" : req.body.email }, { $pull: {"manager": req.params.id}}, function(err, user) {
             if (err) {
                 res.send(err);

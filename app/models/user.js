@@ -60,7 +60,7 @@ var userSchema = mongoose.Schema({
          default: Date.now
        }
     },
-    manager: []
+    manager: {}
 });
 
 // methods ======================
