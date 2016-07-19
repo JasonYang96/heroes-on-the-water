@@ -68,7 +68,7 @@ function userController($scope, $http) {
     };
     // adds regional manager permissions
     $scope.addRegionPermission = function(region) {
-        $http.post('/api/manager/' + region[0]._id, $scope.formData)
+        $http.post('/api/manager/' + region[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
@@ -81,7 +81,7 @@ function userController($scope, $http) {
 
     // adds chapter manager permissions
     $scope.addChapterPermission = function(region) {
-        $http.post('/api/manager/' + region._id + '/' + region.chapters._id, $scope.formData)
+        $http.post('/api/manager/' + region.name + '/' + region.chapters[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
@@ -94,7 +94,7 @@ function userController($scope, $http) {
     
     // adds event manager permissions
     $scope.addEventPermission = function(region) {
-        $http.post('/api/manager/' + region._id + '/' + region.chapters._id + '/' + region.chapters.events._id, $scope.formData)
+        $http.post('/api/manager/' + region.name + '/' + region.chapters.name + '/' + region.chapters.events[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};

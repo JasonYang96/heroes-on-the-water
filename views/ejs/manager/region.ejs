@@ -73,11 +73,11 @@
                         </form>
                         </div>
                         <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addchapterPermission(<%= JSON.stringify(region) %>)">Add</button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
                         </div>
                     </div>
                     <div class="col-sm-1">
-                        <a type="submit" class="btn btn-primary btn-sm" href="/api/<%= region.name %>/<%= region.chapters[i].name %>">Manage</a>
+                        <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>">Manage</a>
                     </div>
                     <div class="col-sm-1">
                         <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(event.name)">Delete</button>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="col-sm-1">
-                            <a type="submit" class="btn btn-primary btn-sm" href="/api/<%= region.name %>/<%= region.chapters[i].name %>/<%= region.chapters[i].events[j].name %>">Manage</a>
+                            <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>/<%= region.chapters[i].events[j].name %>">Manage</a>
                         </div>
                         <div class="col-sm-1">
                             <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>

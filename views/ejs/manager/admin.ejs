@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="col-sm-1">
-                        <a type="submit" class="btn btn-primary btn-sm" href="/api/{{region.name}}">Manage</a>
+                        <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}">Manage</a>
                     </div>
                     <div class="col-sm-1">
                         <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteRegion(region.name)">Delete</button>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-sm-1">
-                            <a type="submit" class="btn btn-primary btn-sm" href="/api/{{region.name}}/{{chapter.name}}">Manage</a>
+                            <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}">Manage</a>
                         </div>
                         <div class="col-sm-1">
                             <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(chapter.name)">Delete</button>
@@ -133,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-1">
-                                <a type="submit" class="btn btn-primary btn-sm" href="/api/{{region.name}}/{{chapter.name}}/{{event.name}}">Manage</a>
+                                <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}/{{event.name}}">Manage</a>
                             </div>
                             <div class="col-sm-1">
                                 <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
