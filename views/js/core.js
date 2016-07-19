@@ -66,4 +66,30 @@ function userController($scope, $http) {
                 console.log('Error: ' + data);
             });
     };
+
+    // adds manager permissions
+    $scope.addPermission = function(region) {
+        $http.post('/api/manager/add/' + region.id, $scope.formData)
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    };
+
+    // deletes manager permissions
+    $scope.delPermission = function(region) {
+        $http.post('/api/manager/del/' + region.id, $scope.formData)
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    }
 }
