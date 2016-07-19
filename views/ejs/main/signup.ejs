@@ -45,31 +45,11 @@
 
     <!--Sign Up Form-->
     <form action='/signup' method='post' class="login-form">
-<!--         <legend>You are a...</legend>
- --><!--         <fieldset>
-          <div class="lol">
-            <input style="width: 20px !important; font-size:40px !important;" type="radio" name="type" value="participant" checked/>Participant
-            <input style="width: 20px !important;" type="radio" name="type" value="volunteer" /> Volunteer
-            <input style="width: 20px !important;" type="radio" name="type" value="manager"/> Manager
-            <input style="width: 20px !important;" type="radio" name="type" value="founder"/> Chapter Founder
-          </div>
-        </fieldset> -->
-<!--                 <legend></legend>
- -->
-<!--       <div style="text-align: center !important; display: inline-block !important;">
-      <h3 class="customh3">You are a...</h3><br>
-      <div class="dropdown" style="display: inline-block !important; ">
-        <button class="btn btn-primary dropdown-toggle customdrop" type="button" data-toggle="dropdown" name="type" id="type" value="Participant">Participant &nbsp<span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li value="volunteer"><a href="#" >Volunteer</a></li>
-          <li value="Manager"><a href="#" >Manager</a></li>
-          <li value="Founder"><a href="#">Chapter Founder</a></li>
-          <li value="Participant"><a href="#" >Participant</a></li>
-        </ul>
-      </div>
+
       </div> -->
       <!--Bootstrap DropDown Jquery-->
-      <select class="selectpicker" name="type" data-style="btn-info" style="text-align:center;">
+      <p> You are a... </p> 
+      <select class="selectpicker" name="type" data-style="btn-info">
         <option value="participant">Participant</option>
         <option value="volunteer">Volunteer</option>
         <option value="manager">Manager</option>
@@ -109,62 +89,8 @@
 
           });
             
-            // console.log($('[name="type"]').val());
-            // $(".dropdown-menu li a").click(function(){
-            //   //change actual text of button
-            //   $(".btn:first-child").text($(this).text());
-            //   $(".btn:first-child").val($(this).text());
-
-            //   //change text of blurb based on what the user clicked
-
-            //   if ($(this).text()=='Participant') {
-            //     $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
-            //     $("#specialBoxID").hide();
-            //                 console.log($('[name="type"]').val());
-
-
-            //   }
-            //   else if ($(this).text()=='Volunteer' || $(this).text()=='Manager') {
-            //     $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
-            //     $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
-            //     $("#specialBoxID").show();
-            //                 console.log($('[name="type"]').val());
-
-            //   }
-            //   else if ($(this).text() == 'Chapter Founder') {
-            //     $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
-            //     $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
-            //     $("#specialBoxID").show();
-            //                 console.log($('[name="type"]').val());
-
-            //   }
-
-              //change whether or not the special box will show based on click
-
-           // });
-
-
-
         });  
       </script>
-
-
-
- <!--      <script type="text/javascript">
-        $('input[name="type"]').on('change', function() {
-          if ($(this).val()=='participant') {
-            $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
-          }
-          else if ($(this).val()=='volunteer' || $(this).val()=='manager') {
-            $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
-          }
-          else if ($(this).val() == 'founder') {
-            $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
-          }
-        });
-
-      </script> -->
-
       <br>
 
       <div class="sameline">
@@ -181,23 +107,6 @@
           </div>
         </div>
       </div>
-
-<!--       <div class="form-group">
-        <input class="form-control"
-        type='tel' name='phone' placeholder="Phone Number" />
-      </div>
-      <div class="form-group">
-        <input class="form-control"
-        type='text' name='city' placeholder="City" />
-      </div>
-      <div class="form-group">
-        <input class="form-control"
-        type='text' name='state' placeholder="State"/>
-      </div>
-      <div class="form-group">
-        <input class="form-control"
-        type='text' name='zip' placeholder="Zip Code"/>
-      </div> -->
 
       <div class="sameline">
         <div class="cell leftcell">
@@ -227,7 +136,6 @@
         <input class="form-control"
         type='text' id="specialQBox" name='specialQ' placeholder="Why do you want to volunteer with Heroes on the Water?"/>
       </div>
-
 
       <script type="text/javascript">
         $("#specialBoxID").hide();
