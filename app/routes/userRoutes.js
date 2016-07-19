@@ -68,6 +68,7 @@ module.exports = function(app, passport) {
     // =====================================
     // UPDATE ==============================
     // =====================================
+    // update profile
     app.post('/api/user/:userid', function(req, res) {
         User.findOne({ "_id" : req.params.userid }, function(err, user) {
             if (err) {
@@ -83,6 +84,28 @@ module.exports = function(app, passport) {
             user.local.state = req.body.state ? req.body.state : user.local.state;
             user.local.zip = req.body.zip ? req.body.zip : user.local.zip;
             user.save();
+        });
+    });
+
+    // add manger permissions
+    app.post('/api/manager/add/:id', function(req, res) {
+        User.findOneAndUpdate({ "local.email" : req.body.email }, { $push: {"manager": req.params.id}, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            console.log(user);
+        });
+    });
+
+    // delete manger permissions
+    app.post('/api/manager/del/:id', function(req, res) {
+        User.findOneAndUpdate({ "local.email" : req.body.email }, { $pull: {"manager": req.params.id}, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            console.log(user);
         });
     });
 };
