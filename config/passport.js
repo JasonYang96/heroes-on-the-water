@@ -55,6 +55,7 @@ module.exports = function(passport) {
                 // if there is no user with that email
                 // create the user
                 var newUser = new User();
+                console.log(req.body);
 
                 // set the user's local credentials
                 newUser.local.email    = email;
@@ -75,7 +76,9 @@ module.exports = function(passport) {
                 }
                 newUser.local.description = req.body.description;
                 newUser.local.howdidyouhear = req.body.howdidyouhear;
+
                 if (req.body.type) {
+                    console.log(req.body.type);
                     newUser.local.type = req.body.type;
                 }
                 if (req.body.specialQ) {

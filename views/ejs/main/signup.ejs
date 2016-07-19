@@ -10,11 +10,15 @@
     <!--jQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
   <!--Styles-->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> <!-- load fontawesome -->
   <link rel="stylesheet" href="css/signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
 
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -26,7 +30,9 @@
 
 <body>
 
- 
+
+
+
 <div class="login-page">
   <div class="form">
     <h1><span class="fa fa-user-plus"></span></h1>
@@ -35,7 +41,6 @@
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
-
 
 
     <!--Sign Up Form-->
@@ -51,55 +56,92 @@
         </fieldset> -->
 <!--                 <legend></legend>
  -->
-      <div style="text-align: center !important; display: inline-block !important;">
-      <h3 class="customh3">You are a...</h3>
+<!--       <div style="text-align: center !important; display: inline-block !important;">
+      <h3 class="customh3">You are a...</h3><br>
       <div class="dropdown" style="display: inline-block !important; ">
-        <button class="btn btn-primary dropdown-toggle customdrop" type="button" data-toggle="dropdown" name="type" id="type">Participant</button>
-        <span class="caret"></span></button>
+        <button class="btn btn-primary dropdown-toggle customdrop" type="button" data-toggle="dropdown" name="type" id="type" value="Participant">Participant &nbsp<span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Manager</a></li>
-          <li><a href="#">Chapter Founder</a></li>
-          <li><a href="#">Participant</a></li>
+          <li value="volunteer"><a href="#" >Volunteer</a></li>
+          <li value="Manager"><a href="#" >Manager</a></li>
+          <li value="Founder"><a href="#">Chapter Founder</a></li>
+          <li value="Participant"><a href="#" >Participant</a></li>
         </ul>
       </div>
-      </div>
+      </div> -->
       <!--Bootstrap DropDown Jquery-->
+      <select class="selectpicker" name="type" data-style="btn-info">
+        <option value="participant">Participant</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="manager">Manager</option>
+        <option value="founder">Founder</option>
+      </select>
 
 
+      <br><br>
 
+
+<br<br>
       <p id="blurb" class="blurb">Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
 
       <script type="text/javascript">
         $(function(){
+          $('.selectpicker').on('change', function() {
+            if ($('select[name=type]').val()=="participant") {
+                  $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
+                  $("#specialBoxID").hide();
+                  console.log($('[name="type"]').val());
 
-            $(".dropdown-menu li a").click(function(){
-              //change actual text of button
-              $(".btn:first-child").text($(this).text());
-              $(".btn:first-child").val($(this).text());
+            }
 
-              //change text of blurb based on what the user clicked
-              console.log($(this).text());
-              console.log($(this).val());
-              if ($(this).text()=='Participant') {
-                $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
-                $("#specialBoxID").hide();
+            else if ($('select[name=type]').val()=='volunteer' || $('select[name=type]').val()=='manager') {
+              $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
+              $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
+              $("#specialBoxID").show();
+              console.log($('[name="type"]').val());
 
-              }
-              else if ($(this).text()=='Volunteer' || $(this).text()=='Manager') {
-                $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
-                $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
-                $("#specialBoxID").show();
-              }
-              else if ($(this).text() == 'Chapter Founder') {
-                $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
-                $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
-                $("#specialBoxID").show();
-              }
+            }
+            else if ($('select[name=type]').val() == 'founder') {
+              $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
+              $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
+              $("#specialBoxID").show();
+              console.log($('[name="type"]').val());
+            }
+
+          });
+            
+            // console.log($('[name="type"]').val());
+            // $(".dropdown-menu li a").click(function(){
+            //   //change actual text of button
+            //   $(".btn:first-child").text($(this).text());
+            //   $(".btn:first-child").val($(this).text());
+
+            //   //change text of blurb based on what the user clicked
+
+            //   if ($(this).text()=='Participant') {
+            //     $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
+            //     $("#specialBoxID").hide();
+            //                 console.log($('[name="type"]').val());
+
+
+            //   }
+            //   else if ($(this).text()=='Volunteer' || $(this).text()=='Manager') {
+            //     $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
+            //     $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
+            //     $("#specialBoxID").show();
+            //                 console.log($('[name="type"]').val());
+
+            //   }
+            //   else if ($(this).text() == 'Chapter Founder') {
+            //     $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
+            //     $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
+            //     $("#specialBoxID").show();
+            //                 console.log($('[name="type"]').val());
+
+            //   }
 
               //change whether or not the special box will show based on click
 
-           });
+           // });
 
 
 

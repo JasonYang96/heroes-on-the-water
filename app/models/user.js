@@ -45,7 +45,7 @@ var userSchema = mongoose.Schema({
          },
          type: {
            type: String,
-           required: true
+           required: false
          },
          specialQ: {
            type: String,
