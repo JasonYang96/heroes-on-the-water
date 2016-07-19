@@ -69,7 +69,7 @@ function userController($scope, $http) {
 
     // adds manager permissions
     $scope.addPermission = function(region) {
-        $http.post('/api/manager/add/' + region.id, $scope.formData)
+        $http.post('/api/manager/add/' + region._id, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
@@ -82,7 +82,7 @@ function userController($scope, $http) {
 
     // deletes manager permissions
     $scope.delPermission = function(region) {
-        $http.post('/api/manager/del/' + region.id, $scope.formData)
+        $http.post('/api/manager/del/' + region._id, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
