@@ -66,4 +66,55 @@ function userController($scope, $http) {
                 console.log('Error: ' + data);
             });
     };
+    // adds regional manager permissions
+    $scope.addRegionPermission = function(region) {
+        $http.post('/api/manager/' + region[0].name, $scope.formData)
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    };
+
+    // adds chapter manager permissions
+    $scope.addChapterPermission = function(region) {
+        $http.post('/api/manager/' + region[0].name + '/' + region[0].chapters[0].name, $scope.formData)
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    };
+    
+    // adds event manager permissions
+    $scope.addEventPermission = function(region) {
+        $http.post('/api/manager/' + region.name + '/' + region.chapters.name + '/' + region.chapters.events[0].name, $scope.formData)
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    };
+
+    // deletes manager permissions
+    $scope.delPermission = function(region) {
+        $http.delete('/api/manager/')
+        .success(function(data) {
+            console.log(data);
+            $scope.formData = {};
+            $scope.user = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    }
 }

@@ -60,20 +60,33 @@
         <% for(var i=0; i < region.chapters.length; i++) {%>
             <div class="col-sm-12 chapter">
                 <div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-4">
                         <h2>Chapter: <%= region.chapters[i].name %></h2>
                         <p>Location: <%= region.chapters[i].location %></p>
                     </div>
-                    <div class="col-sm-3">
-                        <label>
-                            <input type="checkbox" ng-click="deleteChapter(region.name, chapter.name, region._id, chapter._id)">Click to delete chapter
-                        </label>
+                    <div class="col-sm-6" ng-controller="userController">
+                        <div class="col-sm-10">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                            </div>
+                        </form>
+                        </div>
+                        <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>">Manage</a>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(event.name)">Delete</button>
                     </div>
                 </div>
                 <!-- list of events in chapter -->
                 <% for(var j=0; j < region.chapters[i].events.length; j++) {%>
                 <div class="col-sm-12 event">
-                        <div class="col-sm-9">
+                        <div class="col-sm-4">
                             <h3>Event: <%= region.chapters[i].events[j].name %></h3>
                             <h4>Date: <%= region.chapters[i].events[j].date %></h4>
                             <h4>Start: <%= region.chapters[i].events[j].start %></h4>
@@ -85,10 +98,23 @@
                                 <p> <%= region.chapters[i].events[j].inventory[k].number %> <%= region.chapters[i].events[j].inventory[k].item %></p>
                             <%} %>
                         </div>
-                        <div class="col-sm-3">
-                            <label>
-                                <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
-                            </label>
+                        <div class="col-sm-6" ng-controller="userController">
+                            <div class="col-sm-9">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                </div>
+                            </form>
+                            </div>
+                            <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>/<%= region.chapters[i].events[j].name %>">Manage</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
                         </div>
                 </div>
                 <% } %>

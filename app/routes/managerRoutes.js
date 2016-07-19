@@ -20,7 +20,6 @@ module.exports = function(app) {
 
     // manager view for a specific region
     app.get('/:region_name', function(req, res) {
-
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
             if (err)
                 res.send(err);

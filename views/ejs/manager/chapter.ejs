@@ -64,7 +64,7 @@
         <!-- list of events in chapter -->
         <% for(var i=0; i < region.chapters.events.length; i++) {%>
         <div class="col-sm-12 event">
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <h3>Event: <%= region.chapters.events[i].name %></h3>
                     <h4>Date: <%= region.chapters.events[i].date %></h4>
                     <h4>Start: <%= region.chapters.events[i].start %></h4>
@@ -76,10 +76,23 @@
                         <p> <%= region.chapters.events[i].inventory[j].number %> <%= region.chapters.events[i].inventory[j].item %></p>
                     <%} %>
                 </div>
-                <div class="col-sm-3">
-                    <label>
-                        <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
-                    </label>
+                <div class="col-sm-6" ng-controller="userController">
+                    <div class="col-sm-9">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                        </div>
+                    </form>
+                    </div>
+                    <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters.name %>/<%= region.chapters.events[i].name %>">Manage</a>
+                </div>
+                <div class="col-sm-1">
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
                 </div>
         </div>
         <% } %>
