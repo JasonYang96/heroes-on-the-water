@@ -62,27 +62,29 @@
             <!-- LOOP OVER THE EVENTS IN $scope.regions -->
             <div class="col-sm-12 region-list" ng-repeat="region in regions" ng-controller="regionsController">
                 <div>
-                    <div class="col-sm-9"><h1>Region: {{region.name}}</h1></div>
-                    <div class="col-sm-3">
-                        <label>
-                            <input type="checkbox" ng-click="deleteRegion(region.name)">Click to delete region
-                        </label>
+                    <div class="col-sm-8"><h1>Region: {{region.name}}</h1></div>
+                    <div class="col-sm-2">
+                        <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}">Manage</a>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteRegion(region.name)">Delete</button>
                     </div>
                 </div>
                 <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chaptersController">
                     <div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-8">
                             <h2>Chapter: {{chapter.name}}</h2>
                             <p>Location: {{chapter.location}}</p>
                         </div>
-                        <div class="col-sm-3">
-                            <label>
-                                <input type="checkbox" ng-click="deleteChapter(region.name, chapter.name, region._id, chapter._id)">Click to delete chapter
-                            </label>
+                        <div class="col-sm-2">
+                            <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}">Manage</a>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(chapter.name)">Delete</button>
                         </div>
                     </div>
                     <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <h3>Name: {{event.name}}</h3>
                                 <h4>Date: {{event.date}}</h4>
                                 <h4>Start: {{event.start}}</h4>
@@ -94,10 +96,11 @@
                                 <p> {{item.number}} {{item.item}} </p>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <label>
-                                    <input type="checkbox" ng-click="deleteEvent(region.name, chapter.name, event.name, region._id, chapter._id, event._id)">Click to delete event
-                                </label>
+                            <div class="col-sm-2">
+                                <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}/{{event.name}}">Manage</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
                             </div>
                     </div>
                 </div>
