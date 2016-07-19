@@ -89,10 +89,11 @@
                 <a href="/<%= user.manager.region %>/<%= user.manager.chapter %>" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Manage Your Chapter</a>
             <% } else if (user.manager.region) { %>
                 <a href="/<%= user.manager.region %>" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Manage Your Region</a>
-            <% } else if (user.local.email === "admin") { %>
-                <a href="/admin" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Admin</a>
             <% }
         } %>
+        <% if (user.local.email == "admin") { %>
+            <a href="/admin" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Admin</a>
+        <% } %>
         <a href="/events" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Events</a>
         <br>
         <a href="/donate" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Donate</a>

@@ -81,7 +81,7 @@ function userController($scope, $http) {
 
     // adds chapter manager permissions
     $scope.addChapterPermission = function(region) {
-        $http.post('/api/manager/' + region.name + '/' + region.chapters[0].name, $scope.formData)
+        $http.post('/api/manager/' + region[0].name + '/' + region[0].chapters[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
