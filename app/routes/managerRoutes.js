@@ -18,7 +18,8 @@ module.exports = function(app) {
         });
     });
 
-    // manager view for a specific region
+    // ADMIN API
+    // admin view for a specific region
     app.get('/:region_name', function(req, res) {
 
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
@@ -34,7 +35,7 @@ module.exports = function(app) {
         });
     });
 
-    // manager view for specific chapter
+    // admin view for specific chapter
     app.get('/:region_name/:chapter_name', function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
@@ -53,7 +54,7 @@ module.exports = function(app) {
         });
     });
 
-    // manager view for specific event
+    // admin view for specific event
     app.get('/:region_name/:chapter_name/:event_name', function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
