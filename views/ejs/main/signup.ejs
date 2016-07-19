@@ -7,6 +7,10 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
   <!--Styles-->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> <!-- load fontawesome -->
@@ -15,14 +19,14 @@
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-  <!--jQuery-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </head>
 
 
 
 <body>
+
+ 
 <div class="login-page">
   <div class="form">
     <h1><span class="fa fa-user-plus"></span></h1>
@@ -32,10 +36,12 @@
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
+
+
     <!--Sign Up Form-->
     <form action='/signup' method='post' class="login-form">
-        <legend>You are a...</legend>
-<!--         <fieldset>
+<!--         <legend>You are a...</legend>
+ --><!--         <fieldset>
           <div class="lol">
             <input style="width: 20px !important; font-size:40px !important;" type="radio" name="type" value="participant" checked/>Participant
             <input style="width: 20px !important;" type="radio" name="type" value="volunteer" /> Volunteer
@@ -43,46 +49,66 @@
             <input style="width: 20px !important;" type="radio" name="type" value="founder"/> Chapter Founder
           </div>
         </fieldset> -->
-                <legend></legend>
-
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Participant</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#">Participant</a>
-          <a href="#">Volunteer</a>
-          <a href="#">Manager</a>
-          <a href="#">Chapter Founder</a>
-        </div>
+<!--                 <legend></legend>
+ -->
+      <div style="text-align: center !important; display: inline-block !important;">
+      <h3 class="customh3">You are a...</h3>
+      <div class="dropdown" style="display: inline-block !important; ">
+        <button class="btn btn-primary dropdown-toggle customdrop" type="button" data-toggle="dropdown" name="type" id="type">Participant</button>
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Manager</a></li>
+          <li><a href="#">Chapter Founder</a></li>
+          <li><a href="#">Participant</a></li>
+        </ul>
       </div>
+      </div>
+      <!--Bootstrap DropDown Jquery-->
 
-      <!-- DROPDOWN STUFF -->
-      <script type="text/javascript">
-      /* When the user clicks on the button, 
-      toggle between hiding and showing the dropdown content */
-      function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-      }
 
-      // Close the dropdown menu if the user clicks outside of it
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }
-          }
-        }
-      }       
-      </script>   
-      
 
       <p id="blurb" class="blurb">Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.</p>
 
-      <!-- <script type="text/javascript">
+      <script type="text/javascript">
+        $(function(){
+
+            $(".dropdown-menu li a").click(function(){
+              //change actual text of button
+              $(".btn:first-child").text($(this).text());
+              $(".btn:first-child").val($(this).text());
+
+              //change text of blurb based on what the user clicked
+              console.log($(this).text());
+              console.log($(this).val());
+              if ($(this).text()=='Participant') {
+                $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
+                $("#specialBoxID").hide();
+
+              }
+              else if ($(this).text()=='Volunteer' || $(this).text()=='Manager') {
+                $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, any affiliation you may have with the military, and how you would like to serve as a volunteer and we will be in touch with you to explore the possibility. Paddling and fishing experience not required. Passion and wanting to serve our warriors is. We owe them our best.");
+                $("#specialQBox").attr('placeholder', "How would you like to volunteer?");
+                $("#specialBoxID").show();
+              }
+              else if ($(this).text() == 'Chapter Founder') {
+                $("#blurb").html("Fill out the form below if you’re interested in starting a chapter and tell us a little bit about yourself, your kayak fishing experience, any affiliation with the military and where you are located. We will be back in touch with you to explore the possibility.<br><br>Thank you for your interest in giving back to those who have given so much for us!");
+                $("#specialQBox").attr('placeholder', "Why do you want to start a HOW chapter?");
+                $("#specialBoxID").show();
+              }
+
+              //change whether or not the special box will show based on click
+
+           });
+
+
+
+        });  
+      </script>
+
+
+
+ <!--      <script type="text/javascript">
         $('input[name="type"]').on('change', function() {
           if ($(this).val()=='participant') {
             $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
