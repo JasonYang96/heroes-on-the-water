@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Heroes on the Water</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html            { overflow-y:scroll; }
+        body            { padding-top:50px; padding-bottom:50px;}
+        .region-list    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
+        .chapter-list   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
+        .event-list     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Heroes on the Water</h1>
+        </div>
+
+        <!-- <!-- EVENT LIST
+        <div class="region-list">
+            <div class="col-sm-4"><h1>Region: <%= region.name %></h1></div>
+            <div class="col-sm-12 chapter-list">
+                <div class="col-sm-4">
+                    <h2>Chapter: <%= region.chapter.name %></h2>
+                    <p>Location: <%= chapter.location %></p>
+                </div>
+                <div class="col-sm-12 event-list">
+                        <div class="col-sm-4">
+                            <h3>Name: <%= event.name %></h3>
+                            <h4>Date: <%= event.date %></h4>
+                            <h4>Start: <%= event.start %></h4>
+                            <h4>End: <%= event.end %></h4>
+                            <h4>Venue: <%= event.venue %></h4>
+                            <p>Description: <%= event.description %></p>
+                            <p>Inventory:</p>
+                            <div class="col-sm-12">
+                            <p> <%= item.number %> <%= item.item %> </p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</body>
+</html>
