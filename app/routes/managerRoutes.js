@@ -21,7 +21,6 @@ module.exports = function(app) {
     // ADMIN API
     //admin view for a specific region
     app.get('/api/:region_name', function(req, res) {
-        console.log("testing");
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
             if (err)
                 res.send(err);
