@@ -66,8 +66,6 @@ function userController($scope, $http) {
                 console.log('Error: ' + data);
             });
     };
-
-<<<<<<< 8ab65cb04fb9d34881b45f94339e92715fda1caf
     // adds regional manager permissions
     $scope.addRegionPermission = function(region) {
         $http.post('/api/manager/' + region._id, $scope.formData)
