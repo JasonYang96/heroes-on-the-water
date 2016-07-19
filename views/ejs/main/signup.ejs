@@ -56,6 +56,7 @@
       <!--Changes the blurb text and hides or shows the special question box based on selection in dropdown-->
       <script type="text/javascript">
         $(function(){
+          $("#specialBoxID").hide();
           $('.selectpicker').on('change', function() {
             if ($('select[name=type]').val()=="participant") {
                   $("#blurb").html("Let us know  a little bit about yourself, your location, your experience paddling and/or fishing, your affiliation with the military, and we will be in touch shortly. Paddling and fishing experience not required.");
