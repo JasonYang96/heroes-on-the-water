@@ -26,6 +26,7 @@ angular.module('regionsController', [])
     			    $scope.formData = {};
     			    $scope.regions = data;
     			    console.log(data);
+                    location.reload();
     			})
     			.error(function(data) {
     			    console.log('Error: ' + data);
@@ -41,6 +42,7 @@ angular.module('regionsController', [])
             .success(function(data) {
                 $scope.regions = data;
                 console.log(data);
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
