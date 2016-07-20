@@ -253,6 +253,13 @@ a:hover, a:focus {
     letter-spacing: 1px;
 }
 
+.navbar-black > li > a, .navbar-black a{
+  color: #231f20;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+}
+
 .navbar-inverse .navbar-nav > li > a:hover {
     color: #ffffff;
     opacity: 0.6;

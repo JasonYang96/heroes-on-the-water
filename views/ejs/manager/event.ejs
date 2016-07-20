@@ -3,6 +3,7 @@
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="HOW">
+
 <head>
     <!-- META -->
     <meta charset="utf-8">
@@ -10,14 +11,18 @@
 
     <title>Heroes on the Water</title>
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <style>
-        html            { overflow-y:scroll; }
-        body            { padding-top:50px; padding-bottom: 50px;}
-        .creation-form  { margin: 20px; }
-        .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
-    </style>
+    <!--Styles-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- load fontawesome -->
+    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet'
+        type='text/css'>
+
 
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -27,58 +32,159 @@
     <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
     <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
     <script src="http://localhost:8080/js/services/main.js"></script>
+    <script src="js/links/modernizr-2.7.1.js"></script>
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
 
 </head>
+
 <body>
-    <div class="container" ng-controller="chaptersController">
-
-        <h1 class="text-center">Event: <%= region.chapters.events.name %></h1>
-        <p class="text-center">Region: <%= region.name %></p>
-        <p class="text-center">Chapter: <%= region.chapters.name %></p>
-
-        <!-- list event details -->
-        <div class="col-sm-12 event" ng-controller="eventsController">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h4>Date: <%= region.chapters.events.date %></h4>
-                    <h4>Start: <%= region.chapters.events.start %></h4>
-                    <h4>End: <%= region.chapters.events.end %></h4>
-                    <h4>Venue: <%= region.chapters.events.venue %></h4>
-                    <p>Description: <%= region.chapters.events.description %></p>
-                </div>
-                <div class="col-sm-3">
-                    <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
-                </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+                <a class="logo" href="/"><img src="../../img/home/logo-ready2.png" alt="Logo"></a>
             </div>
-            <div class="row">
-                <!-- FORM TO ADD INVENTORY -->
-                <div id="inventory-addition-form" class="row creation-form">
-                    <h1 class="text-center"> ADD INVENTORY </h1>
-                    <div class="col-sm-8 col-sm-offset-2 text-center">
-                        <form>
-                            <div class="form-group">
-                                <input type="number" class="form-control input-lg text-center" placeholder="Insert Number" ng-model="formData.number">
-                                <br>
-                                <input type="text" class="form-control input-lg text-center" placeholder="Insert Item" ng-model="formData.item">
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
-                </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/signup">Sign up</a></li>
+                </ul>
             </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
 
-            <!-- list of events in chapter -->
-            <div class="col-sm-12 event">
-            <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
-                <p> <%= region.chapters.events.inventory[i].number %> <%= region.chapters.events.inventory[i].item %></p>
-            <%} %>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="/"><img src="../../img/home/logo-ready2.png" alt="Logo"></a>
+            </div>
+            <div class="col-xs-6 signin text-right navbar-black">
+                <a href="/login">Log In</a>&nbsp; &nbsp;<a href="/signup">Sign Up</a>
             </div>
         </div>
     </div>
+
+    <div class="mouse-icon hidden-xs">
+        <div class="scroll"></div>
+    </div>
+
+    <section id="main-info">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center" ng-controller="eventsController">
+                <h1 class="text-center black">Event:
+                    <%= region.chapters.events.name %>
+                </h1>
+                <h4 class="text-center black">Region:
+                    <%= region.name %>
+                </h4>
+                <h4 class="text-center black">Chapter:
+                    <%= region.chapters.name %>
+                </h4>
+            </div>
+
+            <div class="row" ng-controller="eventsController">
+                <!--DATE AND TIME-->
+                <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+                    <hr class="line purple">
+                    <h3>Date:
+                        <%= region.chapters.events.date %>
+                    </h3>
+                    <p>Start:
+                        <%= region.chapters.events.start %>
+                    </p>
+                    <p>End:
+                        <%= region.chapters.events.end %>
+                    </p>
+                </div>
+
+                <!--VENUE AND DESCRIPTION-->
+                <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+                    <hr class="line blue">
+                    <h3>Venue:
+                        <%= region.chapters.events.venue %>
+                    </h3>
+                    <p>Description:
+                        <%= region.chapters.events.description %>
+                    </p>
+                </div>
+
+                <!--INVENTORY-->
+                <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
+                    <hr class="line yellow">
+                    <h3>Inventory</h3>
+                    <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
+                        <p>
+                            <%= region.chapters.events.inventory[i].number %>
+                                <%= region.chapters.events.inventory[i].item %>
+                        </p>
+                        <%} %>
+                </div>
+
+                <!--ADD INVENTORY-->
+                <div class="row">
+                    <!-- FORM TO ADD INVENTORY -->
+                    <div id="inventory-addition-form" class="row creation-form">
+                        <h1 class="text-center"> ADD INVENTORY </h1>
+                        <div class="col-sm-8 col-sm-offset-2 text-center">
+                            <form>
+                                <div class="form-group">
+                                    <input type="number" class="form-control input-lg text-center" placeholder="Insert Number" ng-model="formData.number">
+                                    <br>
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Insert Item" ng-model="formData.item">
+                                </div>
+                            </form>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
+                    </div>
+                </div>
+
+                <!--DELETE BUTTON-->
+                <hr class="line black">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete This Event</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+    </div>
+    </section>
+
 </body>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 margin-20">
+                <ul class="list-inline social">
+                    <li>Connect with us on</li>
+                    <li><a href="https://twitter.com/Heroesonthewate"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/HeroesontheWater"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="http://www.youtube.com/user/PaddleFishHeal"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/heroes-on-the-water?trk=company_name"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script>window.jQuery || document.write('<script src="../../js/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="../../js/links/wow.min.js"></script>
+<script src="../../js/links/bootstrap.min.js"></script>
+<script src="../../js/links/main.js"></script>
+
+
 </html>
