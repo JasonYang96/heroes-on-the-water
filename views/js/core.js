@@ -45,10 +45,20 @@ function donorsListController($scope, $http) {
             $scope.donors = data;
             console.log("=== donor List Controller ===")
             console.log(data);
+            console.log($scope.donors.length);
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+
+    $scope.range = function(min, max, step) {
+        step = step || 1;
+        var input = [];
+        for (var i = min; i <= max; i += step) {
+            input.push(i);
+        }
+        return input;
+    };
 };
 
 function userController($scope, $http) {

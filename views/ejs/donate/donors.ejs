@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Donor"><head>
   <meta charset="utf-8">
-  <title>Donate | Heroes on the Water</title>
+  <title>Donors | Heroes on the Water</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -72,19 +72,40 @@
           
          <section id="main-info" class="pad-sm">
           <div class="container">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-              <h2 class="black">Thank You</h2>
-              <hr style="width: 50%" class="line blue">
+            <div class="col-sm-6 text-center">
+              <h2 class="black">Donors</h2>
+              <hr style="width: 75%" class="line purple">
             </div>
-            
-            <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
+            <div class="col-sm-6 text-center">
+              <h2 class="black">In Honor Of</h2>
+              <hr style="width: 75%" class="line yellow">
+            </div>
+
+<!--             <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
                 <div ng-repeat="donor in donors">
                     <p>{{donor.fName}} {{donor.lName}}</p>
                 </div>
-                <% for(var i=0; i<40; i++) {%>
-                   <p>Jane Doenor</p>
-                <% } %>
             </div>
+ -->
+
+
+            <div ng-controller="donorsListController">
+              
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(0,24)">
+                  <p>{{donors[n].fName}} {{donors[n].lName}}</p>
+                </div>
+              </div>
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(25,50)">
+                  <p>{{donors[n].fName}} {{donors[n].lName}}</p>
+                </div>
+              </div>
+           </div>
+          
+            <!--Todo: Temoc needs to build a database of "in honor of" donations as well as account for all fields-->
+
+
 
           </div>
          </section>
