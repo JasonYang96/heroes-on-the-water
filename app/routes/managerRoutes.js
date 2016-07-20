@@ -18,6 +18,23 @@ module.exports = function(app) {
         });
     });
 
+    // read only view of events
+    app.get('/events', function(req, res) {
+        Model.region.find(function(err, regions) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.render('./ejs/main/events.ejs', {regions: regions}, function(err, html) {
+                if (err) {
+                    res.send(err);
+                }
+
+                res.send(html);
+            })
+        });
+    });
+
     // manager view for a specific region
     app.get('/:region_name', function(req, res) {
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
@@ -71,30 +88,5 @@ module.exports = function(app) {
                 res.send(html);
             });
         });
-    });
-
-    // read only view of events
-    app.get('/api/list', function(req, res) {
-        console.log("testing");
-        res.render('./ejs/main/index.ejs', function(err, html) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.send(html);
-        });
-        // Model.region.find(function(err, events) {
-        //     if (err) {
-        //         res.send(err);
-        //     }
-
-        //     res.render('./ejs/main/events.ejs', {regions: regions}, function(err, html) {
-        //         if (err) {
-        //             res.send(err);
-        //         }
-
-        //         res.send(html);
-        //     })
-        // });
     });
 }
