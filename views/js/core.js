@@ -45,7 +45,10 @@ function donorsListController($scope, $http) {
             $scope.donors = data;
             console.log("=== donor List Controller ===")
             console.log(data);
-            console.log($scope.donors.length);
+            $scope.upperBound = Math.ceil($scope.donors.length/2);
+            $scope.lowerBound = $scope.upperBound + 1;
+            console.log($scope.floored);
+
         })
         .error(function(data) {
             console.log('Error: ' + data);

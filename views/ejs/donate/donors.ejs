@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/donors.css">
-
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -89,15 +89,15 @@
  -->
 
 
-            <div ng-controller="donorsListController">
+            <div id="donorslist" ng-controller="donorsListController">
               
               <div class="col-sm-3 text-center">
-                <div ng-repeat="n in range(0,donors.length/2)">
+                <div ng-repeat="n in range(0,upperBound)">
                   <p>{{donors[n].fName}} {{donors[n].lName}}</p>
                 </div>
               </div>
               <div class="col-sm-3 text-center">
-                <div ng-repeat="n in range(donors.length/2, donors.length)">
+                <div ng-repeat="n in range(lowerBound, donors.length)">
                   <p>{{donors[n].fName}} {{donors[n].lName}}</p>
                 </div>
               </div>
@@ -133,7 +133,7 @@
     <!-- Javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="./js/links/wow.min.js"></script>
     <script src="js/links/bootstrap.min.js"></script>

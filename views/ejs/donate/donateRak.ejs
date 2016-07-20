@@ -91,74 +91,74 @@
     </section>
 
     <section id="pricing" class="pad-xl">
-        <div id="donor-creation-form" class="container" ng-controller="donorController">
+        <div id="donor-creation-form" class="form" ng-controller="donorController">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <h2>Donation Form</h2>
                 <hr style="width: 50%" class="line white">
-                        <p>Remember and celebrate the life of a loved one while also supporting our wounded troops. Let us know who you want to honor or memorialize and we will send a letter informing them of your donation on their behalf.<br>For a donation honoring or celebrating someone special – submit the form below and provide us with the person’s name and address for the letter to be sent.<br>For a donation in memory of a loved one – submit the form below and provide us with the individual’s name and the name and address for the person or family to which the letter is to be sent.</p>
-                        <form>
-                            <div class="form-group">
-                                    <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                                    <input type="text" class="form-control input-lg text-center" placeholder="Donor First Name" ng-model="formData.fName">
-                                    <br>
-                                    <input type="text" class="form-control input-lg text-center" placeholder="Donor Last Name" ng-model="formData.lName">
-                                    <br>
-                                    <input type="tel" class="form-control input-lg text-center" placeholder="Phone" ng-model="formData.phone">
-                                    <br>
-                                    <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
-                                <!--Select Gift-->
-                                    <h3> Select Gift Amount</h3>
-                                    <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
-                                        <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
-                                        <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
-                                        <option value="2">$50 -- Provides coffee for an event</option>
-                                        <option value="3">$100 -- Provides breakfast for an event</option>
-                                        <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
-                                        <option value="5">$200 -- Provides lunch for an event</option>
-                                        <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
-                                        <option value="7">Other</option>
-                                    </select> 
-                                <!--Select Donation Type-->
-                                    <h3>Donation Type</h3>
-                                    <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
-                                        <option value="0">Support a specific HOW chapter</option>
-                                        <option value="1">In memory of a loved one</option>
-                                        <option value="2">In honor of someone</option>
-                                        <option value="3">Support HOW</option>
-                                    </select>
-                                    <br>
-                                <!--Select Chaper-->
-                                    <select class="form-control input-lg text-center" id = "select_chapter">
-                                        <option selected>some chapter</option>
-                                    </select>
-                                <!--Loved One Form-->
-                                    <div id = "loved_one_form">
-                                        <h2> In Memory of a Loved One</h2>
-                                        <hr><hr>
-                                        <input type="text" class="form-control input-lg text-center" placeholder="In memory of...">
-                                        <h2> Person/Family to Recieve the Letter</h2>
-                                        <hr><hr>
-                                        <input type="text" class="form-control input-lg text-center" placeholder="First Name">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Address">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="City">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Country">
-                                    </div>
-                                <!--In honor of Someone-->
-                                    <div id = "honor_form">
-                                        <h2> In Honor of Someone</h2>
-                                        <input type="text" class="form-control input-lg text-center" placeholder="In honor of...">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Address">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="City">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Country">
-                                    </div>
+                    <p>Remember and celebrate the life of a loved one while also supporting our wounded troops. Let us know who you want to honor or memorialize and we will send a letter informing them of your donation on their behalf.<br>For a donation honoring or celebrating someone special – submit the form below and provide us with the person’s name and address for the letter to be sent.<br>For a donation in memory of a loved one – submit the form below and provide us with the individual’s name and the name and address for the person or family to which the letter is to be sent.</p>
+                    <form>
+                        <div class="form-group">
+                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                            <input type="text" class="form-control input-lg text-center" placeholder="Donor First Name" ng-model="formData.fName">
+                            <br>
+                            <input type="text" class="form-control input-lg text-center" placeholder="Donor Last Name" ng-model="formData.lName">
+                            <br>
+                            <input type="tel" class="form-control input-lg text-center" placeholder="Phone" ng-model="formData.phone">
+                            <br>
+                            <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
+                        <!--Select Gift-->
+                            <h3> Select Gift Amount</h3>
+                            <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
+                                <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
+                                <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
+                                <option value="2">$50 -- Provides coffee for an event</option>
+                                <option value="3">$100 -- Provides breakfast for an event</option>
+                                <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
+                                <option value="5">$200 -- Provides lunch for an event</option>
+                                <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
+                                <option value="7">Other</option>
+                            </select> 
+                        <!--Select Donation Type-->
+                            <h3>Donation Type</h3>
+                            <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
+                                <option value="0">Support a specific HOW chapter</option>
+                                <option value="1">In memory of a loved one</option>
+                                <option value="2">In honor of someone</option>
+                                <option value="3">Support HOW</option>
+                            </select>
+                            <br>
+                        <!--Select Chaper-->
+                            <select class="form-control input-lg text-center" id = "select_chapter">
+                                <option selected>some chapter</option>
+                            </select>
+                        <!--Loved One Form-->
+                            <div id = "loved_one_form">
+                                <h2> In Memory of a Loved One</h2>
+                                <hr><hr>
+                                <input type="text" class="form-control input-lg text-center" placeholder="In memory of...">
+                                <h2> Person/Family to Recieve the Letter</h2>
+                                <hr><hr>
+                                <input type="text" class="form-control input-lg text-center" placeholder="First Name">
+                                <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
+                                <input type="text" class="form-control input-lg text-center" placeholder="Address">
+                                <input type="text" class="form-control input-lg text-center" placeholder="City">
+                                <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                                <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                                <input type="text" class="form-control input-lg text-center" placeholder="Country">
                             </div>
-                        </form>
-                    </div>
+                        <!--In honor of Someone-->
+                            <div id = "honor_form">
+                                <h2> In Honor of Someone</h2>
+                                <input type="text" class="form-control input-lg text-center" placeholder="In honor of...">
+                                <input type="text" class="form-control input-lg text-center" placeholder="Address">
+                                <input type="text" class="form-control input-lg text-center" placeholder="City">
+                                <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                                <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                                <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                                 <script>
                                     var donateVal;
