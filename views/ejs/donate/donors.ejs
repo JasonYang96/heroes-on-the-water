@@ -1,84 +1,122 @@
-<!-- donors.html -->
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en" ng-app="Donor"><head>
+  <meta charset="utf-8">
+  <title>Donate | Heroes on the Water</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="Donor">
+  <!--Styles-->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/donors.css">
 
-<head>
-    <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Donors | Heroes on the Water</title>
+  <!--Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <!--Styles-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <!-- load fontawesome -->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/donors.css">
+  <script src="js/links/modernizr-2.7.1.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="js/core.js"></script>
 
-    <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="js/core.js"></script>
+</head>
+
+
+<body>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="logo" href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+              <li><a href="/donate">Donate</a></li>
+             <li><a href="/login">Log In</a></li>
+             <li><a href="/signup">Sign up</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-left">
+            <li><a href="/">Home</a></li>
+            </ul>
+         </div><!--/.navbar-collapse -->
+       </div>
+     </div>
+     <header>
+       <div class="container">
+         <div class="row">
+           <div class="col-xs-6">
+             <a href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+           </div>
+           <div class="col-xs-6 signin text-right navbar-nav">
+             <a href="/donate">Donate</a>&nbsp; &nbsp;<a href="/login">Log In</a>&nbsp; &nbsp;<a href="/signup">Sign Up</a>
+           </div>
+         </div>
+         
+         <div class="row header-info">
+           <div class="col-sm-10 col-sm-offset-1 text-center">
+             <h1 class="white">Donors</h1>
+             <br />
+             <p class="white"><strong>A huge thank you to the donors that have helped Heroes on the Water and over 20,000 veterans</strong></p>
+             <br />
+           </div>
+         </div>
+         </div>
+     </header>
+
+          
+         <section id="main-info" class="pad-sm">
+          <div class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <h2 class="black">Thank You</h2>
+              <hr style="width: 50%" class="line blue">
+            </div>
+            
+            <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
+                <div ng-repeat="donor in donors">
+                    <p>{{donor.fName}} {{donor.lName}}</p>
+                </div>
+                <% for(var i=0; i<40; i++) {%>
+                   <p>Jane Doenor</p>
+                <% } %>
+            </div>
+
+          </div>
+         </section>
+
+
+    <footer>
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-sm-8 margin-20">
+            <ul class="list-inline social">
+              <li>Connect with us on</li>
+              <li><a href="https://twitter.com/Heroesonthewate"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/HeroesontheWater"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="http://www.youtube.com/user/PaddleFishHeal"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/heroes-on-the-water?trk=company_name"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+    
+    
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="./js/links/wow.min.js"></script>
     <script src="js/links/bootstrap.min.js"></script>
     <script src="js/links/main.js"></script>
 
-    <!-- FAVICON -->
-    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
-
-</head>
-
-<body>
-    <!--scrolling navbar-->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          </button>
-                <a class="logo" href="index.html"><img src="img/home/logo-ready2.png" alt="Logo"></a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/" class="scroll">Login</a></li>
-                    <li><a href="/">Sign up</a></li>
-                </ul>
-            </div>
-            <!--/.navbar-collapse -->
-        </div>
-    </div>
-
-
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-6">
-                <a href="index.html"><img src="img/home/logo-ready2.png" alt="Logo"></a>
-            </div>
-
-            <!--static navbar-->
-            <div class="col-md-6 signin text-right navbar-nav">
-                <a href="/" class="scroll">Login</a>&nbsp; &nbsp;<a href="/">Sign up</a>
-            </div>
-        </div>
-
-        <div class="text-center">
-       	    <h1>Thank you to our donors</h2>
-        </div>
-    </div>
-
-     
-
-    <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
-        <div ng-repeat="donor in donors">
-            <h2>{{donor.fName}} {{donor.lName}}</h1>
-        </div>
-    </div>
-
-</body>
-
+   
+    </body>
 </html>
