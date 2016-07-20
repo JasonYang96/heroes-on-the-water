@@ -97,118 +97,136 @@
         <br><br><br><br><br>
         <div id="donor-creation-form" class="form" ng-controller="donorController">
             <div>
-                    <p>You can give in support a chapter of your choosing,  in memory of a loved one,  in honor of someone, or for Heroes on the Water as a whole. If you honor or memorialize someone, you can give us their or their family's name and address, and we'll send them a letter informing them of your donation on their behalf</p><br>
-                    <form>
-                        <div class="sameline">
-                            <div class="cell leftcell">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Donor First Name" ng-model="formData.fName">
-                                </div>
-                            </div>
-                            <div class="cell">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Donor Last Name" ng-model="formData.lName">
-                                </div>
+                <p>You can give in support a chapter of your choosing,  in memory of a loved one,  in honor of someone, or for Heroes on the Water as a whole. If you honor or memorialize someone, you can give us their or their family's name and address, and we'll send them a letter informing them of your donation on their behalf</p><br>
+                <form>
+                    <div class="sameline">
+                        <div class="cell leftcell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Donor First Name" ng-model="formData.fName">
                             </div>
                         </div>
+                        <div class="cell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Donor Last Name" ng-model="formData.lName">
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="sameline">
-                            <div class="cell leftcell">
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Phone" ng-model="formData.phone">
+                    <div class="sameline">
+                        <div class="cell leftcell">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone" ng-model="formData.phone">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" ng-model="formData.email">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Select Gift-->
+                        <h3> Select Gift Amount</h3>
+                        <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
+                            <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
+                            <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
+                            <option value="2">$50 -- Provides coffee for an event</option>
+                            <option value="3">$100 -- Provides breakfast for an event</option>
+                            <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
+                            <option value="5">$200 -- Provides lunch for an event</option>
+                            <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
+                            <option value="7">Other</option>
+                        </select> 
+                    <!--Select Donation Type-->
+                        <h3>Donation Type</h3>
+                        <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
+                            <option value="0">Support a specific HOW chapter</option>
+                            <option value="1">In memory of a loved one</option>
+                            <option value="2">In honor of someone</option>
+                            <option value="3">Support HOW</option>
+                            <option value="4">Product Donation</option>
+                        </select>
+                        <br>
+                    <!--Select Chaper-->
+                        <select class="form-control input-lg text-center" id = "select_chapter">
+                            <option selected>some chapter</option>
+                        </select>
+                    <!--Loved One Form-->
+                        <div id = "loved_one_form">
+                            <h3> In Memory of a Loved One</h3>
+                            <input type="text" class="form-control" placeholder="In memory of...">
+                            <h3> Person/Family to Recieve the Letter</h3>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="First Name">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
                                 </div>
                             </div>
-                            <div class="cell">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email" ng-model="formData.email">
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Street">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City">
+                                </div>
+                            </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                                </div>
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Country">
                                 </div>
                             </div>
                         </div>
-                        <!--Select Gift-->
-                            <h3> Select Gift Amount</h3>
-                            <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
-                                <option value="0">$25 -- Provide lures, bait, and fishing supplies</option>
-                                <option value="1">$50 -- Gives a Warrior 1/2 day of kayak fishing</option>
-                                <option value="2">$50 -- Provides coffee for an event</option>
-                                <option value="3">$100 -- Provides breakfast for an event</option>
-                                <option value="4">$100 -- Gives a Warrior a day of kayak fishing</option>
-                                <option value="5">$200 -- Provides lunch for an event</option>
-                                <option value="6">$1000 -- Buys one outfitted kayak, or 10 "Vet Days" on the water</option>
-                                <option value="7">Other</option>
-                            </select> 
-                        <!--Select Donation Type-->
-                            <h3>Donation Type</h3>
-                            <select class="form-control input-lg text-center" ng-model="formData.description" id = "reasonSelect">
-                                <option value="0">Support a specific HOW chapter</option>
-                                <option value="1">In memory of a loved one</option>
-                                <option value="2">In honor of someone</option>
-                                <option value="3">Support HOW</option>
-                            </select>
-                            <br>
-                        <!--Select Chaper-->
-                            <select class="form-control input-lg text-center" id = "select_chapter">
-                                <option selected>some chapter</option>
-                            </select>
-                        <!--Loved One Form-->
-                            <div id = "loved_one_form">
-                                <h3> In Memory of a Loved One</h3>
-                                <input type="text" class="form-control" placeholder="In memory of...">
-                                <h3> Person/Family to Recieve the Letter</h3>
-                                <div class="sameline">
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="First Name">
-                                    </div>
-                                    <div class="cell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
-                                    </div>
+                    <!--In honor of Someone-->
+                        <div id = "honor_form">
+                            <h3> In Honor of Someone</h3>
+                            <input type="text" class="form-control input-lg text-center" placeholder="Honored Person's Name">
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Street">
                                 </div>
-                                <div class="sameline">
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Street">
-                                    </div>
-                                    <div class="cell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="City">
-                                    </div>
-                                </div>
-                                <div class="sameline">
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                                    </div>
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                                    </div>
-                                    <div class="cell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Country">
-                                    </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City">
                                 </div>
                             </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                                </div>
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                                </div>
+                            </div>
+                        </div>
                         <!--In honor of Someone-->
-                            <div id = "honor_form">
-                                <h3> In Honor of Someone</h3>
-                                <input type="text" class="form-control input-lg text-center" placeholder="Honored Person's Name">
-                                <div class="sameline">
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Street">
-                                    </div>
-                                    <div class="cell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="City">
-                                    </div>
+                        <div id = "inkind_form">
+                            <h3> In Kind Contributions (Product Donations)</h3>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City">
                                 </div>
-                                <div class="sameline">
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                                    </div>
-                                    <div class="cell leftcell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                                    </div>
-                                    <div class="cell">
-                                        <input type="text" class="form-control input-lg text-center" placeholder="Country">
-                                    </div>
-                                </di
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
+                                </div>
                             </div>
+                            <input type="text" class="form-control input-lg text-center" placeholder="What do you want to donate and in what location?">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Tell us a little about yourself.">
+                            <input type="text" class="form-control input-lg text-center" placeholder="How did you hear about us?">
+                        </div>
                         </div>
                     </form>
-                </div>
 
         <script>
             var donateVal;
@@ -234,7 +252,7 @@
                     console.log("amount set: " + donateVal);
                     $("#paypalAmnt").attr("value", donateVal);
 
-    // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                // ========-   jQuery to set donation DESCRIPTION for paypal   -======
                     // grab description
                     description = $("#donationSelect option:selected").html();
                     console.log("description: " + description);
@@ -244,7 +262,7 @@
                 });
             });
 
-    // ========-   jQuery to set donation IN MEM OF... for paypal   -======
+            // ========-   jQuery to set donation IN MEM OF... for paypal   -======
             $(document).ready(function(){
                 $("#reasonSelect").change(function(){
                     reason = $("#reasonSelect option:selected").html();
@@ -258,24 +276,34 @@
                         $("#loved_one_form").show();
                         $("#honor_form").hide();
                         $("#select_chapter").hide();
+                        $("#inkind_form").hide();
                     }
                     else if($(this).val() == '2')
                     {
                         $("#honor_form").show();
                         $("#loved_one_form").hide();
                         $("#select_chapter").hide();
+                        $("#inkind_form").hide();
                     }
                     else if($(this).val() == '0')
                     {
                         $("#honor_form").hide();
                         $("#loved_one_form").hide();
                         $("#select_chapter").show();
+                        $("#inkind_form").hide();
                     }
                     else if($(this).val() == '3')
                     {
                         $("#honor_form").hide();
                         $("#loved_one_form").hide();
                         $("#select_chapter").hide();
+                        $("#inkind_form").hide();
+                    }
+                    else if ($(this).val() == '4') {
+                        $("#honor_form").hide();
+                        $("#loved_one_form").hide();
+                        $("#select_chapter").hide();
+                        $("#inkind_form").show();
                     }
                     
                 });
@@ -284,43 +312,42 @@
             $("#loved_one_form").hide();
             $("#honor_form").hide();
             $("#select_chapter").hide();
+            $("#inkind_form").hide();
         </script>
-                    <!--========================--------------------    END jQuery  -----------------=========================-->
 
-                                <br>
+        <br>
 
-                        <!--======== PAYPAL PAGE REDIRECT BUTTON============--> 
+        <!--======== PAYPAL BUTTON============--> 
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
 
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business"
+                value="donations@HOW.org">
 
-                                    <!-- Identify your business so that you can collect the payments. -->
-                                    <input type="hidden" name="business"
-                                        value="donations@HOW.org">
+            <!-- Specify a Donate button. -->
+            <input type="hidden" name="cmd" value="_donations">
 
-                                    <!-- Specify a Donate button. -->
-                                    <input type="hidden" name="cmd" value="_donations">
+            <!-- Specify details about the contribution -->
+            <input type="hidden" name="item_name" value="Heroes on the Water"  id = "item_name">
+            <input type="hidden" name="item_number" value="Donation" id = "item_reason">
+            <input type="hidden" name="amount" value="0" id = "paypalAmnt">
+            <input type="hidden" name="currency_code" value="USD">
 
-                                    <!-- Specify details about the contribution -->
-                                    <input type="hidden" name="item_name" value="Heroes on the Water"  id = "item_name">
-                                    <input type="hidden" name="item_number" value="Donation" id = "item_reason">
-                                    <input type="hidden" name="amount" value="0" id = "paypalAmnt">
-                                    <input type="hidden" name="currency_code" value="USD">
+            <!-- Display the payment button. -->
+                <!--<span><input type="image" name="submit"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
+                    ng-click="createDonor()">
+                <img alt="" width="1" height="1"
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span> -->
 
-                                    <!-- Display the payment button. -->
-<!--                                         <span><input type="image" name="submit"
-                                        src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                                        alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
-                                            ng-click="createDonor()">
-                                        <img alt="" width="1" height="1"
-                                        src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span> -->
+            <span><input type="submit" name="submit" value="Donate"
+            title="PayPal - The safer, easier way to pay online" class = "btn btn-success" 
+                ng-click="createDonor()" style="background: #3498db">
+            <img alt="" width="1" height="1"
+            src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
 
-                                        <span><input type="submit" name="submit" value="Donate"
-                                        title="PayPal - The safer, easier way to pay online" class = "btn btn-success" 
-                                            ng-click="createDonor()" style="background: #3498db">
-                                        <img alt="" width="1" height="1"
-                                        src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
-
-                                </form>
+        </form>
             </div>
         </div>
     </section>
