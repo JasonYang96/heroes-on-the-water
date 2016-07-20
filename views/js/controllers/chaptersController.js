@@ -26,6 +26,7 @@ angular.module('chaptersController', [])
     			.success(function(data) {
     			    $scope.formData = {};
     			    $scope.regions = data;
+                    location.reload();
     			    console.log(data);
     			})
     			.error(function(data) {
@@ -44,6 +45,7 @@ angular.module('chaptersController', [])
             .success(function(data) {
                 $scope.regions = data;
                 console.log(data);
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);

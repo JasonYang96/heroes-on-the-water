@@ -26,6 +26,7 @@ angular.module('eventsController', [])
                     $scope.formData = {};
                     $scope.regions = data;
                     console.log(data);
+                    location.reload();
                 })
                 .error(function(data) {
                     console.log('Error: ' + data);
@@ -44,6 +45,7 @@ angular.module('eventsController', [])
             .success(function(data) {
                 $scope.regions = data;
                 console.log(data);
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -56,6 +58,7 @@ angular.module('eventsController', [])
                 $scope.formData = {};
                 $scope.regions = data;
                 console.log(data);
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
