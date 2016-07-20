@@ -18,6 +18,7 @@
     <!-- load fontawesome -->
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/event.css">
 
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet'
@@ -36,6 +37,12 @@
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
+
+    <!--BOOTSTRAP SELECT-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
 </head>
 
@@ -116,40 +123,68 @@
                 </div>
 
                 <!--INVENTORY-->
-                <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
+                <div class="col-sm-4 wow fadeIn black" data-wow-delay="1.2s">
                     <hr class="line yellow">
                     <h3>Inventory</h3>
-                    <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
-                        <p>
-                            <%= region.chapters.events.inventory[i].number %>
-                                <%= region.chapters.events.inventory[i].item %>
-                        </p>
-                        <%} %>
+                    <p>
+                        <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
+                            <p>
+                                <%= region.chapters.events.inventory[i].number %>
+                                    <%= region.chapters.events.inventory[i].item %>
+                            </p>
+                            <%} %>
+                    </p>
                 </div>
 
                 <!--ADD INVENTORY-->
                 <div class="row">
                     <!-- FORM TO ADD INVENTORY -->
-                    <div id="inventory-addition-form" class="row creation-form">
-                        <h1 class="text-center"> ADD INVENTORY </h1>
+                    <div id="inventory-addition-form">
+                        <!--<h1 class="text-center"> ADD INVENTORY </h1>-->
                         <div class="col-sm-8 col-sm-offset-2 text-center">
                             <form>
-                                <div class="form-group">
-                                    <input type="number" class="form-control input-lg text-center" placeholder="Insert Number" ng-model="formData.number">
-                                    <br>
-                                    <input type="text" class="form-control input-lg text-center" placeholder="Insert Item" ng-model="formData.item">
-                                </div>
+                                <!--<input type="text" class="form-control text-center" placeholder="Insert Item" ng-model="formData.item">-->
+                                <!--<input type="number" class="form-control text-center" placeholder="Insert Number" ng-model="formData.number">-->
                             </form>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
+                        
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-2">
+                        <div class="form-group">
+                            <select class=" form-control " >
+                                <optgroup label="Boating">
+                                    <option>Kayaks</option>
+                                    <option>Oars</option>
+                                </optgroup>
+                                <optgroup label="Fishing">
+                                    <option>Fishing Poles</option>
+                                    <option>Bait Sets</option>
+                                    <option>Life Vests</option>
+                                </optgroup>
+                                <optgroup label="Management">
+                                    <option>Laptops</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                                <input type="number" class="form-control " placeholder="Insert Number" ng-model="formData.number">
+                        </div>
+                    </div>
+
+                    <!--ADD INVENTORY BUTTON-->
+                    <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
                 </div>
 
                 <!--DELETE BUTTON-->
                 <hr class="line black">
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete This Event</button>
+                    <button type="submit" class="btn btn-primary btn-sm delete" ng-click="deleteEvent(event.name)">Delete This Event</button>
                 </div>
             </div>
         </div>

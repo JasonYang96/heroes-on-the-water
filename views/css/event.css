@@ -1,0 +1,29 @@
+.teal-inv{
+	background-color: #70cbce;
+	color: #ffffff;
+	border-radius: 4px;
+		
+}
+
+.yellow-inv {
+	border-color: #fdc05d;
+	color: #ffffff;
+  background-color: #fdc05d
+}
+.border-inv{
+	border-color: #fdc05d;
+	border-style: solid;
+	 border-width: 0.5vh;
+
+
+}
+.delete{
+	color: #ffffff;
+	background-color: #b32d00;
+}
+
+body{
+	background-color: #f2f2f2;
+}
+
+
