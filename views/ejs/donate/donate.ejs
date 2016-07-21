@@ -1,120 +1,129 @@
-<!-- donor.html -->
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en" ng-app="Donor"><head>
+  <meta charset="utf-8">
+  <title>Donate | Heroes on the Water</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="Donor">
-<head>
-    <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+  <!--Styles-->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/donate.css">
 
-    <title>Donate | Heroes on the Water</title>
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-    <link rel="stylesheet" type="text/css" href="css/donate.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <link rel="stylesheet" href="css/animate.css">
+  <!--Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-    <script src="js/core.js"></script>
+  <script src="js/links/modernizr-2.7.1.js"></script>
 
-    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="logo" href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-             <li><a href="/donate">Donate</a></li>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/signup">Sign up</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-left">
-           <li><a href="/">Home</a></li>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="logo" href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+              <li><a href="/donors">Donors</a></li>
+             <li><a href="/login">Log In</a></li>
+             <li><a href="/signup">Sign up</a></li>
            </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-    <div class="container">
+           <ul class="nav navbar-nav navbar-left">
+            <li><a href="/">Home</a></li>
+            </ul>
+         </div><!--/.navbar-collapse -->
+       </div>
+     </div>
+     <header>
+       <div class="container">
+         <div class="row">
+           <div class="col-xs-6">
+             <a href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+           </div>
+           <div class="col-xs-6 signin text-right navbar-nav">
+             <a href="/donors">Donors</a>&nbsp; &nbsp;<a href="/login">Log In</a>&nbsp; &nbsp;<a href="/signup">Sign Up</a>
+           </div>
+         </div>
+         
+         <div class="row header-info">
+           <div class="col-sm-10 col-sm-offset-1 text-center">
+           <br>
+             <h1 class="white">Donate</h1>
+             <br />
+             <p class="white"><strong>Thank you for choosing to support those we serve.</strong></p>
+             <br />
+           </div>
+         </div>
+         </div>
+     </header>
 
-
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <a href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
-          </div>
-          <div class="col-xs-6 signin text-right navbar-nav">
-            <a href="/donate">Donate</a>&nbsp; &nbsp;<a href="/login">Log In</a>&nbsp; &nbsp;<a href="/signup">Sign Up</a>
-          </div>
-        </div>
-        
-        <div class="row header-info">
-          <div class="col-sm-10 col-sm-offset-1 text-center">
-            <h1 class="white">Donors</h1>
-            <br />
-            <p class="white"><strong>A huge thank you to the donors that have helped Heroes on the Water and over 20,000 veterans</strong></p>
-            <br />
-          </div>
-        </div>
-        </div>
-    </header
-        <!-- HEADER -->
-        <div class="jumbotron text-center">
-            <h1>Donate to HOW</h1>
-            <h2><a href="/donors">List of Donors</a></h2>
-        </div>
-
-        <!-- EVENT LIST -->
-        <div class="col-sm-12 row" ng-controller="mainController">
-            <p>Thank you for your interest in Heroes on the Water. We are dedicated to the physical and emotional rehabilitation of disabled active military service personnel and veterans through the sport of kayak fishing. Heroes on the Water is a registered 501(c)(3) nonprofit and all donations are tax deductible.
-                <br><br>
-                Please consider a recurring donation to automatically give on a monthly basis by clicking on the SUBSCRIBE button to the right. One time gifts can be made by clicking the DONATE NOW button below.
-                <br><br>
-                Our nation’s warriors face a new battle as they return home. You can give them and their families peace and hope for a brighter future by making a donation today. Your gift provides the HOW kayak fishing program to warriors at no charge to them or their families.
-                <br><br>
-                Contributions can be directed to a HOW Chapter by entering the chapter name in the PayPal message field in the secure checkout or in the check’s memo field.
-                <br><br>
-                Thank you for choosing to support those we serve.</p>
-
-            <!--<h1 class="text-center">Donate via PayPal</h1>
-            <a class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5WAD6PF3BUHPE" target="_blank">DONATE NOW</a>-->
-            <br> 
-            
-
-        </div>
-
-        <hr>
-        <!-- FORM TO DONATE -->
-        <div id="donor-creation-form" class="row creation-form" ng-controller="donorController">
-            <h1 class="text-center"> Donate </h1>
-            <p>Remember and celebrate the life of a loved one while also supporting our wounded troops. Let us know who you want to honor or memorialize and we will send a letter informing them of your donation on their behalf.<br>For a donation honoring or celebrating someone special – submit the form below and provide us with the person’s name and address for the letter to be sent.<br>For a donation in memory of a loved one – submit the form below and provide us with the individual’s name and the name and address for the person or family to which the letter is to be sent.</p>
+      
+     <section id="main-info" class="pad-sm">
+        <div class="container">
             <div class="col-sm-8 col-sm-offset-2 text-center">
+              <h2 class="black">About Donations</h2>
+              <hr style="width: 50%" class="line blue">
+              <br>
+              <br>
+              <p style="text-align: left;"><strong>Thank you for your interest in Heroes on the Water.</strong> We are dedicated to the physical and emotional rehabilitation of disabled active military service personnel and veterans through the sport of kayak fishing. Heroes on the Water is a registered 501(c)(3) nonprofit and all donations are tax deductible.<br><br><strong>Our nation’s warriors face a new battle as they return home.</strong> You can give them and their families peace and hope for a brighter future by making a donation today. Your gift provides the HOW kayak fishing program to warriors at no charge to them or their families. <br><br><strong>Please consider a recurring donation</strong> to automatically give on a monthly basis by clicking on the subscribe button below. You can also make a one-time donation from the form on this page.<br><br><strong>Since 2007, our program has provided over 12,824  days of kayak fishing</strong>, thanks to your contributions and our 7000+ dedicated volunteers.<br><br><strong>Thank you for choosing to support those we serve.</strong></p>
+            </div>
+          </div>
+          <div class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <img src="/img/donate/signature.jpg" style="width: auto; height:auto; max-width: 15%; max-height:20%; float:left;">
+              <p style="text-align: left;"><br><br><br><br><br><br><br><strong>Jim Dolan</strong><br>Founder and President<br>Heroes on the Water</p>
+          </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pad-sm">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <h2>Donation Form</h2>
+        </div>
+        <br><br><br><br><br>
+        <div id="donor-creation-form" class="form" ng-controller="donorController">
+            <div>
+                <p>You can give in support a chapter of your choosing,  in memory of a loved one,  in honor of someone, or for Heroes on the Water as a whole. If you honor or memorialize someone, you can give us their or their family's name and address, and we'll send them a letter informing them of your donation on their behalf</p><br>
                 <form>
-                    <div class="form-group">
-                        
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Donor First Name" ng-model="formData.fName">
-                        <br>
-                        <input type="text" class="form-control input-lg text-center" placeholder="Donor Last Name" ng-model="formData.lName">
-                        <br>
-                        <input type="tel" class="form-control input-lg text-center" placeholder="Phone" ng-model="formData.phone">
-                        <br>
-                        <input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
+                    <div class="sameline">
+                        <div class="cell leftcell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Donor First Name" ng-model="formData.fName">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Donor Last Name" ng-model="formData.lName">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sameline">
+                        <div class="cell leftcell">
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone" ng-model="formData.phone">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" ng-model="formData.email">
+                            </div>
+                        </div>
+                    </div>
                     <!--Select Gift-->
                         <h3> Select Gift Amount</h3>
                         <select class="form-control input-lg text-center" ng-model="formData.donation" id = "donationSelect">
@@ -134,176 +143,280 @@
                             <option value="1">In memory of a loved one</option>
                             <option value="2">In honor of someone</option>
                             <option value="3">Support HOW</option>
+                            <option value="4">Product Donation</option>
                         </select>
                         <br>
                     <!--Select Chaper-->
-                        <select class="form-control input-lg text-center" id = "select_chapter">
+                        <select class="form-control input-lg text-center" id = "select_chapter" ng-model="formData.chapter">
                             <option selected>some chapter</option>
                         </select>
                     <!--Loved One Form-->
                         <div id = "loved_one_form">
-                            <h2> In Memory of a Loved One</h2>
-                            <hr><hr>
-                            <input type="text" class="form-control input-lg text-center" placeholder="In memory of...">
-                            <h2> Person/Family to Recieve the Letter</h2>
-                            <hr><hr>
-                            <input type="text" class="form-control input-lg text-center" placeholder="First Name">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Last Name">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Address">
-                            <input type="text" class="form-control input-lg text-center" placeholder="City">
-                            <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                            <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                            <h3> In Memory of a Loved One</h3>
+                            <input type="text" class="form-control" placeholder="In memory of...">
+                            <h3> Person/Family to Recieve the Letter</h3>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="First Name"   ng-model="formData.letter_fName">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Last Name"    ng-model="formData.letter_lName">
+                                </div>
+                            </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Street"       ng-model="formData.letter_street">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City"         ng-model="formData.letter_city">
+                                </div>
+                            </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region" ng-model="formData.letter_state">
+                                </div>
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code"    ng-model="formData.letter_zip">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Country"      ng-model="formData.letter_country">
+                                </div>
+                            </div>
                         </div>
                     <!--In honor of Someone-->
                         <div id = "honor_form">
-                            <h2> In Honor of Someone</h2>
-                            <input type="text" class="form-control input-lg text-center" placeholder="In honor of...">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Address">
-                            <input type="text" class="form-control input-lg text-center" placeholder="City">
-                            <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region">
-                            <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Country">
+                            <h3> In Honor of Someone</h3>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="First Name"   ng-model="formData.letter_fName">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Last Name"    ng-model="formData.letter_lName">
+                                </div>
+                            </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Street"       ng-model="formData.letter_street">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City"         ng-model="formData.letter_city">
+                                </div>
+                            </div>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region" ng-model="formData.letter_state">
+                                </div>
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code"    ng-model="formData.letter_zip">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="Country"      ng-model="formData.letter_country">
+                                </div>
+                            </div>
                         </div>
-                        
-                    </div>
-                </form>
+                        <!--Product Donation-->
+                        <div id = "inkind_form">
+                            <h3> In Kind Contributions (Product Donations)</h3>
+                            <div class="sameline">
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="City"     ng-model="formData.letter_city">
+                                </div>
+                                <div class="cell leftcell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="State / Province / Region" ng-model="formData.letter_state">
+                                </div>
+                                <div class="cell">
+                                    <input type="text" class="form-control input-lg text-center" placeholder="ZIP / Postal Code" ng-model="formData.letter_zip">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control input-lg text-center" placeholder="What do you want to donate and in what location?" ng-model="formData.product_what">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Tell us a little about yourself."                 ng-model="formData.product_you">
+                            <input type="text" class="form-control input-lg text-center" placeholder="How did you hear about us?"                       ng-model="formData.product_hear">
+                        </div>
+                        </div>
+                    </form>
+
+        <script>
+            var donateVal;
+            var description;
+            var reason;
+            $(document).ready(function(){
+                $("#donationSelect").change(function(){
+                    donateVal = $("#donationSelect").val();
+                    // console.log("paypal jQuery handler: Selected: ");
+                    console.log("paypal jQuery handler: Selected: " + donateVal);
+
+                    // set paypal amount
+                    switch(donateVal){
+                        case '0': donateVal = 25; break;
+                        case '1': donateVal = 50; break;
+                        case '2': donateVal = 50; break;
+                        case '3': donateVal = 100; break;
+                        case '4': donateVal = 100; break;
+                        case '5': donateVal = 200; break;
+                        case '6': donateVal = 1000; break;
+                        default: donateVal = 0;
+                    }
+                    console.log("amount set: " + donateVal);
+                    $("#paypalAmnt").attr("value", donateVal);
+
+                // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                    // grab description
+                    description = $("#donationSelect option:selected").html();
+                    console.log("description: " + description);
+                    // set description in paypal form
+                    $("#item_name").attr("value", description);
+
+                });
+            });
+
+            // ========-   jQuery to set donation IN MEM OF... for paypal   -======
+            $(document).ready(function(){
+                $("#reasonSelect").change(function(){
+                    reason = $("#reasonSelect option:selected").html();
+                    console.log("reason: " + reason);
+                    // set description in paypal form
+                    $("#item_reason").attr("value", reason);
+
+            //========------ FORM HIDE/SHOW LOGIC ------=============
+                    if($(this).val() == '1')
+                    {
+                        $("#loved_one_form").show();
+                        $("#honor_form").hide();
+                        $("#select_chapter").hide();
+                        $("#inkind_form").hide();
+                    }
+                    else if($(this).val() == '2')
+                    {
+                        $("#honor_form").show();
+                        $("#loved_one_form").hide();
+                        $("#select_chapter").hide();
+                        $("#inkind_form").hide();
+                    }
+                    else if($(this).val() == '0')
+                    {
+                        $("#honor_form").hide();
+                        $("#loved_one_form").hide();
+                        $("#select_chapter").show();
+                        $("#inkind_form").hide();
+                    }
+                    else if($(this).val() == '3')
+                    {
+                        $("#honor_form").hide();
+                        $("#loved_one_form").hide();
+                        $("#select_chapter").hide();
+                        $("#inkind_form").hide();
+                    }
+                    else if ($(this).val() == '4') {
+                        $("#honor_form").hide();
+                        $("#loved_one_form").hide();
+                        $("#select_chapter").hide();
+                        $("#inkind_form").show();
+                    }
+                    
+                });
+            });
+
+            $("#loved_one_form").hide();
+            $("#honor_form").hide();
+            $("#select_chapter").hide();
+            $("#inkind_form").hide();
+        </script>
+
+        <br>
+
+        <!--======== PAYPAL BUTTON============--> 
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
+
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business"
+                value="donations@HOW.org">
+
+            <!-- Specify a Donate button. -->
+            <input type="hidden" name="cmd" value="_donations">
+
+            <!-- Specify details about the contribution -->
+            <input type="hidden" name="item_name" value="Heroes on the Water"  id = "item_name">
+            <input type="hidden" name="item_number" value="Donation" id = "item_reason">
+            <input type="hidden" name="amount" value="0" id = "paypalAmnt">
+            <input type="hidden" name="currency_code" value="USD">
+
+            <!-- Display the payment button. -->
+                <!--<span><input type="image" name="submit"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
+                    ng-click="createDonor()">
+                <img alt="" width="1" height="1"
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span> -->
+
+            <span><input type="submit" name="submit" value="Donate"
+            title="PayPal - The safer, easier way to pay online" class = "btn btn-success" 
+                ng-click="createDonor()" style="background: #3498db">
+            <img alt="" width="1" height="1"
+            src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
+
+        </form>
             </div>
+        </div>
+    </section>
 
-    <!--===========---   jQuery to set donation AMOUNT for paypal   ---=========-->
-            <script>
-                var donateVal;
-                var description;
-                var reason;
-                $(document).ready(function(){
-                    $("#donationSelect").change(function(){
-                        donateVal = $("#donationSelect").val();
-                        // console.log("paypal jQuery handler: Selected: ");
-                        console.log("paypal jQuery handler: Selected: " + donateVal);
-
-                        // set paypal amount
-                        switch(donateVal){
-                            case '0': donateVal = 25; break;
-                            case '1': donateVal = 50; break;
-                            case '2': donateVal = 50; break;
-                            case '3': donateVal = 100; break;
-                            case '4': donateVal = 100; break;
-                            case '5': donateVal = 200; break;
-                            case '6': donateVal = 1000; break;
-                            default: donateVal = 0;
-                        }
-                        console.log("amount set: " + donateVal);
-                        $("#paypalAmnt").attr("value", donateVal);
-
-        // ========-   jQuery to set donation DESCRIPTION for paypal   -======
-                        // grab description
-                        description = $("#donationSelect option:selected").html();
-                        console.log("description: " + description);
-                        // set description in paypal form
-                        $("#item_name").attr("value", description);
-
-                    });
-                });
-
-    // ========-   jQuery to set donation IN MEM OF... for paypal   -======
-                $(document).ready(function(){
-                    $("#reasonSelect").change(function(){
-                        reason = $("#reasonSelect option:selected").html();
-                        console.log("reason: " + reason);
-                        // set description in paypal form
-                        $("#item_reason").attr("value", reason);
-
-                //========------ FORM HIDE/SHOW LOGIC ------=============
-                        if($(this).val() == '1')
-                        {
-                            $("#loved_one_form").show();
-                            $("#honor_form").hide();
-                            $("#select_chapter").hide();
-                        }
-                        else if($(this).val() == '2')
-                        {
-                            $("#honor_form").show();
-                            $("#loved_one_form").hide();
-                            $("#select_chapter").hide();
-                        }
-                        else if($(this).val() == '0')
-                        {
-                            $("#honor_form").hide();
-                            $("#loved_one_form").hide();
-                            $("#select_chapter").show();
-                        }
-                        else if($(this).val() == '3')
-                        {
-                            $("#honor_form").hide();
-                            $("#loved_one_form").hide();
-                            $("#select_chapter").hide();
-                        }
-                        
-                    });
-                });
-    
-                $("#loved_one_form").hide();
-                $("#honor_form").hide();
-                $("#select_chapter").hide();
-            </script>
-<!--========================--------------------    END jQuery  -----------------=========================-->
-
-            <br>
-
-    <!--======== PAYPAL PAGE REDIRECT BUTTON============--> 
-
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target = "_blank">
-
-                <!-- Identify your business so that you can collect the payments. -->
-                <input type="hidden" name="business"
-                    value="donations@HOW.org">
-
-                <!-- Specify a Donate button. -->
-                <input type="hidden" name="cmd" value="_donations">
-
-                <!-- Specify details about the contribution -->
-                <input type="hidden" name="item_name" value="Heroes on the Water"  id = "item_name">
-                <input type="hidden" name="item_number" value="Donation" id = "item_reason">
-                <input type="hidden" name="amount" value="0" id = "paypalAmnt">
-                <input type="hidden" name="currency_code" value="USD">
-
-                <!-- Display the payment button. -->
-                    <span><input type="image" name="submit"
-                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                    alt="PayPal - The safer, easier way to pay online" class = "col-sm-offset-5" 
-                        ng-click="createDonor()"> <!--adds new donor to db and redirects to paypal -->
-                    <img alt="" width="1" height="1"
-                    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></span>
-            </form>
+    <section id="main-info" class="pad-xl">
+        <div  class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <h2 class="black">Corporate Matching Gifts</h2>
+                <hr style="width: 75%" class="line yellow"><br>
+                <p style="text-align: left;">Corporate matching gifts are a great way to maximize a personal contribution to increase the impact of your gift. By tapping into an employer’s matching gift benefit, donation amounts may double or even triple!</p>
+                <br>
+                <p style="text-align: left;">First, find out if your company has a matching gift program from the <a style="color: #428bca;  font-weight: inherit;  font-size: inherit;  text-decoration: underline;" href="https://www.dropbox.com/s/44d0amxfi02v98e/Corporate_Matching_List.pdf">Corporate Match List</a><br><br>Each company has its own guidelines for employees, spouses, retirees, and widows/widowers. Most corporate procedures are simple:</p><br>
+                <p style="text-align:left; color:black;">
+                1. Request a Matching Form from Human Resources or your company website.<br>
+                2. Complete and submit the form to your employer or HOW, according to the directions on the form.<br>
+                3. HOW will verify the form with the company.<br>
+                4. Company issues a matching gift contribution to HOW.<br>
+                </p>
+            </div>
+        </div>
+    </section>
 
 
-<!--======= PAYPAL INFO =========-->
-            <!--html reference: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_reference_landing/-->
-            <!--to write own url: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/html_example_donate/-->
-            <!--checkout vars: https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/#auto-fill-paypal-checkout-page-variables-->
-
-
-        <!-- CORPOATE DONATION-->
-            <br><br>
-            <h1 class="text-center">Corporate Matching Gifts</h1>
-            <p>Corporate matching gifts are a great way to maximize a personal contribution to increase the impact of your gift. By tapping into an employer’s matching gift benefit, donation amounts may double or even triple!</p>
-            <p>How do I get my gift matched?</p>
-            <p>First, find out if your company has a matching gift program.(<a href="https://www.dropbox.com/s/44d0amxfi02v98e/Corporate_Matching_List.pdf">Corporate Match List</a>) Each company has its own guidelines for employees, spouses, retirees, and widows/widowers. Most corporate procedures are simple:</p>
-            <ul>
-                <li>Request a Matching Form from Human Resources or your company website.</li>
-                <li>Complete and submit the form to your employer or HOW, according to the directions on the form.</li>
-                <li>HOW will verify the form with the company.</li>
-                <li>Company issues a matching gift contribution to HOW.</li>
-            </ul>
-
-            <h1 class="text-center">DONATE BY MAIL</h1>
-                <p>If you prefer to make a contribution by check, click and print the Donor Response Form to mail in with your check to: Heroes on the Water, 101-C N. Greenville Ave. #55, Allen, TX 75002.</p>
-                <a  class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" 
+    <section id="pricing" class="pad-sm">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <h2>Donate By Mail</h2>
+                <br>
+                <p style="color: white;">If you prefer to make a contribution by check, click and print the Donor Response Form to mail in with your check to:<br><br><strong> Heroes on the Water<br> 101-C N. Greenville Ave. #55<br> Allen, TX 75002.</strong></p>
+                <br><br>
+                <a class="btn btn-success btn-lg" 
                     href = "http://heroesonthewater.org/wp-content/uploads/2014/01/Donation-Response-Form.pdf"
                     target = "_blank">Donor Response Form (pdf)</a>
-               
+            </div>
         </div>
+    </section>
 
-    </div>
+    <footer>
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-sm-8 margin-20">
+            <ul class="list-inline social">
+              <li>Connect with us on</li>
+              <li><a href="https://twitter.com/Heroesonthewate"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/HeroesontheWater"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="http://www.youtube.com/user/PaddleFishHeal"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/heroes-on-the-water?trk=company_name"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+            <p style="font-size:12px;">Heroes on the Water is a 501(c)(3)public charity with the Guidestar Exchange Seal that relies totally on contributions from individuals, corporations and foundations. Donations to Heroes on the Water are tax deductible depending on an individual’s particular situation.</p>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="./js/links/wow.min.js"></script>
+    <script src="js/links/bootstrap.min.js"></script>
+    <script src="js/links/main.js"></script>
 </body>
 </html>

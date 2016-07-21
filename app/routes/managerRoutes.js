@@ -1,5 +1,6 @@
 // list of manager views for admin, regions, chapters, and events
 var Model = require('../models/event');
+var User = require('../models/user');
 
 module.exports = function(app) {
     // admin view for everything
@@ -25,12 +26,17 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            res.render('./ejs/main/events.ejs', {regions: regions}, function(err, html) {
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }
 
-                res.send(html);
+                res.render('./ejs/main/events.ejs', {regions: regions, user: user}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                });
             })
         });
     });

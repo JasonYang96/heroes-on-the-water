@@ -23,7 +23,9 @@ var Event = mongoose.model('event', {
         required: true
     },
     description : String,
-    inventory : []
+    inventory : [],
+    participants: [],
+    volunteers: []
 });
 
 // chapter model

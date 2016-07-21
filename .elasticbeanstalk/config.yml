@@ -1,6 +1,8 @@
 branch-defaults:
   jy-refresh:
     environment: howTeam5-env
+  master:
+    environment: swagramon
 global:
   application_name: HOW-Team5
   default_ec2_keyname: null
