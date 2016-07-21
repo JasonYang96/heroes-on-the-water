@@ -1,0 +1,71 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Heroes on the Water</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html            { overflow-y:scroll; }
+        body            { padding-top:50px; padding-bottom:50px;}
+        .region-list    { background-color: #F5F5DC; overflow: hidden; margin: 0 auto;}
+        .chapter-list   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
+        .event-list     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Heroes on the Water</h1>
+        </div>
+
+        <!-- EVENT LIST -->
+        <div class="region-list">
+            <% for(var i=0; i < regions.length; i++) {%>
+                <div class="col-sm-4"><h1>Region: <%= regions[i].name %></h1></div>
+                <div class="col-sm-12 chapter-list">
+                    <% for(var j=0; j < regions[i].chapters.length; j++) {%>
+                        <div class="col-sm-4">
+                            <h2>Chapter: <%= regions[i].chapters[j].name %></h2>
+                            <p>Location: <%= regions[i].chapters[j].location %></p>
+                        </div>
+                        <div class="col-sm-12 event-list">
+                                <% for(var k=0; k < regions[i].chapters[j].events.length; k++) {%>
+                                    <div class="col-sm-4">
+                                        <h3>Name: <%= regions[i].chapters[j].events[k].name %></h3>
+                                        <h4>Date: <%= regions[i].chapters[j].events[k].date %></h4>
+                                        <h4>Start: <%= regions[i].chapters[j].events[k].start %></h4>
+                                        <h4>End: <%= regions[i].chapters[j].events[k].end %></h4>
+                                        <h4>Venue: <%= regions[i].chapters[j].events[k].venue %></h4>
+                                        <p>Description: <%= regions[i].chapters[j].events[k].description %></p>
+                                        <p>Inventory:</p>
+                                        <% for(var l=0; l < regions[i].chapters[j].events[k].inventory.length; l++) {%>
+                                            <div class="col-sm-12">
+                                            <p> <%= regions[i].chapters[j].events[k].inventory[l].number %> <%= regions[i].chapters[j].events[k].inventory[l].item %> </p>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

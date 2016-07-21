@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Donor"><head>
   <meta charset="utf-8">
-  <title>Donate | Heroes on the Water</title>
+  <title>Donors | Heroes on the Water</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/donors.css">
-
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -59,6 +59,7 @@
          
          <div class="row header-info">
            <div class="col-sm-10 col-sm-offset-1 text-center">
+            <br>
              <h1 class="white">Donors</h1>
              <br />
              <p class="white"><strong>A huge thank you to the donors that have helped Heroes on the Water and over 20,000 veterans</strong></p>
@@ -71,19 +72,40 @@
           
          <section id="main-info" class="pad-sm">
           <div class="container">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-              <h2 class="black">Thank You</h2>
-              <hr style="width: 50%" class="line blue">
+            <div class="col-sm-6 text-center">
+              <h2 class="black">Donors</h2>
+              <hr style="width: 75%" class="line purple">
             </div>
-            
-            <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
+            <div class="col-sm-6 text-center">
+              <h2 class="black">In Honor Of</h2>
+              <hr style="width: 75%" class="line yellow">
+            </div>
+
+<!--             <div class="donorsList col-md-6 col-md-offset-3 text-center" ng-controller="donorsListController">
                 <div ng-repeat="donor in donors">
                     <p>{{donor.fName}} {{donor.lName}}</p>
                 </div>
-                <% for(var i=0; i<40; i++) {%>
-                   <p>Jane Doenor</p>
-                <% } %>
             </div>
+ -->
+
+
+            <div id="donorslist" ng-controller="donorsListController">
+              
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(0,upperBound)">
+                  <p>{{donors[n].fName}} {{donors[n].lName}}</p>
+                </div>
+              </div>
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(lowerBound, donors.length)">
+                  <p>{{donors[n].fName}} {{donors[n].lName}}</p>
+                </div>
+              </div>
+           </div>
+          
+            <!--Todo: Temoc needs to build a database of "in honor of" donations as well as account for all fields-->
+
+
 
           </div>
          </section>
@@ -111,7 +133,7 @@
     <!-- Javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="./js/links/wow.min.js"></script>
     <script src="js/links/bootstrap.min.js"></script>

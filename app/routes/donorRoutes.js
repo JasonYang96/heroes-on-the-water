@@ -46,7 +46,7 @@ module.exports = function(app) {
     });
 
     app.get('/donate', function(req, res) {
-        res.render('./ejs/donate/donate.ejs', function(err, html) {
+        res.render('./ejs/donate/donateRak.ejs', function(err, html) {
             if (err) {
                 res.send(err);
             }

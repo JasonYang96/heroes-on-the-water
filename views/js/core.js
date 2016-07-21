@@ -30,6 +30,7 @@ function donorController($scope, $http) {
                 console.log(data);
                 $scope.name = null;
                 $scope.donors = data;
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -45,10 +46,23 @@ function donorsListController($scope, $http) {
             $scope.donors = data;
             console.log("=== donor List Controller ===")
             console.log(data);
+            $scope.upperBound = Math.ceil($scope.donors.length/2);
+            $scope.lowerBound = $scope.upperBound + 1;
+            console.log($scope.floored);
+
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+
+    $scope.range = function(min, max, step) {
+        step = step || 1;
+        var input = [];
+        for (var i = min; i <= max; i += step) {
+            input.push(i);
+        }
+        return input;
+    };
 };
 
 function userController($scope, $http) {
@@ -61,6 +75,7 @@ function userController($scope, $http) {
                 console.log(data);
                 $scope.formData = {};
                 $scope.user = data;
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -73,6 +88,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -86,6 +102,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -99,6 +116,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -112,6 +130,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
