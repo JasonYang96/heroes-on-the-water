@@ -26,7 +26,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            User.findOne( {"id": req.body.id }, function(err, user) {
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }

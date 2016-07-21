@@ -37,7 +37,7 @@
     <div class="container" ng-controller="mainController">
         <div class="jumbotron text-center">
             <% if(user) {%>
-                <h1>Events for <%= user.name %></h1>
+                <h1>Events for <%= user.local.name %></h1>
             <%} else {%>
                 <h1>Heroes on the Water Events:</h1>
             <%} %>

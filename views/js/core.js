@@ -14,8 +14,8 @@ function mainController($scope, $http) {
             console.log('Error: ' + data);
         });
 
-    $scope.loadEvents = function(region) {
-        $http.get('/events', region)
+    $scope.loadEvents = function() {
+        $http.get('/events')
             .success(function(data) {
                 console.log(data);
             })

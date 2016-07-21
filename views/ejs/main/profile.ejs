@@ -91,7 +91,7 @@
             <% if (user.local.email == "admin") { %>
                 <a href="/admin" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Admin</a>
             <% } %>
-            <a href="/events" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="loadEvents(<%= JSON.stringify(user) %>)">Events</a>
+            <a href="/events" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="loadEvents()">Events</a>
             <br>
             <a href="/donate" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4">Donate</a>
         </div>
