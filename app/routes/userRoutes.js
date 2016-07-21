@@ -1,6 +1,7 @@
 // app/routes.js
 
 var User = require('../models/user');
+var Model = require('../models/event');
 
 module.exports = function(app, passport) {
 
@@ -52,8 +53,23 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('./ejs/main/profileRak.ejs', {
-            user : req.user // get the user out of session and pass to template
+        Model.region.find(function(err, regions) {
+            if (err) {
+                res.send(err);
+            }
+
+            User.findOne( {"_id": req.user.id }, function(err, user) {
+                if (err) {
+                    res.send(err);
+                }
+
+                res.render('./ejs/main/profileRak.ejs', {regions: regions, user: user}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                });
+            })
         });
     });
 
