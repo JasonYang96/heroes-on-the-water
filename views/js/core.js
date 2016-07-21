@@ -30,6 +30,7 @@ function donorController($scope, $http) {
                 console.log(data);
                 $scope.name = null;
                 $scope.donors = data;
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -74,6 +75,7 @@ function userController($scope, $http) {
                 console.log(data);
                 $scope.formData = {};
                 $scope.user = data;
+                location.reload();
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -86,6 +88,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -99,6 +102,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -112,6 +116,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
@@ -125,6 +130,7 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
+            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
