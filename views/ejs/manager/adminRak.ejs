@@ -26,6 +26,9 @@
 
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+
+     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 
   </head>
@@ -38,7 +41,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><span>HoW Dashboard</span></a>
+              <a href="/index" class="site_title""><span>HoW Dashboard</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -47,6 +50,7 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
+                  <li><a href="/index"> HoW Dashboard </a></li>
                   <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                   <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
                   <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
@@ -119,11 +123,110 @@
               </div>
               <!-- /top tiles -->
           <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <h1>Upcoming Events</h1>
-            </div>
-          </div>
 
+
+
+              <!-- FORM TO CREATE REGIONS -->
+              <div id="region-creation-form" class="row creation-form" ng-controller="regionsController">
+                  <h1 class="text-center"> REGION CREATION </h1>
+                  <div class="col-sm-8 col-sm-offset-2 text-center">
+                      <form>
+                          <div class="form-group">
+                              <input type="text" class="form-control input-lg text-center" placeholder="Insert name here" ng-model="formData.name">
+                          </div>
+                      </form>
+                  </div>
+
+                  <!-- createToDo() WILL CREATE NEW TODOS -->
+                  <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createRegion()">Add Region</button>
+              </div>
+
+              <!-- EVENT LIST -->
+              <div class="col-sm-12 row" ng-controller="mainController">
+                  <!-- LOOP OVER THE EVENTS IN $scope.regions -->
+                  <div class="col-sm-12 region-list" ng-repeat="region in regions" ng-controller="regionsController">
+                      <div>
+                          <div class="col-sm-4"><h1>Region: {{region.name}}</h1></div>
+                          <div class="col-sm-6" ng-controller="userController">
+                              <div class="col-sm-10">
+                              <form>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                  </div>
+                              </form>
+                              </div>
+                              <div class="col-sm-2">
+                              <button type="submit" class="btn btn-primary btn-sm" ng-click="addRegionPermission(<%= JSON.stringify(region) %>)">Add</button>
+                              </div>
+                          </div>
+                          <div class="col-sm-1">
+                              <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}">Manage</a>
+                          </div>
+                          <div class="col-sm-1">
+                              <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteRegion(region.name)">Delete</button>
+                          </div>
+                      </div>
+                      <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chaptersController">
+                          <div>
+                              <div class="col-sm-4">
+                                  <h2>Chapter: {{chapter.name}}</h2>
+                                  <p>Location: {{chapter.location}}</p>
+                              </div>
+                              <div class="col-sm-6" ng-controller="userController">
+                                  <div class="col-sm-10">
+                                  <form>
+                                      <div class="form-group">
+                                          <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                      </div>
+                                  </form>
+                                  </div>
+                                  <div class="col-sm-2">
+                                  <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
+                                  </div>
+                              </div>
+                              <div class="col-sm-1">
+                                  <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}">Manage</a>
+                              </div>
+                              <div class="col-sm-1">
+                                  <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(chapter.name)">Delete</button>
+                              </div>
+                          </div>
+                          <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
+                                  <div class="col-sm-4">
+                                      <h3>Name: {{event.name}}</h3>
+                                      <h4>Date: {{event.date}}</h4>
+                                      <h4>Start: {{event.start}}</h4>
+                                      <h4>End: {{event.end}}</h4>
+                                      <h4>Venue: {{event.venue}}</h4>
+                                      <p>Description: {{event.description}}</p>
+                                      <p>Inventory:</p>
+                                      <div class="col-sm-12" ng-repeat="item in event.inventory">
+                                      <p> {{item.number}} {{item.item}} </p>
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-6" ng-controller="userController">
+                                      <div class="col-sm-9">
+                                      <form>
+                                          <div class="form-group">
+                                              <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                          </div>
+                                      </form>
+                                      </div>
+                                      <div class="col-sm-3">
+                                      <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-1">
+                                      <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}/{{event.name}}">Manage</a>
+                                  </div>
+                                  <div class="col-sm-1">
+                                      <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
        
           <br />
 

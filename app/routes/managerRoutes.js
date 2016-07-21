@@ -9,7 +9,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            res.render('./ejs/manager/admin.ejs', {region: region}, function(err, html) {
+            res.render('./ejs/manager/adminRak.ejs', {region: region}, function(err, html) {
                 if (err) {
                     res.send(err);
                 }
