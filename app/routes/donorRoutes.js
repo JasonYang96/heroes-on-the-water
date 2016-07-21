@@ -133,3 +133,5 @@ module.exports = function (app) {
 
 
 }
+
+module.exports.donor = Donor;
