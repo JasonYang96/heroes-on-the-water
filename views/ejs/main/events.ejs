@@ -2,7 +2,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html>
+<html ng-app="HOW">
 <head>
     <!-- META -->
     <meta charset="utf-8">
@@ -23,15 +23,24 @@
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/controllers/regionsController.js"></script>
+    <script src="js/controllers/chaptersController.js"></script>
+    <script src="js/controllers/eventsController.js"></script>
+    <script src="js/services/main.js"></script>
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" ng-controller="mainController">
         <div class="jumbotron text-center">
-            <h1>Heroes on the Water</h1>
+            <% if(user) {%>
+                <h1>Events for <%= user.name %></h1>
+            <%} else {%>
+                <h1>Heroes on the Water Events:</h1>
+            <%} %>
         </div>
 
         <!-- EVENT LIST -->

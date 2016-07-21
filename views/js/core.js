@@ -13,6 +13,16 @@ function mainController($scope, $http) {
         .error(function(data) {
             console.log('Error: ' + data);
         });
+
+    $scope.loadEvents = function(region) {
+        $http.get('/events', region)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    }
 };
 
 // controller to handle listing, creating, and deleting of donors

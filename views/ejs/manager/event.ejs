@@ -78,10 +78,6 @@
         </div>
     </div>
 
-    <div class="mouse-icon hidden-xs">
-        <div class="scroll"></div>
-    </div>
-
     <section id="main-info">
         <div class="container">
             <div class="col-sm-8 col-sm-offset-2 text-center" ng-controller="eventsController">
@@ -155,7 +151,7 @@
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-2">
                         <div class="form-group">
-                            <select class=" form-control " >
+                            <select class="form-control" ng-model="formData.item" placeholder="Select inventory item here">
                                 <optgroup label="Boating">
                                     <option>Kayaks</option>
                                     <option>Oars</option>
