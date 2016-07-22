@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HOW"><head>
+  <meta charset="utf-8">
+  <title>Events | Heroes on the Water</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!--Styles-->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/donate.css">
+
+
+  <!--Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <script src="js/links/modernizr-2.7.1.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/controllers/regionsController.js"></script>
+  <script src="js/controllers/chaptersController.js"></script>
+  <script src="js/controllers/eventsController.js"></script>
+  <script src="js/services/main.js"></script>
+
+
+</head>
+
+<body>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="logo" href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+              <li><a href="/donors">Donors</a></li>
+             <li><a href="/login">Log In</a></li>
+             <li><a href="/signup">Sign up</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-left">
+            <li><a href="/">Home</a></li>
+            </ul>
+         </div><!--/.navbar-collapse -->
+       </div>
+     </div>
+     <header>
+       <div class="container">
+         <div class="row">
+           <div class="col-xs-6">
+             <a href="/"><img src="img/home/logo-ready2.png" alt="Logo"></a>
+           </div>
+           <div class="col-xs-6 signin text-right navbar-nav">
+             <a href="/donors">Donors</a>&nbsp; &nbsp;<a href="/login">Log In</a>&nbsp; &nbsp;<a href="/signup">Sign Up</a>
+           </div>
+         </div>
+         
+         <div class="row header-info">
+           <div class="col-sm-10 col-sm-offset-1 text-center">
+           <br>
+             <h1 class="white">Donate</h1>
+             <br />
+             <p class="white"><strong>Thank you for choosing to support those we serve.</strong></p>
+             <br />
+           </div>
+         </div>
+         </div>
+     </header>
+
+      
+     <section id="main-info" class="pad-sm">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <h2 class="black">Events List </h2>
+              <hr style="width: 50%" class="line blue">
+             <div class="container" ng-controller="mainController">
+                 <div class="jumbotron text-center">
+                     <h1>Events List</h1>
+                 </div>
+
+                 <!-- EVENT LIST -->
+                 <div class="region-list text-center">
+                     <% for(var i=0; i < regions.length; i++) {%>
+                         <div class=""><h2>Region: <%= regions[i].name %></h2></div>
+                         <div class="chapter-list">
+                             <% for(var j=0; j < regions[i].chapters.length; j++) {%>
+                                     <h4>Chapter: <%= regions[i].chapters[j].name %></h4>
+                                     <h3>Location: <%= regions[i].chapters[j].location %></h3>
+                                 <div class="event-list">
+                                         <% for(var k=0; k < regions[i].chapters[j].events.length; k++) {%>
+                                             <div class="">
+                                                 <h3>Name: <%= regions[i].chapters[j].events[k].name %></h3>
+                                                 <h4>Date: <%= regions[i].chapters[j].events[k].date %></h4>
+                                                 <h4>Start: <%= regions[i].chapters[j].events[k].start %></h4>
+                                                 <h4>End: <%= regions[i].chapters[j].events[k].end %></h4>
+                                                 <h4>Venue: <%= regions[i].chapters[j].events[k].venue %></h4>
+                                                 <p>Description: <%= regions[i].chapters[j].events[k].description %></p>
+                                                 <p>Inventory:</p>
+                                                 <% for(var l=0; l < regions[i].chapters[j].events[k].inventory.length; l++) {%>
+                                                     <div class="">
+                                                     <p> <%= regions[i].chapters[j].events[k].inventory[l].number %> <%= regions[i].chapters[j].events[k].inventory[l].item %> </p>
+                                                     </div>
+                                                 <% } %>
+                                             </div>
+                                         <% } %>
+                                 </div>
+                             <% } %>
+                         </div>
+                         <hr>
+                     <% } %>
+                 </div>
+             </div>
+            </div>
+          </div>
+         
+    <footer>
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-sm-8 margin-20">
+            <ul class="list-inline social">
+              <li>Connect with us on</li>
+              <li><a href="https://twitter.com/Heroesonthewate"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/HeroesontheWater"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="http://www.youtube.com/user/PaddleFishHeal"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/heroes-on-the-water?trk=company_name"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+            <p style="font-size:12px;">Heroes on the Water is a 501(c)(3)public charity with the Guidestar Exchange Seal that relies totally on contributions from individuals, corporations and foundations. Donations to Heroes on the Water are tax deductible depending on an individual’s particular situation.</p>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="./js/links/wow.min.js"></script>
+    <script src="js/links/bootstrap.min.js"></script>
+    <script src="js/links/main.js"></script>
+</body>
+</html>

@@ -99,7 +99,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-                res.render('./ejs/main/events.ejs', {regions: regions}, function(err, html) {
+                res.render('./ejs/main/events_public.ejs', {regions: regions}, function(err, html) {
                     if (err) {
                         res.send(err);
                     }
