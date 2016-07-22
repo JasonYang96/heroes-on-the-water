@@ -57,6 +57,7 @@ p {
   font-weight: 400;
 }
 
+
 /*------------------Utilities---------------------*/
 a {
   color: inherit;
@@ -698,6 +699,40 @@ footer {
 
 }   
 
+/*===-- ADMIN DONORS STYLES ---===*/
+th, td{
+  padding: 5px;
+   border: 1px solid lightgrey;
+   border-collapse: collapse;
+   text-align: center;
+}
+.table-pad{
+  padding: 0px 15px 0px 15px !important;
+}
+.address, .addrPlus{
+  border-color: #fdc05d;
+ 
+}
+.prod, .prodPlus{
+  border-color: #70cbce;
+
+}
+
+
+/*.purple {
+  border-color: #6d3f96;
+  color: #6d3f96;
+}
+
+.blue {
+  border-color: #70cbce;
+  color: #70cbce
+}
+
+.yellow {
+  border-color: #fdc05d;
+  color: #fdc05d;
+}*/
 
 
 

@@ -1,6 +1,8 @@
 // list of manager views for admin, regions, chapters, and events
 var Model = require('../models/event');
+var donorModel = require('./donorRoutes.js');
 var User = require('../models/user');
+
 
 module.exports = function(app) {
     // admin view for everything
@@ -14,6 +16,23 @@ module.exports = function(app) {
                 if (err) {
                     res.send(err);
                 }
+                res.send(html);
+            })
+        });
+    });
+
+    // admin view of donors
+    app.get('/admin/donors', function(req, res) {
+        donorModel.donor.find(function(err, donors) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.render('./ejs/manager/admin_donors.ejs', {donors: donors}, function(err, html) {
+                if (err) {
+                    res.send(err);
+                }
+
                 res.send(html);
             })
         });
