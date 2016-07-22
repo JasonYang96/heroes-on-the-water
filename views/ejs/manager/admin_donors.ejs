@@ -109,7 +109,7 @@
 					<th class="prodPlus">Product Info<br><i class="fa fa-plus-square text-center" ></i></th>
 					<th class="prod prodMinus">What Product<br><i class="fa fa-minus-square" ></i></th>
 					<th class="prod">About Donor</th>
-					<th class="prod">Heard</th>
+					<th class="prod">Reference</th>
 				</tr>
 				<!--<div ng-repeat="donor in donors">-->
 				<tr ng-repeat="donor in donors">
@@ -178,8 +178,8 @@
 			$(".address").hide();
 			$(".addrPlus").show();
 
-			$(".prodPlus").hide();
-			$(".prod").show();
+			$(".prodPlus").show();
+			$(".prod").hide();
 		
 			
             $(document).ready(function(){
@@ -198,57 +198,6 @@
 			
             });
 
-            // // ========-   jQuery to set donation IN MEM OF... for paypal   -======
-            // $(document).ready(function(){
-            //     $("#reasonSelect").change(function(){
-            //         reason = $("#reasonSelect option:selected").html();
-            //         console.log("reason: " + reason);
-            //         // set description in paypal form
-            //         $("#item_reason").attr("value", reason);
-
-            // //========------ FORM HIDE/SHOW LOGIC ------=============
-            //         if($(this).val() == '1')
-            //         {
-            //             $("#loved_one_form").show();
-            //             $("#honor_form").hide();
-            //             $("#select_chapter").hide();
-            //             $("#inkind_form").hide();
-            //         }
-            //         else if($(this).val() == '2')
-            //         {
-            //             $("#honor_form").show();
-            //             $("#loved_one_form").hide();
-            //             $("#select_chapter").hide();
-            //             $("#inkind_form").hide();
-            //         }
-            //         else if($(this).val() == '0')
-            //         {
-            //             $("#honor_form").hide();
-            //             $("#loved_one_form").hide();
-            //             $("#select_chapter").show();
-            //             $("#inkind_form").hide();
-            //         }
-            //         else if($(this).val() == '3')
-            //         {
-            //             $("#honor_form").hide();
-            //             $("#loved_one_form").hide();
-            //             $("#select_chapter").hide();
-            //             $("#inkind_form").hide();
-            //         }
-            //         else if ($(this).val() == '4') {
-            //             $("#honor_form").hide();
-            //             $("#loved_one_form").hide();
-            //             $("#select_chapter").hide();
-            //             $("#inkind_form").show();
-            //         }
-                    
-            //     });
-            // });
-
-            // $("#loved_one_form").hide();
-            // $("#honor_form").hide();
-            // $("#select_chapter").hide();
-            // $("#inkind_form").hide();
         </script>
 
 
