@@ -193,7 +193,9 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                <% if (user.local.type == "participant") { %>
+                <% if (user.local.name == "admin") { %>
+                  <h3>administrator</h3>
+                <%} else if (user.local.type == "participant") { %>
                   <h3>participant</h3>
                 <%} else if (user.local.type == "volunteer") { %>
                   <h3>volunteer</h3>
@@ -204,9 +206,19 @@
                 <% } %>
                   <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                   <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
+                  <% if (user.local.name == "admin") { %>
+                  <li><a><i class="fa fa-pencil"></i> Manage <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="/admin">Regions</a></li>
+                      <li><a href="/profile">Chapters</a></li>
+                      <li><a href="/profile">Events</a></li>
+                    </ul>
+                  </li>
+                  <% } %>
                   <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
                   <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>
+                  
                 </ul>
               </div>
             </div>
@@ -290,6 +302,7 @@
                 </div>
               </div>
               <% } %>
+              <hr>
               <!-- /top tiles -->
           <div class="row">
             <div class="container" ng-controller="mainController">
