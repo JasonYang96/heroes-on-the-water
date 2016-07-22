@@ -12,6 +12,7 @@
     <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
     <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
     <script src="http://localhost:8080/js/services/main.js"></script>
+
         <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -172,6 +173,25 @@
       transition: all 0.35s ease-in-out;
     }
 
+    /*===-- ADMIN DONORS STYLES ---===*/
+    th, td{
+      padding: 5px;
+       border: 1px solid lightgrey;
+       border-collapse: collapse;
+       text-align: center;
+    }
+    .table-pad{
+      padding: 0px 15px 0px 15px !important;
+    }
+    .address, .addrPlus{
+      border-color: #fdc05d;
+     
+    }
+    .prod, .prodPlus{
+      border-color: #70cbce;
+
+    }
+
     </style>
 
 
@@ -288,16 +308,15 @@
             </div>
             <hr>
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <h1>"With great power, comes great responsibility" - Uncle Ben</h1>
-                <h3>Charts will go here when we have some metrics to display! </h3>
-              </div>
+                <div class="jumbotron text-center">
+                    <h1>Donor Management</h1>
+                </div>
             </div>
 
-            <section class="table-pad text-center">
+            <div style="width: 100% !important;">
             <div id="donorslist" ng-controller="donorsListController">
               <div class="text-center">
-                <table align="center">
+                <table align="center" style="margin: 0; width: 100%;">
                   <tr>
                     <th>First</th>
                     <th>Last</th>
@@ -353,11 +372,9 @@
                   </tr>
                   <!--</div>-->
                 </table>
-
-
               </div>
             </div>
-            </section>
+            </div>
 
               <script>
             var donateVal;
