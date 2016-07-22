@@ -44,7 +44,7 @@ module.exports = function(app) {
         });
     });
 
-    // read only view of events
+    // read only view of events --participant
     app.get('/events', function(req, res) {
         Model.region.find(function(err, regions) {
             if (err) {
@@ -65,6 +65,24 @@ module.exports = function(app) {
             })
         });
     });
+
+    // read only view of events --public
+    app.get('/eventspublic', function(req, res) {
+        Model.region.find(function(err, regions) {
+            if (err) {
+                res.send(err);
+            }
+
+                res.render('./ejs/main/events_public.ejs', {regions: regions}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                })
+        });
+    });
+
+
 
     // manager view for a specific region
     app.get('/:region_name', function(req, res) {
