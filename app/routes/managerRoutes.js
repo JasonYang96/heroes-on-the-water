@@ -27,20 +27,46 @@ module.exports = function(app) {
         });
     });
 
-    // admin view of donors
-    app.get('/admin/donors', function(req, res) {
-        donorModel.donor.find(function(err, donors) {
+    app.get('/admin_public', function(req, res) {
+        Model.region.find(function(err, region) {
             if (err) {
                 res.send(err);
             }
 
-            res.render('./ejs/manager/admin_donors.ejs', {donors: donors}, function(err, html) {
+            res.render('./ejs/manager/admin.ejs', {region: region}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+            })
+        });
+    });
+
+    // admin view of donors
+    app.get('/admin/donors', function(req, res) {
+        Model.region.find(function(err, regions) {
+            if (err) {
+                res.send(err);
+            }
+
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }
 
-                res.send(html);
-            })
+                donorModel.donor.find(function(err, donors) {
+                    if (err) {
+                        res.send(err);
+                    }
+
+                    res.render('./ejs/manager/admin_donors_rak.ejs', {donors: donors, user: user, regions: regions}, function(err, html) {
+                        if (err) {
+                            res.send(err);
+                        }
+                        res.send(html);
+                    })
+                });
+            });
         });
     });
 
@@ -73,7 +99,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-                res.render('./ejs/main/events_public.ejs', {regions: regions}, function(err, html) {
+                res.render('./ejs/main/events.ejs', {regions: regions}, function(err, html) {
                     if (err) {
                         res.send(err);
                     }
