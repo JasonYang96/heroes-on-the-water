@@ -194,21 +194,20 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
+                <% if (user.local.type == "participant") { %>
+                  <h3>participant</h3>
+                <%} else if (user.local.type == "volunteer") { %>
+                  <h3>volunteer</h3>
+                <% } else if (user.local.type == "manager") { %>
+                  <h3>manager</h3>
+                <% } else if (user.local.type == "founder") {  %>
+                  <h3>founder</h3>
+                <% } %>
                   <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                   <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
                   <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
                   <li><a href="/"><i class="fa fa-cog"></i> Settings </a></li>
-                  <% if (user.local.type == "participant") { %>
-                    <h3>participant</h3>
-                  <%} else if (user.local.type == "volunteer") { %>
-                    <h3>volunteer</h3>
-                  <% } else if (user.local.type == "manager") { %>
-                    <h3>manager</h3>
-                  <% } else if (user.local.type == "founder") {  %>
-                    <h3>founder</h3>
-                  <% } %>
-                 
                 </ul>
               </div>
             </div>
