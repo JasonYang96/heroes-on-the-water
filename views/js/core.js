@@ -89,7 +89,9 @@ function userController($scope, $http) {
             })
             .error(function(data) {
                 console.log('Error: ' + data);
+                location.reload();
             });
+            location.reload()
     };
     // adds regional manager permissions
     $scope.addRegionPermission = function(region) {
