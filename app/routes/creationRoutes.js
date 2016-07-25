@@ -151,7 +151,7 @@ module.exports = function(app) {
 
 		        console.log(regions);
 
-		        getEvents(res)
+		        getEvents(res);
 			}
 		);
 	});

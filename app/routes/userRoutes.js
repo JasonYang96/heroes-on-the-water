@@ -167,6 +167,29 @@ module.exports = function(app, passport) {
             console.log(user);
         });
     });
+
+    // sign up api
+    app.post('/api/signup/:userid', function(req, res) {
+        User.findOneAndUpdate( {"_id": req.params.userid }, {$addToSet: {"events": req.body.id}}, function(err, user) {
+            if (err) {
+                res.send(err);
+            }
+
+            console.log(user);
+        });
+
+        Model.region.findOneAndUpdate(
+            {"chapters.events._id" : req.body.id}, 
+            {$addToSet: {"chapters.events.participants" : req.params.userid }},
+            function(err, region) {
+                if (err) {
+                    res.send(err);
+                }
+
+                console.log(region);
+            }
+        );
+    });
 };
 
 // route middleware to make sure a user is logged in

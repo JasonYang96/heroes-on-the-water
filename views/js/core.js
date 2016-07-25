@@ -23,6 +23,17 @@ function mainController($scope, $http) {
                 console.log('Error: ' + data);
             });
     }
+
+    $scope.signUp = function(user, event){
+        var eventId = { "id": event };
+        $http.post('/api/signup/' + user._id, eventId)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            })
+    }
 };
 
 // controller to handle listing, creating, and deleting of donors

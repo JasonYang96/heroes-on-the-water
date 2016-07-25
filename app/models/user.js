@@ -60,7 +60,8 @@ var userSchema = mongoose.Schema({
          default: Date.now
        }
     },
-    manager: {}
+    manager: {},
+    events: []
 });
 
 // methods ======================

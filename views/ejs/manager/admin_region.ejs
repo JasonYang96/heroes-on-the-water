@@ -364,6 +364,15 @@
                                     <div class="col-sm-12" ng-repeat="item in event.inventory">
                                     <p> {{item.number}} {{item.item}} </p>
                                     </div>
+                                    <% for(var i=0; i < users.length; i++) {%>
+                                      <% for(var j=0; j< users[i].events.length; j++) {%>
+                                        <% if(users[i].events[j] === "test") {%>
+                                          <div class="col-sm-12">
+                                          <p>test</p>
+                                          </div>
+                                        <%} %>
+                                      <% } %>
+                                    <% } %>
                                 </div>
                                 <div class="col-sm-6" ng-controller="userController">
                                     <div class="col-sm-9">

@@ -12,17 +12,23 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            User.findOne( {"_id": req.user.id }, function(err, user) {
+            User.find(function(err, users) {
                 if (err) {
                     res.send(err);
                 }
 
-                res.render('./ejs/manager/admin_region.ejs', {region: region, user: user}, function(err, html) {
+                User.findOne( {"_id": req.user.id }, function(err, user) {
                     if (err) {
                         res.send(err);
                     }
-                    res.send(html);
-                });
+
+                    res.render('./ejs/manager/admin_region.ejs', {region: region, user: user, users: users}, function(err, html) {
+                        if (err) {
+                            res.send(err);
+                        }
+                        res.send(html);
+                    });
+                })
             })
         });
     });
