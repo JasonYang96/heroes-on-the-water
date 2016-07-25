@@ -103,7 +103,21 @@
               </div>
            </div>
           
-            <!--Todo: Temoc needs to build a database of "in honor of" donations as well as account for all fields-->
+            <div id="honorlist" ng-controller="donorsListController">
+              
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(0,upperBound)">
+                  <p ng-hide="isUndefOrNull(donors[n].loved_one)">{{donors[n].loved_one}}</p>
+                  <p ng-hide="isUndefOrNull(donors[n].loved_one) && isUndefOrNull(donors[n].loved_one) && donors[n].description != 2">{{donors[n].letter_fName}} {{donors[n].letter_lName}}</p>
+                </div>
+              </div>
+              <div class="col-sm-3 text-center">
+                <div ng-repeat="n in range(lowerBound, donors.length)">
+                  <p ng-hide="isUndefOrNull(donors[n].loved_one)">{{donors[n].loved_one}}</p>
+                  <p ng-hide="isUndefOrNull(donors[n].loved_one) && isUndefOrNull(donors[n].loved_one) && donors[n].description != 2">{{donors[n].letter_fName}} {{donors[n].letter_lName}}</p>
+                </div>
+              </div>
+           </div>
 
 
 

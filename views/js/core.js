@@ -23,6 +23,11 @@ function mainController($scope, $http) {
                 console.log('Error: ' + data);
             });
     }
+
+       $scope.isUndefOrNull = function(val)
+    {
+        return angular.isUndefined(val) || val == null  || val == '';
+    }
 };
 
 // controller to handle listing, creating, and deleting of donors
