@@ -40,6 +40,12 @@ function mainController($scope, $http) {
             })
     }
 
+    $scope.toggleHide = function(data) {
+        // $scope.isHidden = !$scope.isHidden;
+        data.isHidden = !data.isHidden;
+    }
+    $scope.isHidden = false;
+
     $scope.isUndefOrNull = function(val)
     {
         return angular.isUndefined(val) || val == null  || val == '';
@@ -169,4 +175,13 @@ function userController($scope, $http) {
             console.log('Error: ' + data);
         });
     }
+
+}
+
+function expandController($scope) {
+    $scope.exp = true;
+};
+function toggle(data){
+    data.visible = !data.visible;
+    console.log("toggle time");
 }

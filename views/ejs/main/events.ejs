@@ -1,270 +1,298 @@
 <!-- views/profile.ejs -->
 <!doctype html>
 <html ng-app="User">
+
 <head>
-    <title>Heroes on the Water</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="http://localhost:8080/js/core.js"></script>
-    <script src="http://localhost:8080/js/controllers/regionsController.js"></script>
-    <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
-    <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
-    <script src="http://localhost:8080/js/services/main.js"></script>
-        <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <title>Heroes on the Water</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="http://localhost:8080/js/core.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- NProgress -->
-    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+  <!-- NProgress -->
+  <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- bootstrap-progressbar -->
+  <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- JQVMap -->
+  <link href="/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
 
-   <!-- Custom Theme Style -->
-   <link href="/build/css/custom.min.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="/build/css/custom.min.css" rel="stylesheet">
 
-   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
-   <style>
-   h1, h2, h3, h4, h5, h6, p, .btn, .navbar-nav a, .form-control, .list-inline, small, #pricing {
-     font-family: 'Montserrat', sans-serif;
-   }
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet'
+    type='text/css'>
+    <link rel="stylesheet" href="../../css/donors.css">
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    .btn,
+    .navbar-nav a,
+    .form-control,
+    .list-inline,
+    small,
+    #pricing {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    p,
+    .lead {
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    h1 {
+      font-size: 55px;
+      line-height: 55px;
+      letter-spacing: -1px;
+      color: #73879C;
+      font-weight: 700;
+    }
+    
+    h2 {
+      font-size: 40px;
+      line-height: 40px;
+      etter-spacing: -0.5px;
+      color: #73879C;
+      font-weight: 700;
+    }
+    
+    h3 {
+      font-size: 16px;
+      line-height: 30px;
+      letter-spacing: 0px;
+      color: #231f20;
+      font-weight: 700;
+    }
+    
+    .lead {
+      font-size: 21px;
+      line-height: 26px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+    
+    p {
+      font-size: 17px;
+      line-height: 22px;
+      color: #929496;
+      font-weight: 400;
+    }
+    
+    a {
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      text-decoration: none;
+    }
+    
+    a:hover,
+    a:focus {
+      text-decoration: none;
+      color: #231f20;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+    
+    .fa-lg {
+      font-size: 1.33333em;
+      line-height: 0.75em;
+      vertical-align: -10%;
+    }
+    
+    ::selection {
+      background: #231f20;
+      /* Safari */
+      color: #FFFFFF;
+    }
+    
+    ::-moz-selection {
+      background: #231f20;
+      /* Firefox */
+      color: #FFFFFF;
+    }
+    /*------------------Buttons---------------------*/
+    
+    .btn:focus {
+      outline: 0px auto -webkit-focus-ring-color;
+      outline: none;
+    }
+    
+    .btn {
+      text-transform: uppercase;
+      border-radius: 4px;
+      border: none;
+    }
+    
+    .btn-lg {
+      font-size: 13px;
+      line-height: 1.33;
+      padding: 22px 30px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    
+    .btn-sm {
+      font-size: 11px;
+      line-height: 1.33;
+      padding: 10px 18px;
+      font-weight: 400;
+    }
+    
+    .btn-wide {
+      width: 100%;
+      font-size: 13px;
+      line-height: 1.33;
+      padding: 18px 28px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    
+    .btn-primary {
+      background-color: #70cbce;
+      color: #ffffff;
+    }
+    
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active {
+      background-color: #8be2e5;
+      color: #ffffff;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+    
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #231f20;
+    }
+    
+    .btn-secondary:hover,
+    .btn-secondary:focus,
+    .btn-secondary:active,
+    .btn-secondary.active {
+      background-color: #ededed;
+      color: #231f20;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+    /*For Events Collapse*/
+    
+    #nested-table{
+    margin-bottom: 0px;
+    }
+    #expanded-data {
+        margin-left: 20px;
+    }
+  </style>
 
-   p, .lead {
-     font-family: 'Raleway', sans-serif;
-   }
-
-   h1 {
-     font-size: 55px;
-     line-height: 55px;
-     letter-spacing: -1px;
-     color: #73879C;
-     font-weight: 700;
-   }
-
-   h2 {
-     font-size: 40px;
-     line-height: 40px;
-     etter-spacing: -0.5px;
-     color: #73879C;
-     font-weight: 700;
-   }
-
-   h3 {
-     font-size: 16px;
-     line-height: 30px;
-     letter-spacing: 0px;
-     color: #231f20;
-     font-weight: 700;
-   }
-
-   .lead {
-     font-size: 21px;
-     line-height: 26px;
-     color: #ffffff;
-     font-weight: 400;
-   }
-
-   p {
-     font-size: 17px;
-     line-height: 22px;
-     color: #929496;
-     font-weight: 400;
-   }
-   a {
-     color: inherit;
-     font-weight: inherit;
-     font-size: inherit;
-     text-decoration: none;
-   }
-
-   a:hover, a:focus {
-     text-decoration: none;
-     color: #231f20;
-     -webkit-transition: all 0.35s ease-in-out;
-     -moz-transition: all 0.35s ease-in-out;
-     -o-transition: all 0.35s ease-in-out;
-     transition: all 0.35s ease-in-out;
-   }
-
-   .fa-lg {
-     font-size: 1.33333em;
-     line-height: 0.75em;
-     vertical-align: -10%;
-   }
-
-   ::selection {
-     background: #231f20; /* Safari */
-     color: #FFFFFF;
-   }
-   ::-moz-selection {
-     background: #231f20; /* Firefox */
-     color: #FFFFFF;
-   }
+</head>
 
 
+<body class="nav-md">
 
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><span>HoW Dashboard</span></a>
+          </div>
 
-   /*------------------Buttons---------------------*/
-   .btn:focus {
-     outline: 0px auto -webkit-focus-ring-color;
-     outline: none;
-   }
+          <div class="clearfix"></div>
 
-   .btn {
-     text-transform: uppercase;
-     border-radius: 4px;
-     border: none;
-   }
-
-   .btn-lg {
-     font-size: 13px;
-     line-height: 1.33;
-     padding: 22px 30px;
-     font-weight: 400;
-     letter-spacing: 1px;
-   }
-
-   .btn-sm {
-     font-size: 11px;
-     line-height: 1.33;
-     padding: 10px 18px;
-     font-weight: 400;
-   }
-
-   .btn-wide {
-     width: 100%;
-     font-size: 13px;
-     line-height: 1.33;
-     padding: 18px 28px;
-     font-weight: 400;
-     letter-spacing: 1px;
-   }
-
-   .btn-primary {
-     background-color:#70cbce;
-     color: #ffffff;
-   }
-
-   .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
-     background-color: #8be2e5;
-     color: #ffffff;
-     -webkit-transition: all 0.35s ease-in-out;
-     -moz-transition: all 0.35s ease-in-out;
-     -o-transition: all 0.35s ease-in-out;
-     transition: all 0.35s ease-in-out;
-   }
-
-   .btn-secondary {
-     background-color: #ffffff;
-     color: #231f20;
-   }
-
-   .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
-     background-color: #ededed;
-     color: #231f20;
-     -webkit-transition: all 0.35s ease-in-out;
-     -moz-transition: all 0.35s ease-in-out;
-     -o-transition: all 0.35s ease-in-out;
-     transition: all 0.35s ease-in-out;
-   }
-
-   </style>
-
-  </head>
-
-
-  <body class="nav-md">
-
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><span>HoW Dashboard</span></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <ul class="nav side-menu">
                 <% if (user.local.name == "admin") { %>
                   <h3>administrator</h3>
-                <%} else if (user.local.type == "participant") { %>
-                  <h3>participant</h3>
-                <%} else if (user.local.type == "volunteer") { %>
-                  <h3>volunteer</h3>
-                <% } else if (user.local.type == "manager") { %>
-                  <h3>manager</h3>
-                <% } else if (user.local.type == "founder") {  %>
-                  <h3>founder</h3>
-                <% } %>
-                  <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
-                  <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
-                  <% if (user.local.name == "admin") { %>
-                  <li><a><i class="fa fa-pencil"></i> Manage <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/admin">Regions</a></li>
-                      <li><a href="/profile">Chapters</a></li>
-                      <li><a href="/profile">Events</a></li>
-                    </ul>
-                  </li>
-                  <% } %>
-                  <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
-                  <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
-                  <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>
-                  
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <%} else if (user.local.type == "participant") { %>
+                    <h3>participant</h3>
+                    <%} else if (user.local.type == "volunteer") { %>
+                      <h3>volunteer</h3>
+                      <% } else if (user.local.type == "manager") { %>
+                        <h3>manager</h3>
+                        <% } else if (user.local.type == "founder") {  %>
+                          <h3>founder</h3>
+                          <% } %>
+                            <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
+                            <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
+                            <% if (user.local.name == "admin") { %>
+                              <li><a><i class="fa fa-pencil"></i> Manage <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                  <li><a href="/admin">Regions</a></li>
+                                  <li><a href="/profile">Chapters</a></li>
+                                  <li><a href="/profile">Events</a></li>
+                                </ul>
+                              </li>
+                              <% } %>
+                                <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
+                                <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
+                                <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= user.local.name %><span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="/settings"><i class="fa fa-cog pull-right"></i>Settings</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-question pull-right"></i>Help</a></li>
-                    <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
               </ul>
-            </nav>
+            </div>
           </div>
         </div>
+      </div>
 
-          <!-- /top navigation for participants -->
-          <% if (user.local.type == "participant") { %>
-          <div class="right_col" role="main">
-            <!-- top tiles -->
-            <div class="row tile_count">
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Events Attended</span>
-                <div class="count">0</div>
-                <span class="count_bottom"><i class="green">0% </i> From last month</span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Hours Spent</span>
-                <div class="count">0</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
-              </div>
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-            <%} else if (user.local.type != "participant") { %>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <%= user.local.name %><span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="/settings"><i class="fa fa-cog pull-right"></i>Settings</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-question pull-right"></i>Help</a></li>
+                  <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- /top navigation for participants -->
+      <% if (user.local.type == "participant") { %>
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Events Attended</span>
+              <div class="count">0</div>
+              <span class="count_bottom"><i class="green">0% </i> From last month</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Hours Spent</span>
+              <div class="count">0</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+            </div>
+          </div>
+          <%} else if (user.local.type != "participant") { %>
             <!-- /top tiles -->
             <!-- /top navigation if not participant -->
             <div class="right_col" role="main">
@@ -302,55 +330,180 @@
                 </div>
               </div>
               <% } %>
-              <hr>
-              <!-- /top tiles -->
-          <div class="row">
-            <div class="container" ng-controller="mainController">
-                <div class="jumbotron text-center">
-                    <h1>Events List</h1>
-                </div>
+                <hr>
+                <!-- /top tiles -->
+                <div class="row">
+                  <div class="container" ng-controller="mainController">
+                    <div class="jumbotron text-center">
+                      <h1>Events List</h1>
+                    </div>
+  <!---->
+              <!--<div ng-controller="">-->
+                    <script type="text/ng-template" id="tree_item.html">
+                  <tr>
+                      <td><i class="fa fa-plus-square" ng-click="toggleHide(data)"  ng-show="data.isHidden"></i>
+                      <i class="fa fa-minus-square" ng-click="toggleHide(data)" ng-hide="data.isHidden"></i></td>
 
-                <!-- EVENT LIST -->
-                <div class="region-list text-center">
-                    <% for(var i=0; i < regions.length; i++) {%>
-                        <div class=""><h2>Region: <%= regions[i].name %></h2></div>
+                      <td ng-hide="isUndefOrNull(data.name)">Name: {{data.name}}</td>
+                  </tr>
+                  <tr>
+                      <td ng-hide="data.isHidden">
+                              <p ng-hide="isUndefOrNull(data.location)">Location: {{data.location}}</p>
+                              <p ng-hide="isUndefOrNull(data.date)">Date: {{data.date}}</p>
+                              <p ng-hide="isUndefOrNull(data.start)">Start: {{data.start}}</p>
+                              <p ng-hide="isUndefOrNull(data.end)">End: {{data.end}}</p>
+                              <p ng-hide="isUndefOrNull(data.venue)">Venue: {{data.venue}}</p>
+                              <p ng-hide="isUndefOrNull(data.description)">Description: {{data.description}}</p>
+                              
+                          
+                          <div id="expanded-data">
+                              <table class="table table-striped" id="nested-table">
+                                  <tr>
+                                      <div ng-repeat="data in data.chapters" ng-include="'tree_item.html'"></div>
+                                      <div ng-repeat="data in data.events" ng-include="'tree_item.html'"></div>
+                                      <div ng-repeat="data in data.inventory">
+                                          <p ng-hide="isUndefOrNull(data.number) && isUndefOrNull(data.item)">{{data.number}} {{data.item}}</p>
+                                      </div>
+                                  </tr>
+                              </table>
+                          </div>
+                      </td>
+                  </tr>
+                  
+              </script>
+                    <p>Table</p>
+                    <table class="table table-striped">
+
+                      <tbody ng-repeat="data in regions" ng-include="'tree_item.html'">
+
+                      </tbody>
+
+                    </table>
+                    <p>End Table</p>
+              <!--</div>-->
+<!---->
+<table>
+  <tr>row1</tr>
+  <tr>
+    <td></td><td>next</td>
+    <tr>another row</tr>
+  </tr>
+</table>
+                    <!-- EVENT LIST -->
+                    <div class="region-list text-center">
+                      <% for(var i=0; i < regions.length; i++) {%>
+                        <div class="" ng-model="expRegion">
+                          <h2>Region:
+                            <%= regions[i].name %>
+                              <i class="fa fa-plus-square" ng-click="toggle(data)"></i>
+                              <i class="fa fa-minus-square"></i></h2>
+
+                          <p ng-show="expRegion">show me!!</p>
+                          <p>exp: {{ expRegion }}</p>
+                          <!--<div ng-controller="expandController"><p>exp: {{ exp }}</p> 
+                                 
+                              </div>-->
+                        </div>
                         <div class="chapter-list">
-                            <% for(var j=0; j < regions[i].chapters.length; j++) {%>
-                                    <h4>Chapter: <%= regions[i].chapters[j].name %></h4>
-                                    <h3>Location: <%= regions[i].chapters[j].location %></h3>
-                                <div class="event-list">
-                                        <% for(var k=0; k < regions[i].chapters[j].events.length; k++) {%>
-                                            <div class="col-sm-11">
-                                                <h3>Name: <%= regions[i].chapters[j].events[k].name %></h3>
-                                                <h4>Date: <%= regions[i].chapters[j].events[k].date %></h4>
-                                                <h4>Start: <%= regions[i].chapters[j].events[k].start %></h4>
-                                                <h4>End: <%= regions[i].chapters[j].events[k].end %></h4>
-                                                <h4>Venue: <%= regions[i].chapters[j].events[k].venue %></h4>
-                                                <p>Description: <%= regions[i].chapters[j].events[k].description %></p>
-                                            </div>
-                                           <a href="/events" class="btn btn-primary btn-lg col-sm-1" ng-click="signUp(<%= JSON.stringify(user) %>, <%= JSON.stringify(regions[i].name) %>, <%= JSON.stringify(regions[i].chapters[j].name) %>, <%= JSON.stringify(regions[i].chapters[j].events[k].name) %>)">Sign Up</a>
-                                        <% } %>
+                          <% for(var j=0; j < regions[i].chapters.length; j++) {%>
+                            <h4>Chapter:
+                              <%= regions[i].chapters[j].name %>
+                                <i class="fa fa-plus-square"></i>
+                                <i class="fa fa-minus-square"></i>
+                            </h4>
+                            <h3>Location:
+                              <%= regions[i].chapters[j].location %>
+                            </h3>
+                            <div class="event-list">
+                              <% for(var k=0; k < regions[i].chapters[j].events.length; k++) {%>
+                                <div class="">
+                                  <h3>Event Name:
+                                    <%= regions[i].chapters[j].events[k].name %>
+                                      <i class="fa fa-plus-square"></i>
+                                      <i class="fa fa-minus-square"></i>
+                                  </h3>
+                                  <h4>Date:
+                                    <%= regions[i].chapters[j].events[k].date %>
+                                  </h4>
+                                  <h4>Start:
+                                    <%= regions[i].chapters[j].events[k].start %>
+                                  </h4>
+                                  <h4>End:
+                                    <%= regions[i].chapters[j].events[k].end %>
+                                  </h4>
+                                  <h4>Venue:
+                                    <%= regions[i].chapters[j].events[k].venue %>
+                                  </h4>
+                                  <p>Description:
+                                    <%= regions[i].chapters[j].events[k].description %>
+                                  </p>
+                                  <p>Inventory:
+                                    <i class="fa fa-plus-square"></i>
+                                    <i class="fa fa-minus-square"></i>
+                                  </p>
+                                  <% for(var l=0; l < regions[i].chapters[j].events[k].inventory.length; l++) {%>
+                                    <div class="">
+                                      <p>
+                                        <%= regions[i].chapters[j].events[k].inventory[l].number %>
+                                          <%= regions[i].chapters[j].events[k].inventory[l].item %>
+                                      </p>
+                                    </div>
+                                    <% } %>
+                                    <a href="/events" class="btn btn-primary btn-lg col-sm-1" ng-click="signUp(<%= JSON.stringify(user) %>, <%= JSON.stringify(regions[i].name) %>, <%= JSON.stringify(regions[i].chapters[j].name) %>, <%= JSON.stringify(regions[i].chapters[j].events[k].name) %>)">Sign Up</a>
                                 </div>
+                                <% } %>
+                            </div>
                             <% } %>
                         </div>
                         <hr>
-                    <% } %>
+                        <% } %>
+                    </div>
+                  </div>
                 </div>
-            </div>
-          </div>
 
-       
-          <br />
+
+                <br />
+
+            </div>
+            <!-- /page content -->
+
+
+
+
 
         </div>
-        <!-- /page content -->
-
-
-
-
-
-      </div>
     </div>
+
+    <!--JQUERY FOR HIDING/SHOWING TABLE COLS-->
+    <script>
+    
+			$(".address").hide();
+			$(".addrPlus").show();
+
+			$(".prodPlus").show();
+			$(".prod").hide();
+		
+			
+            $(document).ready(function(){
+				//Expand/Collapse Address
+                $(".addrPlus, .addrMinus").click(function(){
+                    $(".address").toggle();
+					$(".addrPlus").toggle();
+                    console.log("address toggled");
+                });
+				//Expand/Collapse Product Info
+                $(".prodPlus, .prodMinus").click(function(){
+                    $(".prod").toggle();
+					$(".prodPlus").toggle();
+                    console.log("prod toggled");
+                });
+			
+            });
+
+        </script>
+
+
+    <!--END JQUERY-->
 
 
     <!-- FastClick -->
@@ -548,7 +701,7 @@
       });
     </script>
     <!-- /Doughnut Chart -->
-    
+
     <!-- gauge.js -->
     <script>
       var opts = {
@@ -575,8 +728,6 @@
       gauge.setTextField(document.getElementById("gauge-text"));
     </script>
     <!-- /gauge.js -->
-  </body>
+</body>
+
 </html>
-
-
-
