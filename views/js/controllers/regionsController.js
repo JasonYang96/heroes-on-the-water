@@ -49,4 +49,8 @@ angular.module('regionsController', [])
                 console.log('Error: ' + data);
             });
     };
+
+
+
 })
+

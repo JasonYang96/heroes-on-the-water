@@ -111,22 +111,28 @@ module.exports = function(app) {
 
 
     // manager view for a specific region
-    app.get('/:region_name', function(req, res) {
+    app.get('/manager/:region_name', function(req, res) {
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
             if (err)
                 res.send(err);
 
-            res.render('./ejs/manager/region.ejs', {region: region}, function(err, html) {
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(html);
-            });
+
+                res.render('./ejs/manager/region.ejs', {region: region, user: user}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                });
+            })
         });
     });
 
     // manager view for specific chapter
-    app.get('/:region_name/:chapter_name', function(req, res) {
+    app.get('/manager/:region_name/:chapter_name', function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
             { $unwind: "$chapters"},
@@ -135,17 +141,23 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
 
-            res.render('./ejs/manager/chapter.ejs', {region: region[0]}, function(err, html) {
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(html);
-            });
+
+                res.render('./ejs/manager/chapter.ejs', {region: region[0], user:user}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                });
+            })
         });
     });
 
     // manager view for specific event
-    app.get('/:region_name/:chapter_name/:event_name', function(req, res) {
+    app.get('/manager/:region_name/:chapter_name/:event_name', function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
             { $unwind: "$chapters"},
