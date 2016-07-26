@@ -5,121 +5,385 @@
 <html ng-app="HOW">
 <head>
     <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Heroes on the Water</title>
-
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <style>
-        html            { overflow-y:scroll; }
-        body            { padding-top:50px; padding-bottom: 50px;}
-        .creation-form  { margin: 20px; }
-        .chapter   { background-color: #FFE4C4; overflow: hidden; margin: 0 auto;}
-        .event     { background-color: #FFEBCD; overflow: hidden; margin: 0 auto;}
-    </style>
-
-    <!-- SPELLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <script src="js/core.js"></script>
-    <script src="js/controllers/regionsController.js"></script>
-    <script src="js/controllers/chaptersController.js"></script>
-    <script src="js/controllers/eventsController.js"></script>
-    <script src="js/services/main.js"></script>
+    <script src="http://localhost:8080/js/core.js"></script>
+    <script src="http://localhost:8080/js/controllers/regionsController.js"></script>
+    <script src="http://localhost:8080/js/controllers/chaptersController.js"></script>
+    <script src="http://localhost:8080/js/controllers/eventsController.js"></script>
+    <script src="http://localhost:8080/js/services/main.js"></script>
+        <!-- Bootstrap -->
+    <script src="http://localhost:8080/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- NProgress -->
+    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="http://localhost:8080/build/css/custom.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+    h1, h2, h3, h4, h5, h6, p, .btn, .navbar-nav a, .form-control, .list-inline, small, #pricing {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    p, .lead {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    h1 {
+      font-size: 55px;
+      line-height: 55px;
+      letter-spacing: -1px;
+      color: #73879C;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 40px;
+      line-height: 40px;
+      etter-spacing: -0.5px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 30px;
+      letter-spacing: 0px;
+      color: #231f20;
+      font-weight: 700;
+    }
+
+    .lead {
+      font-size: 21px;
+      line-height: 26px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 22px;
+      color: #929496;
+      font-weight: 400;
+    }
+    a {
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    a:hover, a:focus {
+      text-decoration: none;
+      color: #231f20;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    .fa-lg {
+      font-size: 1.33333em;
+      line-height: 0.75em;
+      vertical-align: -10%;
+    }
+
+    ::selection {
+      background: #231f20; /* Safari */
+      color: #FFFFFF;
+    }
+    ::-moz-selection {
+      background: #231f20; /* Firefox */
+      color: #FFFFFF;
+    }
+
+
+
+
+    /*------------------Buttons---------------------*/
+    .btn:focus {
+      outline: 0px auto -webkit-focus-ring-color;
+      outline: none;
+    }
+
+    .btn {
+      text-transform: uppercase;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .btn-lg {
+      font-size: 13px;
+      line-height: 1.33;
+      padding: 22px 30px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .btn-sm {
+      font-size: 11px;
+      line-height: 1.33;
+      padding: 10px 18px;
+      font-weight: 400;
+    }
+
+    .btn-wide {
+      width: 100%;
+      font-size: 13px;
+      line-height: 1.33;
+      padding: 18px 28px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary {
+      background-color:#70cbce;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+      background-color: #8be2e5;
+      color: #ffffff;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #231f20;
+    }
+
+    .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
+      background-color: #ededed;
+      color: #231f20;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    </style>
+
 
     <!-- FAVICON -->
     <link rel="icon" href="http://heroesonthewater.org/wp-content/uploads/2014/04/logo-ready-ad.png" type="image/png">
 
 </head>
-<body>
-    <div class="container" ng-controller="chaptersController">
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="/index" class="site_title"><span>HoW Dashboard</span></a>
+          </div>
 
-        <h1 class="text-center">Region: <%= region.name %></h1>
-        <!-- FORM TO CREATE CHAPTERS -->
-        <div id="chapter-creation-form" class="row creation-form">
-            <h1 class="text-center"> CHAPTER CREATION </h1>
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
+          <div class="clearfix"></div>
 
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Insert name here" ng-model="formData.name">
-                        <br>
-                        <input type="text" class="form-control input-lg text-center" placeholder="Insert location here" ng-model="formData.location">
-                    </div>
-                </form>
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <ul class="nav side-menu">
+              <% if (user.local.name == "admin") { %>
+                <h3>administrator</h3>
+              <%} else if (user.local.type == "participant") { %>
+                <h3>participant</h3>
+              <%} else if (user.local.type == "volunteer") { %>
+                <h3>volunteer</h3>
+              <% } else if (user.local.type == "manager") { %>
+                <h3>manager</h3>
+              <% } else if (user.local.type == "founder") {  %>
+                <h3>founder</h3>
+              <% } %>
+                <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
+                <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
+                <% if (user.local.name == "admin") { %>
+                <li><a><i class="fa fa-pencil"></i> Manage <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/admin">Regions</a></li>
+                    <li><a href="/profile">Chapters</a></li>
+                    <li><a href="/profile">Events</a></li>
+                  </ul>
+                </li>
+                <% } %>
+                <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
+                <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
 
-            <!-- createChapter() WILL CREATE NEW Chapter -->
-            <button type="submit" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" ng-click="createChapter(<%= JSON.stringify(region) %>)">Add Chapter</button>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= user.local.name %><span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="/settings"><i class="fa fa-cog pull-right"></i>Settings</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-question pull-right"></i>Help</a></li>
+                  <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="right_col" role="main">
+        <!-- top tiles -->
+        <div class="row tile_count">
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Participants</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green">0% </i> From last month</span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-heart-o"></i> Volunteers</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-users"></i> Chapters </span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-usd"></i> Donations Collected</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-eye"></i> Site Views</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-sign-in"></i> Logins </span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
         </div>
 
-        <!-- list of chapters and events in each chapter -->
-        <% for(var i=0; i < region.chapters.length; i++) {%>
-            <div class="col-sm-12 chapter">
-                <div>
-                    <div class="col-sm-4">
-                        <h2>Chapter: <%= region.chapters[i].name %></h2>
-                        <p>Location: <%= region.chapters[i].location %></p>
-                    </div>
-                    <div class="col-sm-6" ng-controller="userController">
-                        <div class="col-sm-10">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
-                            </div>
-                        </form>
-                        </div>
-                        <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>">Manage</a>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(event.name)">Delete</button>
-                    </div>
+        <div class="row" ng-controller="chaptersController">
+
+            <div class="row">
+                <div class="jumbotron text-center">
+                    <h1> Manage: <%= region.name %> </h1>
                 </div>
-                <!-- list of events in chapter -->
-                <% for(var j=0; j < region.chapters[i].events.length; j++) {%>
-                <div class="col-sm-12 event">
+            </div>
+            <!-- FORM TO CREATE CHAPTERS -->
+            <div id="chapter-creation-form" class="row creation-form">
+                <h3 class="text-center"> Create a Chapter: </h3>
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <form>
+                        <div class="form-group">
+                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                            <input type="text" class="form-control input-sm text-center" placeholder="Insert name here" ng-model="formData.name">
+                            <br>
+                            <input type="text" class="form-control input-sm text-center" placeholder="Insert location here" ng-model="formData.location">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- createChapter() WILL CREATE NEW Chapter -->
+                <button type="submit" class="btn btn-primary btn-sm col-sm-4 col-sm-offset-4" ng-click="createChapter(<%= JSON.stringify(region) %>)">Add Chapter</button>
+            </div>
+
+            <br> <hr><br>
+            <!-- list of chapters and events in each chapter -->
+            <% for(var i=0; i < region.chapters.length; i++) {%>
+                <div class="col-sm-12 chapter">
+                    <div>
                         <div class="col-sm-4">
-                            <h3>Event: <%= region.chapters[i].events[j].name %></h3>
-                            <h4>Date: <%= region.chapters[i].events[j].date %></h4>
-                            <h4>Start: <%= region.chapters[i].events[j].start %></h4>
-                            <h4>End: <%= region.chapters[i].events[j].end %></h4>
-                            <h4>Venue: <%= region.chapters[i].events[j].venue %></h4>
-                            <p>Description: <%= region.chapters[i].events[j].description %></p>
-                            <p>Inventory:</p>
-                            <% for(var k=0; k < region.chapters[i].events[j].inventory.length; k++) {%>
-                                <p> <%= region.chapters[i].events[j].inventory[k].number %> <%= region.chapters[i].events[j].inventory[k].item %></p>
-                            <%} %>
+                            <h3>Chapter: <%= region.chapters[i].name %>, Location: <%= region.chapters[i].location %></h3>
                         </div>
                         <div class="col-sm-6" ng-controller="userController">
-                            <div class="col-sm-9">
+                            <div class="col-sm-10">
                             <form>
                                 <div class="form-group">
                                     <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
                                 </div>
                             </form>
                             </div>
-                            <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                            <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
                             </div>
                         </div>
                         <div class="col-sm-1">
-                            <a type="submit" class="btn btn-primary btn-sm" href="/<%= region.name %>/<%= region.chapters[i].name %>/<%= region.chapters[i].events[j].name %>">Manage</a>
+                            <a type="submit" class="btn btn-primary btn-sm" href="/manager/<%= region.name %>/<%= region.chapters[i].name %>">Manage</a>
                         </div>
                         <div class="col-sm-1">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(event.name)">Delete</button>
                         </div>
+                    </div>
+                    <!-- list of events in chapter -->
+                    <% for(var j=0; j < region.chapters[i].events.length; j++) {%>
+                    <div class="col-sm-12 event">
+                            <div class="col-sm-4">
+                                <h3>Event: <%= region.chapters[i].events[j].name %></h3>
+                                <h4>Date: <%= region.chapters[i].events[j].date %></h4>
+                                <h4>Start: <%= region.chapters[i].events[j].start %></h4>
+                                <h4>End: <%= region.chapters[i].events[j].end %></h4>
+                                <h4>Venue: <%= region.chapters[i].events[j].venue %></h4>
+                                <p>Description: <%= region.chapters[i].events[j].description %></p>
+                                <p>Inventory:</p>
+                                <% for(var k=0; k < region.chapters[i].events[j].inventory.length; k++) {%>
+                                    <p> <%= region.chapters[i].events[j].inventory[k].number %> <%= region.chapters[i].events[j].inventory[k].item %></p>
+                                <%} %>
+                            </div>
+                            <div class="col-sm-6" ng-controller="userController">
+                                <div class="col-sm-9">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <a type="submit" class="btn btn-primary btn-sm" href="/manager/<%= region.name %>/<%= region.chapters[i].name %>/<%= region.chapters[i].events[j].name %>">Manage</a>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
+                            </div>
+                    </div>
+                    <% } %>
                 </div>
-                <% } %>
-            </div>
-        <% } %>        
+            <% } %>        
+        </div>
+       </div>
+
+
+
+        </div>
     </div>
+
 </body>
+
+    <script src="http://localhost:8080/build/js/custom.min.js"></script>
+
 </html>

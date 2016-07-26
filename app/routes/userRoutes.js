@@ -170,11 +170,6 @@ module.exports = function(app, passport) {
 
     // sign up api
     app.post('/api/signup/:username', function(req, res) {
-        console.log("body is", req.body);
-        console.log(req.body.region_name);
-        console.log(req.body.chapter_name);
-        console.log(req.body.event_name);
-        console.log(req.params.username);
         Model.region.findOneAndUpdate(
             {"name": req.body.region_name,
              "chapters.name": req.body.chapter_name,
