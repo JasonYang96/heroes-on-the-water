@@ -83,7 +83,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
-            User.findOne( {"_id": req.user.id }, function(err, user) {
+            User.findOne( {"_id": req.user._id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }

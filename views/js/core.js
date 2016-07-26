@@ -24,9 +24,14 @@ function mainController($scope, $http) {
             });
     }
 
-    $scope.signUp = function(user, event){
-        var eventId = { "id": event };
-        $http.post('/api/signup/' + user._id, eventId)
+    $scope.signUp = function(user, region_name, chapter_name, event_name){
+        var event = { 
+            "region_name": region_name,
+            "chapter_name": chapter_name,
+            "event_name": event_name
+        };
+
+        $http.post('/api/signup/' + user.local.name, event)
             .success(function(data) {
                 console.log(data);
             })
