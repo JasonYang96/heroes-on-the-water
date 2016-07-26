@@ -26,7 +26,6 @@
 
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet'
     type='text/css'>
-    <link rel="stylesheet" href="../../css/donors.css">
   <style>
     h1,
     h2,
@@ -199,6 +198,14 @@
     #expanded-data {
         margin-left: 20px;
     }
+    table, tbody{
+      width: initial !important;
+      padding: 10px;
+    }
+    table, tbody, tr, td{
+      padding: 3px 3px 3px 10px;
+    }
+    
   </style>
 
 </head>
@@ -340,38 +347,39 @@
   <!---->
               <!--<div ng-controller="">-->
                     <script type="text/ng-template" id="tree_item.html">
-                  <tr>
-                      <td><i class="fa fa-plus-square" ng-click="toggleHide(data)"  ng-show="data.isHidden"></i>
-                      <i class="fa fa-minus-square" ng-click="toggleHide(data)" ng-hide="data.isHidden"></i></td>
-
-                      <td ng-hide="isUndefOrNull(data.name)">Name: {{data.name}}</td>
-            
+                  <tr style="width:initial">
+                      <td>
+                        <i class="fa fa-plus-square" ng-click="toggleHide(data)"  ng-show="data.isHidden" style="float: left;"></i>
+                        <i class="fa fa-minus-square" ng-click="toggleHide(data)" ng-hide="data.isHidden" style="float: left;"></i>
+                        <div ng-hide="isUndefOrNull(data.name)" style="float: left; margin: -1px 0 0 8px;">Name: {{data.name}}</div>
+                      </td>
+                  </tr>
+            <tr>
                       <td ng-hide="data.isHidden">
-                              <p ng-hide="isUndefOrNull(data.location)">Location: {{data.location}}</p>
+                             <!-- <p ng-hide="isUndefOrNull(data.location)">Location: {{data.location}}</p>
                               <p ng-hide="isUndefOrNull(data.date)">Date: {{data.date}}</p>
                               <p ng-hide="isUndefOrNull(data.start)">Start: {{data.start}}</p>
                               <p ng-hide="isUndefOrNull(data.end)">End: {{data.end}}</p>
                               <p ng-hide="isUndefOrNull(data.venue)">Venue: {{data.venue}}</p>
-                              <p ng-hide="isUndefOrNull(data.description)">Description: {{data.description}}</p>
+                              <p ng-hide="isUndefOrNull(data.description)">Description: {{data.description}}</p>-->
                               
                           
                           <div id="expanded-data">
-                              <table class="table table-striped" id="nested-table">
-                                  <tr>
+                              <table class="" id="nested-table">
                                       <div ng-repeat="data in data.chapters" ng-include="'tree_item.html'"></div>
                                       <div ng-repeat="data in data.events" ng-include="'tree_item.html'"></div>
-                                      <div ng-repeat="data in data.inventory">
+                                      <div ng-repeat="data in data.inventory" style="margin: 0 0 0 5px">
                                           <p ng-hide="isUndefOrNull(data.number) && isUndefOrNull(data.item)">{{data.number}} {{data.item}}</p>
                                       </div>
-                                  </tr>
                               </table>
                           </div>
                       </td>
-                  </tr>
+            </tr>
+                  
                   
               </script>
                     <p>Table</p>
-                    <table class="table table-striped">
+                    <table class="">
 
                       <tbody ng-repeat="data in regions" ng-include="'tree_item.html'">
 
@@ -381,13 +389,6 @@
                     <p>End Table</p>
               <!--</div>-->
 <!---->
-<table>
-  <tr>row1</tr>
-  <tr>
-    <td></td><td>next</td>
-    <tr>another row</tr>
-  </tr>
-</table>
                     <!-- EVENT LIST -->
                     <div class="region-list text-center">
                       <% for(var i=0; i < regions.length; i++) {%>
@@ -729,4 +730,5 @@
     <!-- /gauge.js -->
 </body>
 
+>>>>>>> Heriarchy table is structured way better. Still need basic styling.
 </html>
