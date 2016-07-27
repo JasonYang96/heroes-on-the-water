@@ -339,7 +339,7 @@
                     </div>
                     <!-- list of events in chapter -->
                     <% for(var j=0; j < region.chapters[i].events.length; j++) {%>
-                    <div class="col-sm-12 event">
+                    <div class="col-sm-12 event" style="padding-left: 0px; padding-right:0px;">
                             <div class="col-sm-4">
                                 <h3>Event: <%= region.chapters[i].events[j].name %></h3>
                                 <h4>Date: <%= region.chapters[i].events[j].date %></h4>
@@ -353,14 +353,14 @@
                                 <%} %>
                             </div>
                             <div class="col-sm-6" ng-controller="userController">
-                                <div class="col-sm-9">
+                                <div class="col-sm-10">
                                 <form>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
                                     </div>
                                 </form>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                 <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
                                 </div>
                             </div>
