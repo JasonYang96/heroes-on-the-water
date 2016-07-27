@@ -26,187 +26,9 @@
 
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet'
     type='text/css'>
-  <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    .btn,
-    .navbar-nav a,
-    .form-control,
-    .list-inline,
-    small,
-    #pricing {
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    p,
-    .lead {
-      font-family: 'Raleway', sans-serif;
-    }
-    
-    h1 {
-      font-size: 55px;
-      line-height: 55px;
-      letter-spacing: -1px;
-      color: #73879C;
-      font-weight: 700;
-    }
-    
-    h2 {
-      font-size: 40px;
-      line-height: 40px;
-      etter-spacing: -0.5px;
-      color: #73879C;
-      font-weight: 700;
-    }
-    
-    h3 {
-      font-size: 16px;
-      line-height: 30px;
-      letter-spacing: 0px;
-      color: #231f20;
-      font-weight: 700;
-    }
-    
-    .lead {
-      font-size: 21px;
-      line-height: 26px;
-      color: #ffffff;
-      font-weight: 400;
-    }
-    
-    p {
-      font-size: 17px;
-      line-height: 22px;
-      color: #929496;
-      font-weight: 400;
-    }
-    
-    a {
-      color: inherit;
-      font-weight: inherit;
-      font-size: inherit;
-      text-decoration: none;
-    }
-    
-    a:hover,
-    a:focus {
-      text-decoration: none;
-      color: #231f20;
-      -webkit-transition: all 0.35s ease-in-out;
-      -moz-transition: all 0.35s ease-in-out;
-      -o-transition: all 0.35s ease-in-out;
-      transition: all 0.35s ease-in-out;
-    }
-    
-    .fa-lg {
-      font-size: 1.33333em;
-      line-height: 0.75em;
-      vertical-align: -10%;
-    }
-    
-    ::selection {
-      background: #231f20;
-      /* Safari */
-      color: #FFFFFF;
-    }
-    
-    ::-moz-selection {
-      background: #231f20;
-      /* Firefox */
-      color: #FFFFFF;
-    }
-    /*------------------Buttons---------------------*/
-    
-    .btn:focus {
-      outline: 0px auto -webkit-focus-ring-color;
-      outline: none;
-    }
-    
-    .btn {
-      text-transform: uppercase;
-      border-radius: 4px;
-      border: none;
-    }
-    
-    .btn-lg {
-      font-size: 13px;
-      line-height: 1.33;
-      padding: 22px 30px;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-    
-    .btn-sm {
-      font-size: 11px;
-      line-height: 1.33;
-      padding: 10px 18px;
-      font-weight: 400;
-    }
-    
-    .btn-wide {
-      width: 100%;
-      font-size: 13px;
-      line-height: 1.33;
-      padding: 18px 28px;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-    
-    .btn-primary {
-      background-color: #70cbce;
-      color: #ffffff;
-    }
-    
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-primary:active,
-    .btn-primary.active {
-      background-color: #8be2e5;
-      color: #ffffff;
-      -webkit-transition: all 0.35s ease-in-out;
-      -moz-transition: all 0.35s ease-in-out;
-      -o-transition: all 0.35s ease-in-out;
-      transition: all 0.35s ease-in-out;
-    }
-    
-    .btn-secondary {
-      background-color: #ffffff;
-      color: #231f20;
-    }
-    
-    .btn-secondary:hover,
-    .btn-secondary:focus,
-    .btn-secondary:active,
-    .btn-secondary.active {
-      background-color: #ededed;
-      color: #231f20;
-      -webkit-transition: all 0.35s ease-in-out;
-      -moz-transition: all 0.35s ease-in-out;
-      -o-transition: all 0.35s ease-in-out;
-      transition: all 0.35s ease-in-out;
-    }
-    /*For Events Collapse*/
-    
-    #nested-table{
-    margin-bottom: 0px;
-    }
-    #expanded-data {
-        margin-left: 20px;
-    }
-    table, tbody{
-      width: initial !important;
-      padding: 10px;
-    }
-    table, tbody, tr, td{
-      padding: 3px 3px 3px 10px;
-    }
-    
-  </style>
+
+  <link rel="stylesheet" href="css/events.css">
+  
 
 </head>
 
@@ -344,32 +166,23 @@
                     <div class="jumbotron text-center">
                       <h1>Events List</h1>
                     </div>
-  <!---->
-              <!--<div ng-controller="">-->
-                    <script type="text/ng-template" id="tree_item.html">
+
+
+                    <!--============--------Scripts for Table Heirarchy----------=============-->
+                    <script type="text/ng-template" id="region_item.html">
                   <tr style="width:initial">
                       <td>
-                        <i class="fa fa-plus-square" ng-click="toggleHide(data)"  ng-show="data.isHidden" style="float: left;"></i>
-                        <i class="fa fa-minus-square" ng-click="toggleHide(data)" ng-hide="data.isHidden" style="float: left;"></i>
-                        <div ng-hide="isUndefOrNull(data.name)" style="float: left; margin: -1px 0 0 8px;">Name: {{data.name}}</div>
+                        <i class="fa fa-plus-square" ng-click="toggleHide(region)"  ng-show="region.isHidden" style="float: left;"></i>
+                        <i class="fa fa-minus-square" ng-click="toggleHide(region)" ng-hide="region.isHidden" style="float: left;"></i>
+                        <div ng-hide="isUndefOrNull(region.name)" style="float: left; margin: -1px 0 0 8px;">Name: {{region.name}}</div>
                       </td>
                   </tr>
             <tr>
-                      <td ng-hide="data.isHidden">
-                              <p ng-hide="isUndefOrNull(data.location)">Location: {{data.location}}</p>
-                              <p ng-hide="isUndefOrNull(data.date)">Date: {{data.date}}</p>
-                              <p ng-hide="isUndefOrNull(data.start)">Start: {{data.start}}</p>
-                              <p ng-hide="isUndefOrNull(data.end)">End: {{data.end}}</p>
-                              <p ng-hide="isUndefOrNull(data.venue)">Venue: {{data.venue}}</p>
-                              <p ng-hide="isUndefOrNull(data.description)">Description: {{data.description}}</p>
-                              
+                      <td ng-hide="region.isHidden">
                           
                           <div id="expanded-data">
                               <table class="" id="nested-table">
-                                      <div ng-repeat="data in data.chapters" ng-include="'tree_item.html'"></div>
-                                      <div ng-repeat="data in data.events" ng-include="'tree_item.html'"></div>
-                                      <div ng-repeat="data in data.inventory" style="margin: 0 0 0 5px">
-                                          <p ng-hide="isUndefOrNull(data.number) && isUndefOrNull(data.item)">{{data.number}} {{data.item}}</p>
+                                      <div ng-repeat="chapter in region.chapters" ng-include="'chapter_item.html'"></div>
                                       </div>
                               </table>
                           </div>
@@ -378,86 +191,67 @@
                   
                   
               </script>
-                    <p>Table</p>
+                    <script type="text/ng-template" id="chapter_item.html">
+                  <tr style="width:initial">
+                      <td>
+                        <i class="fa fa-plus-square" ng-click="toggleHide(chapter)"  ng-show="chapter.isHidden" style="float: left;"></i>
+                        <i class="fa fa-minus-square" ng-click="toggleHide(chapter)" ng-hide="chapter.isHidden" style="float: left;"></i>
+                        <div ng-hide="isUndefOrNull(chapter.name)" style="float: left; margin: -1px 0 0 8px;">Name: {{chapter.name}}</div>
+                      </td>
+                  </tr>
+            <tr>
+                      <td ng-hide="chapter.isHidden">
+                              <p ng-hide="isUndefOrNull(chapter.location)">Location: {{chapter.location}}</p>
+  
+                          <div id="expanded-data">
+                              <table class="" id="nested-table">
+                                      <div ng-repeat="event in chapter.events" ng-include="'event_item.html'"></div>
+                                      </div>
+                              </table>
+                          </div>
+                      </td>
+            </tr>
+                  
+                  
+              </script>
+                    <script type="text/ng-template" id="event_item.html">
+                  <tr style="width:initial">
+                      <td>
+                        <i class="fa fa-plus-square" ng-click="toggleHide(event)"  ng-show="event.isHidden" style="float: left;"></i>
+                        <i class="fa fa-minus-square" ng-click="toggleHide(event)" ng-hide="event.isHidden" style="float: left;"></i>
+                        <div ng-hide="isUndefOrNull(event.name)" style="float: left; margin: -1px 0 0 8px;">Name: {{event.name}}</div>
+                      </td>
+                  </tr>
+            <tr>
+                      <td ng-hide="event.isHidden">
+                              <p ng-hide="isUndefOrNull(event.date)">Date: {{event.date}}</p>
+                              <p ng-hide="isUndefOrNull(event.start)">Start: {{event.start}}</p>
+                              <p ng-hide="isUndefOrNull(event.end)">End: {{event.end}}</p>
+                              <p ng-hide="isUndefOrNull(event.venue)">Venue: {{event.venue}}</p>
+                              <p ng-hide="isUndefOrNull(event.description)">Description: {{event.description}}</p>
+                              
+                          <div id="expanded-data">
+                              <table class="" id="nested-table">
+                                <p>region: {{region.name}}   chapter: {{chapter.name}}</p>
+                                 <a href="/events" class="btn btn-primary btn-lg" ng-click="signUp(<%= JSON.stringify(user) %>, region.name, chapter.name, event.name)">Sign Up</a>
+                                      <div ng-repeat="item in event.inventory" style="margin: 0 0 0 5px">
+                                          <p ng-hide="isUndefOrNull(item.number) && isUndefOrNull(item.item)">
+                                              {{item.number}} {{item.item}}
+                                          </p>
+                                          
+                                      </div>
+                              </table>
+                          </div>
+                      </td>
+            </tr>
+              </script>
+
                     <table class="">
-
-                      <tbody ng-repeat="data in regions" ng-include="'tree_item.html'">
-
+                      <tbody ng-repeat="region in regions" ng-include="'region_item.html'">
                       </tbody>
-
                     </table>
-                    <p>End Table</p>
-              <!--</div>-->
-<!---->
-                    <!-- EVENT LIST -->
-                    <div class="region-list text-center">
-                      <% for(var i=0; i < regions.length; i++) {%>
-                        <div class="" ng-model="expRegion">
-                          <h2>Region:
-                            <%= regions[i].name %>
-                              <i class="fa fa-plus-square" ng-click="toggle(data)"></i>
-                              <i class="fa fa-minus-square"></i></h2>
+    <!--============--------End Table Heirarchy----------=============-->
 
-                          <p ng-show="expRegion">show me!!</p>
-                          <p>exp: {{ expRegion }}</p>
-                          <!--<div ng-controller="expandController"><p>exp: {{ exp }}</p> 
-                                 
-                              </div>-->
-                        </div>
-                        <div class="chapter-list">
-                          <% for(var j=0; j < regions[i].chapters.length; j++) {%>
-                            <h4>Chapter:
-                              <%= regions[i].chapters[j].name %>
-                                <i class="fa fa-plus-square"></i>
-                                <i class="fa fa-minus-square"></i>
-                            </h4>
-                            <h3>Location:
-                              <%= regions[i].chapters[j].location %>
-                            </h3>
-                            <div class="event-list">
-                              <% for(var k=0; k < regions[i].chapters[j].events.length; k++) {%>
-                                <div class="">
-                                  <h3>Event Name:
-                                    <%= regions[i].chapters[j].events[k].name %>
-                                      <i class="fa fa-plus-square"></i>
-                                      <i class="fa fa-minus-square"></i>
-                                  </h3>
-                                  <h4>Date:
-                                    <%= regions[i].chapters[j].events[k].date %>
-                                  </h4>
-                                  <h4>Start:
-                                    <%= regions[i].chapters[j].events[k].start %>
-                                  </h4>
-                                  <h4>End:
-                                    <%= regions[i].chapters[j].events[k].end %>
-                                  </h4>
-                                  <h4>Venue:
-                                    <%= regions[i].chapters[j].events[k].venue %>
-                                  </h4>
-                                  <p>Description:
-                                    <%= regions[i].chapters[j].events[k].description %>
-                                  </p>
-                                  <p>Inventory:
-                                    <i class="fa fa-plus-square"></i>
-                                    <i class="fa fa-minus-square"></i>
-                                  </p>
-                                  <% for(var l=0; l < regions[i].chapters[j].events[k].inventory.length; l++) {%>
-                                    <div class="">
-                                      <p>
-                                        <%= regions[i].chapters[j].events[k].inventory[l].number %>
-                                          <%= regions[i].chapters[j].events[k].inventory[l].item %>
-                                      </p>
-                                    </div>
-                                    <% } %>
-                                    <a href="/events" class="btn btn-primary btn-lg col-sm-1" ng-click="signUp(<%= JSON.stringify(user) %>, <%= JSON.stringify(regions[i].name) %>, <%= JSON.stringify(regions[i].chapters[j].name) %>, <%= JSON.stringify(regions[i].chapters[j].events[k].name) %>)">Sign Up</a>
-                                </div>
-                                <% } %>
-                            </div>
-                            <% } %>
-                        </div>
-                        <hr>
-                        <% } %>
-                    </div>
                   </div>
                 </div>
 
@@ -731,4 +525,5 @@
 </body>
 
 >>>>>>> Heriarchy table is structured way better. Still need basic styling.
+
 </html>
