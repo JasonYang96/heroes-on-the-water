@@ -22,28 +22,13 @@ module.exports = function(app) {
                         res.send(err);
                     }
 
-                    res.render('./ejs/manager/admin_region.ejs', {region: region, user: user, users: users}, function(err, html) {
+                    res.render('./ejs/manager/admin.ejs', {region: region, user: user, users: users}, function(err, html) {
                         if (err) {
                             res.send(err);
                         }
                         res.send(html);
                     });
                 })
-            })
-        });
-    });
-
-    app.get('/admin_public', function(req, res) {
-        Model.region.find(function(err, region) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.render('./ejs/manager/admin.ejs', {region: region}, function(err, html) {
-                    if (err) {
-                        res.send(err);
-                    }
-                    res.send(html);
             })
         });
     });
@@ -113,8 +98,6 @@ module.exports = function(app) {
                 })
         });
     });
-
-
 
     // manager view for a specific region
     app.get('/manager/:region_name', function(req, res) {
