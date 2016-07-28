@@ -65,7 +65,7 @@ module.exports = function(app) {
                         res.send(err);
                     }
 
-                    res.render('./ejs/manager/admin_donors_rak.ejs', {donors: donors, user: user, regions: regions}, function(err, html) {
+                    res.render('./ejs/manager/admin_donors.ejs', {donors: donors, user: user, regions: regions}, function(err, html) {
                         if (err) {
                             res.send(err);
                         }

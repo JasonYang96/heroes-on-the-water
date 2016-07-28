@@ -81,12 +81,8 @@ function donorsListController($scope, $http) {
     $http.get('/api/donors')
         .success(function(data) {
             $scope.donors = data;
-            console.log("=== donor List Controller ===")
-            console.log(data);
             $scope.upperBound = Math.ceil($scope.donors.length/2);
             $scope.lowerBound = $scope.upperBound + 1;
-            console.log($scope.floored);
-
         })
         .error(function(data) {
             console.log('Error: ' + data);

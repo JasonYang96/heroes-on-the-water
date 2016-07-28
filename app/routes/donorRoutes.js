@@ -81,8 +81,6 @@ module.exports = function (app) {
 
     // create a new donor
     app.post('/api/donors/', function (req, res) {
-        console.log("== donorRoutes == ")
-        console.log(req);
         Donor.create({
             fName: req.body.fName,
             lName: req.body.lName,
