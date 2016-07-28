@@ -47,7 +47,7 @@
                 <% } else if (user.local.type == "founder") { %>
                   <h3>Founder</h3>
                 <% } %>
-                <li><a href="/"><i class="fa fa-home"></i> Home </a></li>
+                <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                 <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
                 <% if (user.local.name == "admin") { %>
                 <li><a href="/admin"><i class="fa fa-pencil"></i> Manage </a></li>
@@ -75,14 +75,8 @@
       <div class="top_nav">
         <div class="nav_menu">
           <nav>
-            <div class="nav toggle">
-              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-            </div>
             <ul class="nav navbar-nav navbar-right">
               <li class="">
-                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <%= user.local.name %> <span class=" fa fa-angle-down"></span>
-                </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                   <li><a href="/settings"><i class="fa fa-cog pull-right"></i>Settings</a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
@@ -165,7 +159,7 @@
 
   <!-- Region -->
   <script type="text/ng-template" id="region_item.html">
-    <tr style="width:initial">
+    <tr style="width:initial; border-left: 6px solid #70CBCE; background-color: lightyellow;">
       <td>
         <i class="fa fa-plus-square" ng-click="toggleHide(region)"  ng-show="region.isHidden" style="float: left;"></i>
         <i class="fa fa-minus-square" ng-click="toggleHide(region)" ng-hide="region.isHidden" style="float: left;"></i>
@@ -185,7 +179,7 @@
 
   <!-- Chapter -->
   <script type="text/ng-template" id="chapter_item.html">
-    <tr style="width:initial">
+    <tr style="width:initial;  border-left: 6px solid #6D3F96; background-color: lightyellow;">
       <td>
         <i class="fa fa-plus-square" ng-click="toggleHide(chapter)"  ng-show="chapter.isHidden" style="float: left;"></i>
         <i class="fa fa-minus-square" ng-click="toggleHide(chapter)" ng-hide="chapter.isHidden" style="float: left;"></i>
