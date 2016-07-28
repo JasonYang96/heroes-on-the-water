@@ -46,7 +46,7 @@
                 <% } else if (user.local.type == "founder") { %>
                   <h3>Founder</h3>
                 <% } %>
-                <li><a href="/"><i class="fa fa-home"></i> Home </a></li>
+                <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                 <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
                 <% if (user.local.name == "admin") { %>
                 <li><a href="/admin"><i class="fa fa-pencil"></i> Manage </a></li>
@@ -74,9 +74,6 @@
       <div class="top_nav">
         <div class="nav_menu">
           <nav>
-            <div class="nav toggle">
-              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-            </div>
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
