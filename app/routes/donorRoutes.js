@@ -128,8 +128,6 @@ module.exports = function (app) {
             res.send(html);
         });
     });
-
-
 }
 
 module.exports.donor = Donor;

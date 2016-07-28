@@ -3,7 +3,6 @@ var Model = require('../models/event');
 var donorModel = require('./donorRoutes.js');
 var User = require('../models/user');
 
-
 module.exports = function(app) {
     // admin view for everything
     app.get('/admin', function(req, res) {
