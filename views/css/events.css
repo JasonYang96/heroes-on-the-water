@@ -108,13 +108,15 @@ a:focus {
 
 table,
 tbody {
-  width: initial !important;
+  width: 100% !important;
   padding: 10px;
   font-size: 15px;
+
 }
 
 tr,
 td {
   padding: 3px 3px 3px 10px;
   font-size: 15px;
+  vertical-align: top; 
 }

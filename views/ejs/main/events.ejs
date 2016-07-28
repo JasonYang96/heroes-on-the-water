@@ -79,9 +79,6 @@
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <li class="">
-                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <%= user.local.name %> <span class=" fa fa-angle-down"></span>
-                </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                   <li><a href="/settings"><i class="fa fa-cog pull-right"></i>Settings</a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
@@ -154,7 +151,6 @@
             </table>
           </div>
         </div>
-        <br />
       </div>
     </div>
   </div>
@@ -163,7 +159,7 @@
 
   <!-- Region -->
   <script type="text/ng-template" id="region_item.html">
-    <tr style="width:initial">
+    <tr style="width:initial; border-left: 6px solid #70CBCE !important; background: #e3feff">
       <td>
         <i class="fa fa-plus-square" ng-click="toggleHide(region)"  ng-show="region.isHidden" style="float: left;"></i>
         <i class="fa fa-minus-square" ng-click="toggleHide(region)" ng-hide="region.isHidden" style="float: left;"></i>
@@ -183,7 +179,7 @@
 
   <!-- Chapter -->
   <script type="text/ng-template" id="chapter_item.html">
-    <tr style="width:initial">
+    <tr style="width:initial;  border-left: 6px solid #6D3F96; background-color: #edd9ff;">
       <td>
         <i class="fa fa-plus-square" ng-click="toggleHide(chapter)"  ng-show="chapter.isHidden" style="float: left;"></i>
         <i class="fa fa-minus-square" ng-click="toggleHide(chapter)" ng-hide="chapter.isHidden" style="float: left;"></i>
@@ -195,7 +191,7 @@
           <p ng-hide="isUndefOrNull(chapter.location)">Location: {{chapter.location}}</p>
           <div id="expanded-data">
             <table class="" id="nested-table">
-              <div ng-repeat="event in chapter.events" ng-include="'event_item.html'"></div>
+              <td ng-repeat="event in chapter.events" ng-include="'event_item.html'"></td>
             </table>
           </div>
       </td>
@@ -204,7 +200,7 @@
 
   <!-- Event -->
   <script type="text/ng-template" id="event_item.html">
-    <tr style="width:initial">
+    <tr style="width:initial;  border-left: 6px solid #FDC05D; background-color: lightyellow;">
       <td>
         <i class="fa fa-plus-square" ng-click="toggleHide(event)"  ng-show="event.isHidden" style="float: left;"></i>
         <i class="fa fa-minus-square" ng-click="toggleHide(event)" ng-hide="event.isHidden" style="float: left;"></i>
