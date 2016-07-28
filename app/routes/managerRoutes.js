@@ -158,7 +158,7 @@ module.exports = function(app) {
                     }
                     res.send(html);
                 });
-            })
+            });
         });
     });
 
@@ -174,11 +174,17 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
 
-            res.render('./ejs/manager/event.ejs', {region: region[0]}, function(err, html) {
+            User.findOne( {"_id": req.user.id }, function(err, user) {
                 if (err) {
                     res.send(err);
                 }
-                res.send(html);
+
+                res.render('./ejs/manager/event.ejs', {region: region[0], user:user}, function(err, html) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.send(html);
+                });
             });
         });
     });
