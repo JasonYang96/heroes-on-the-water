@@ -2,8 +2,6 @@
 <html lang="en" ng-app="Donor"><head>
   <meta charset="utf-8">
   <title>Donate | Heroes on the Water</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!--Styles-->
@@ -11,7 +9,6 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/donate.css">
-
 
   <!--Fonts-->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -21,8 +18,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
   <script src="js/core.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-
 </head>
 
 <body>
@@ -234,94 +229,6 @@
                         </div>
                         </div>
                     </form>
-
-        <script>
-            var donateVal;
-            var description;
-            var reason;
-            $(document).ready(function(){
-                $("#donationSelect").change(function(){
-                    donateVal = $("#donationSelect").val();
-                    // console.log("paypal jQuery handler: Selected: ");
-                    console.log("paypal jQuery handler: Selected: " + donateVal);
-
-                    // set paypal amount
-                    switch(donateVal){
-                        case '0': donateVal = 25; break;
-                        case '1': donateVal = 50; break;
-                        case '2': donateVal = 50; break;
-                        case '3': donateVal = 100; break;
-                        case '4': donateVal = 100; break;
-                        case '5': donateVal = 200; break;
-                        case '6': donateVal = 1000; break;
-                        default: donateVal = 0;
-                    }
-                    console.log("amount set: " + donateVal);
-                    $("#paypalAmnt").attr("value", donateVal);
-
-                // ========-   jQuery to set donation DESCRIPTION for paypal   -======
-                    // grab description
-                    description = $("#donationSelect option:selected").html();
-                    console.log("description: " + description);
-                    // set description in paypal form
-                    $("#item_name").attr("value", description);
-
-                });
-            });
-
-            // ========-   jQuery to set donation IN MEM OF... for paypal   -======
-            $(document).ready(function(){
-                $("#reasonSelect").change(function(){
-                    reason = $("#reasonSelect option:selected").html();
-                    console.log("reason: " + reason);
-                    // set description in paypal form
-                    $("#item_reason").attr("value", reason);
-
-            //========------ FORM HIDE/SHOW LOGIC ------=============
-                    if($(this).val() == '1')
-                    {
-                        $("#loved_one_form").show();
-                        $("#honor_form").hide();
-                        $("#select_chapter").hide();
-                        $("#inkind_form").hide();
-                    }
-                    else if($(this).val() == '2')
-                    {
-                        $("#honor_form").show();
-                        $("#loved_one_form").hide();
-                        $("#select_chapter").hide();
-                        $("#inkind_form").hide();
-                    }
-                    else if($(this).val() == '0')
-                    {
-                        $("#honor_form").hide();
-                        $("#loved_one_form").hide();
-                        $("#select_chapter").show();
-                        $("#inkind_form").hide();
-                    }
-                    else if($(this).val() == '3')
-                    {
-                        $("#honor_form").hide();
-                        $("#loved_one_form").hide();
-                        $("#select_chapter").hide();
-                        $("#inkind_form").hide();
-                    }
-                    else if ($(this).val() == '4') {
-                        $("#honor_form").hide();
-                        $("#loved_one_form").hide();
-                        $("#select_chapter").hide();
-                        $("#inkind_form").show();
-                    }
-                    
-                });
-            });
-
-            $("#loved_one_form").hide();
-            $("#honor_form").hide();
-            $("#select_chapter").hide();
-            $("#inkind_form").hide();
-        </script>
-
         <br>
 
         <!--======== PAYPAL BUTTON============--> 
@@ -418,5 +325,92 @@
     <script src="./js/links/wow.min.js"></script>
     <script src="js/links/bootstrap.min.js"></script>
     <script src="js/links/main.js"></script>
+
+    <script>
+        var donateVal;
+        var description;
+        var reason;
+        $(document).ready(function(){
+            $("#donationSelect").change(function(){
+                donateVal = $("#donationSelect").val();
+                // console.log("paypal jQuery handler: Selected: ");
+                console.log("paypal jQuery handler: Selected: " + donateVal);
+
+                // set paypal amount
+                switch(donateVal){
+                    case '0': donateVal = 25; break;
+                    case '1': donateVal = 50; break;
+                    case '2': donateVal = 50; break;
+                    case '3': donateVal = 100; break;
+                    case '4': donateVal = 100; break;
+                    case '5': donateVal = 200; break;
+                    case '6': donateVal = 1000; break;
+                    default: donateVal = 0;
+                }
+                console.log("amount set: " + donateVal);
+                $("#paypalAmnt").attr("value", donateVal);
+
+            // ========-   jQuery to set donation DESCRIPTION for paypal   -======
+                // grab description
+                description = $("#donationSelect option:selected").html();
+                console.log("description: " + description);
+                // set description in paypal form
+                $("#item_name").attr("value", description);
+
+            });
+        });
+
+        // ========-   jQuery to set donation IN MEM OF... for paypal   -======
+        $(document).ready(function(){
+            $("#reasonSelect").change(function(){
+                reason = $("#reasonSelect option:selected").html();
+                console.log("reason: " + reason);
+                // set description in paypal form
+                $("#item_reason").attr("value", reason);
+
+        //========------ FORM HIDE/SHOW LOGIC ------=============
+                if($(this).val() == '1')
+                {
+                    $("#loved_one_form").show();
+                    $("#honor_form").hide();
+                    $("#select_chapter").hide();
+                    $("#inkind_form").hide();
+                }
+                else if($(this).val() == '2')
+                {
+                    $("#honor_form").show();
+                    $("#loved_one_form").hide();
+                    $("#select_chapter").hide();
+                    $("#inkind_form").hide();
+                }
+                else if($(this).val() == '0')
+                {
+                    $("#honor_form").hide();
+                    $("#loved_one_form").hide();
+                    $("#select_chapter").show();
+                    $("#inkind_form").hide();
+                }
+                else if($(this).val() == '3')
+                {
+                    $("#honor_form").hide();
+                    $("#loved_one_form").hide();
+                    $("#select_chapter").hide();
+                    $("#inkind_form").hide();
+                }
+                else if ($(this).val() == '4') {
+                    $("#honor_form").hide();
+                    $("#loved_one_form").hide();
+                    $("#select_chapter").hide();
+                    $("#inkind_form").show();
+                }
+                
+            });
+        });
+
+        $("#loved_one_form").hide();
+        $("#honor_form").hide();
+        $("#select_chapter").hide();
+        $("#inkind_form").hide();
+    </script>
 </body>
 </html>
