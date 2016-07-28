@@ -120,3 +120,13 @@ Because we only had 3 weeks to work on the website, we had to prioritize feature
 * Email and Text notification system (we would've used the Twilio API)
 * Easy integration with Facebook Events since more people are more comfortable using Facebook
 * A fully featured iOS and Android wrapper app to make use of the responsive website 
+
+
+### Licensing 
+
+Swag Ramon was influenced by numerous talented designers and templaters. We used a series of Bootstrap templates and adapted them to fit our needs. The following works are represented in our project: 
+SNoW by Visual Soldiers
+CleanBlog by StartBootstrap
+Gentelella Alela
+
+All works are free to use under the GPL and MIT licenses. 
