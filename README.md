@@ -108,9 +108,10 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 
 ### Known Issues
 
-
 ### Next Steps
+
 Because we only had 3 weeks to work on the website, we had to prioritize features and user stories. Below is a list of features and capabilities that we would have added in future releases and iterations.  
+
 * Facebook Authorization, to allow for easy signup and login
 * Location Services, to show events that are nearest that person's location
 * Functional Metrics Services, currently only the idea and foundation are present in the code 
