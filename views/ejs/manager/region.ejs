@@ -59,22 +59,19 @@
                   <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                   <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
                   <!--Manage-->
-                  <% if (user.local.name == "admin") { %>
-                  <li><a href="/admin"><i class="fa fa-pencil"></i> Manage </a></li>
-                  <li><a href="/admin/donors"><i class="fa fa-usd"></i> Donors</a></li>
-                  <% } if (user.local.type == "manager") { %>
-                    <% if (user.manager) { %>
-                        <% if (user.manager.event) { %> <!--event manager-->
-                            <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>/<%= user.manager.event %>"><i class="fa fa-pencil"></i> Manage</a></li>
-                        <% } else if (user.manager.chapter) { %> <!--chapter manager-->
-                            <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>"><i class="fa fa-pencil"></i> Manage</a></li>
-                        <% } else if (user.manager.region) { %> <!--region manager-->
-                            <li><a href="/manager/<%= user.manager.region %>"><i class="fa fa-pencil"></i> Manage</a></li>
-                        <% } %>
-                    <% } %>
-                    <li><a href="/admin/donors"><i class="fa fa-usd"></i> Donors</a></li>
-                  <% } %>
-
+                 <% if (user.local.name == "admin") { %>
+                 <li><a href="/admin"><i class="fa fa-pencil"></i> Manage </a></li>
+                 <li><a href="/admin/donors"><i class="fa fa-usd"></i> Donors</a></li>
+                 <% } else if (user.manager) { %>
+                     <% if (user.manager.event) { %> <!--event manager-->
+                         <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>/<%= user.manager.event %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                     <% } else if (user.manager.chapter) { %> <!--chapter manager-->
+                         <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                     <% } else if (user.manager.region) { %> <!--region manager-->
+                         <li><a href="/manager/<%= user.manager.region %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                     <% } %>  
+                   <li><a href="/admin/donors"><i class="fa fa-usd"></i> Donors</a></li>
+                 <% } %>
                   <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
                   <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>

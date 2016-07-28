@@ -123,39 +123,39 @@ function userController($scope, $http) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
-            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+        location.reload();
     };
 
     // adds chapter manager permissions
     $scope.addChapterPermission = function(region) {
-        $http.post('/api/manager/' + region[0].name + '/' + region[0].chapters[0].name, $scope.formData)
+        $http.post('/api/manager/' + region.name + '/' + region.chapters[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
-            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+        location.reload();
     };
     
     // adds event manager permissions
     $scope.addEventPermission = function(region) {
-        $http.post('/api/manager/' + region[0].name + '/' + region[0].chapters[0].name + '/' + region[0].chapters[0].events[0].name, $scope.formData)
+        $http.post('/api/manager/' + region.name + '/' + region.chapters.name + '/' + region.chapters.events[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
             $scope.user = data;
-            location.reload();
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+        location.reload();
     };
 
     // deletes manager permissions
