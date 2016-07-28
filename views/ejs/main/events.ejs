@@ -150,7 +150,6 @@
             <div class="jumbotron text-center">
               <h1>Events List</h1>
             </div>
-
             <table>
               <tbody ng-repeat="region in regions" ng-include="'region_item.html'"></tbody>
             </table>
@@ -176,7 +175,7 @@
       <td ng-hide="region.isHidden">
         <div id="expanded-data">
             <table class="" id="nested-table">
-                    <div ng-repeat="chapter in region.chapters" ng-include="'chapter_item.html'"></div>
+              <div ng-repeat="chapter in region.chapters" ng-include="'chapter_item.html'"></div>
             </table>
         </div>
       </td>
