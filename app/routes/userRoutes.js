@@ -1,11 +1,6 @@
-// app/routes.js
-
 var User = require('../models/user');
 var Model = require('../models/event');
 var donorModel = require('./donorRoutes.js');
-
-
-
 
 module.exports = function(app, passport) {
 
