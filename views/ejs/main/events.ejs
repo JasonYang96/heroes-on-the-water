@@ -48,8 +48,8 @@
 
              <div class="clearfix"></div>
 
-             <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" style="padding-top:40px;" class="main_menu_side hidden-print main_menu">
                   <div class="menu_section">
                     <ul class="nav side-menu">
                     <% if (user.local.name == "admin") { %>
@@ -81,7 +81,7 @@
                             <% } %>                        
                       <% } %>
 
-                      <li><a href="/admin/donors">Donors</a></li>
+                      <li><a href="/admin/donors"><i class="fa fa-usd"></i> Donors</a></li>
                       <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
                       <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
                       <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>
