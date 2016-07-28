@@ -67,7 +67,7 @@ module.exports = function(app, passport) {
                     res.send(err);
                 }
 
-                res.render('./ejs/main/profileRak.ejs', {regions: regions, user: user}, function(err, html) {
+                res.render('./ejs/main/profile.ejs', {regions: regions, user: user}, function(err, html) {
                     if (err) {
                         res.send(err);
                     }

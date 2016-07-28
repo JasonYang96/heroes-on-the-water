@@ -197,7 +197,7 @@
 
             <div class="clearfix"></div>
 
-            <!-- sidebar menu -->
+              <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
@@ -214,16 +214,23 @@
                 <% } %>
                   <li><a href="/profile"><i class="fa fa-home"></i> Home </a></li>
                   <li><a href="/events"><i class="fa fa-calendar-check-o"></i> Events </a></li>
+                  <!--Manage-->
                   <% if (user.local.name == "admin") { %>
-                  <li><a><i class="fa fa-pencil"></i> Manage <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/admin">Regions</a></li>
-                      <li><a href="/profile">Chapters</a></li>
-                      <li><a href="/profile">Events</a></li>
-                      <li><a href="/admin/donors">Donors</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="/admin"><i class="fa fa-pencil"></i> Manage </a></li>
                   <% } %>
+                  <% if (user.local.type == "manager") { %>
+                        <% if (user.manager) { %>
+                            <% if (user.manager.event) { %> <!--event manager-->
+                                <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>/<%= user.manager.event %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                            <% } else if (user.manager.chapter) { %> <!--chapter manager-->
+                                <li><a href="/manager/<%= user.manager.region %>/<%= user.manager.chapter %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                            <% } else if (user.manager.region) { %> <!--region manager-->
+                                <li><a href="/manager/<%= user.manager.region %>"><i class="fa fa-pencil"></i> Manage</a></li>
+                            <% } %>
+                        <% } %>                        
+                  <% } %>
+
+                  <li><a href="/admin/donors">Donors</a></li>
                   <li><a href="/donate"><i class="fa fa-hand-o-right"></i> Donate </a></li>
                   <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
                   <li><a href="/settings"><i class="fa fa-cog"></i> Settings </a></li>

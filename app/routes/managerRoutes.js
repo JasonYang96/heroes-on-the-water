@@ -178,11 +178,12 @@ module.exports = function(app) {
                 if (err) {
                     res.send(err);
                 }
-
+                
                 res.render('./ejs/manager/event.ejs', {region: region[0], user:user}, function(err, html) {
                     if (err) {
                         res.send(err);
                     }
+                    
                     res.send(html);
                 });
             });

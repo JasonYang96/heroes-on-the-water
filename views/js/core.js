@@ -150,7 +150,7 @@ function userController($scope, $http) {
     
     // adds event manager permissions
     $scope.addEventPermission = function(region) {
-        $http.post('/api/manager/' + region.name + '/' + region.chapters.name + '/' + region.chapters.events[0].name, $scope.formData)
+        $http.post('/api/manager/' + region[0].name + '/' + region[0].chapters[0].name + '/' + region[0].chapters[0].events[0].name, $scope.formData)
         .success(function(data) {
             console.log(data);
             $scope.formData = {};
