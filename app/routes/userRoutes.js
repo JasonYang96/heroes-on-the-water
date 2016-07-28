@@ -167,6 +167,24 @@ module.exports = function(app, passport) {
             console.log(user);
         });
     });
+
+    // sign up api
+    app.post('/api/signup/:username', function(req, res) {
+        Model.region.findOneAndUpdate(
+            {"name": req.body.region_name,
+             "chapters.name": req.body.chapter_name,
+             "chapters.events.name": req.body.event_name},
+            {$addToSet: {"chapters.$.events.0.users": req.params.username}},
+            {upsert: true},
+            function(err, event) {
+                if (err) {
+                    res.send(err);
+                }
+
+                res.send(event);
+            }
+        );
+    });
 };
 
 // route middleware to make sure a user is logged in

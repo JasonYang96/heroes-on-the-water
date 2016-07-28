@@ -23,6 +23,33 @@ function mainController($scope, $http) {
                 console.log('Error: ' + data);
             });
     }
+
+    $scope.signUp = function(user, region_name, chapter_name, event_name){
+        var event = { 
+            "region_name": region_name,
+            "chapter_name": chapter_name,
+            "event_name": event_name
+        };
+
+        $http.post('/api/signup/' + user.local.name, event)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            })
+    }
+
+    $scope.toggleHide = function(data) {
+        // $scope.isHidden = !$scope.isHidden;
+        data.isHidden = !data.isHidden;
+    }
+    $scope.isHidden = false;
+
+    $scope.isUndefOrNull = function(val)
+    {
+        return angular.isUndefined(val) || val == null  || val == '';
+    }
 };
 
 // controller to handle listing, creating, and deleting of donors
@@ -148,4 +175,13 @@ function userController($scope, $http) {
             console.log('Error: ' + data);
         });
     }
+
+}
+
+function expandController($scope) {
+    $scope.exp = true;
+};
+function toggle(data){
+    data.visible = !data.visible;
+    console.log("toggle time");
 }

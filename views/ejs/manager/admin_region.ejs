@@ -337,6 +337,68 @@
                             <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteRegion(region.name)">Delete</button>
                         </div>
                     </div>
+                    <div class="col-sm-12 chapter-list" ng-repeat="chapter in region.chapters" ng-controller="chaptersController">
+                        <div>
+                            <div class="col-sm-4">
+                                <h2>Chapter: {{chapter.name}}</h2>
+                                <p>Location: {{chapter.location}}</p>
+                            </div>
+                            <div class="col-sm-6" ng-controller="userController">
+                                <div class="col-sm-10">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="col-sm-2">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="addChapterPermission(<%= JSON.stringify(region) %>)">Add</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}">Manage</a>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteChapter(chapter.name)">Delete</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 event-list" ng-repeat="event in chapter.events" ng-controller="eventsController">
+                                <div class="col-sm-4">
+                                    <h3>Name: {{event.name}}</h3>
+                                    <h4>Date: {{event.date}}</h4>
+                                    <h4>Start: {{event.start}}</h4>
+                                    <h4>End: {{event.end}}</h4>
+                                    <h4>Venue: {{event.venue}}</h4>
+                                    <p>Description: {{event.description}}</p>
+                                    <p>Inventory:</p>
+                                    <div class="col-sm-12" ng-repeat="item in event.inventory">
+                                    <p> {{item.number}} {{item.item}} </p>
+                                    </div>
+                                    <h4>Participants:</h1>
+                                    <div class="col-sm-12" ng-repeat="user in event.users">
+                                    <p> {{user}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" ng-controller="userController">
+                                    <div class="col-sm-9">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-sm text-center" placeholder="email" ng-model="formData.email">
+                                        </div>
+                                    </form>
+                                    </div>
+                                    <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="addEventPermission(<%= JSON.stringify(region) %>)">Add</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <a type="submit" class="btn btn-primary btn-sm" href="/{{region.name}}/{{chapter.name}}/{{event.name}}">Manage</a>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteEvent(event.name)">Delete</button>
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
           </div>
@@ -453,8 +515,7 @@
     <script src="js/datepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script
->
+    <script src="../build/js/custom.min.js"></script>
     <!-- Flot -->
     <script>
       $(document).ready(function() {
