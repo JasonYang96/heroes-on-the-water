@@ -108,10 +108,44 @@
              </div>
            </div>
 
-
+      <% if (user.local.name == "admin") { %>
+      <div class="right_col" role="main">
+        <!-- top tiles -->
+        <div class="row tile_count">
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Participants</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green">0% </i> From last month</span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-heart-o"></i> Volunteers</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-users"></i> Chapters </span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-usd"></i> Donations Collected</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-eye"></i> Site Views</span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-sign-in"></i> Logins </span>
+            <div class="count">0</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
+          </div>
+        </div>
 
       <!-- /top navigation for participants -->
-      <% if (user.local.type == "participant") { %>
+      <% } else if (user.local.type == "participant") { %>
         <div class="right_col" role="main">
           <!-- top tiles -->
           <div class="row tile_count">
@@ -238,7 +272,7 @@
                           <div id="expanded-data">
                               <table class="" id="nested-table">
                                 <p>region: {{region.name}}   chapter: {{chapter.name}}</p>
-                                 <a href="/events" class="btn btn-primary btn-lg" ng-click="signUp(<%= JSON.stringify(user) %>, region.name, chapter.name, event.name)">Sign Up</a>
+                                 <a href="/events" class="btn btn-primary btn-sm" ng-click="signUp(<%= JSON.stringify(user) %>, region.name, chapter.name, event.name)">Sign Up</a>
                                       <div ng-repeat="item in event.inventory" style="margin: 0 0 0 5px">
                                           <p ng-hide="isUndefOrNull(item.number) && isUndefOrNull(item.item)">
                                               {{item.number}} {{item.item}}
