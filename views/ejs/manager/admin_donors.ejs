@@ -135,68 +135,7 @@
                 </div>
             </div>
 
-            <div style="width: 100% !important;">
-            <div id="donorslist" ng-controller="donorsListController">
-              <div class="text-center">
-                <table align="center" style="margin: 0; width: 100%;">
-                  <tr>
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Donation</th>
-                    <th>Description</th>
-                    <th>Chapter</th>
-                    <th>Loved One</th>
-                    <th>Letter First</th>
-                    <th>Letter Last</th>
-                    <th class="addrPlus">Address<br><i class="fa fa-plus-square text-center" ></i></th>
-                    <th class="address addrMinus">Letter Street<br><i class="fa fa-minus-square" ></i> </th>
-                    <th class="address">Letter City</th>
-                    <th class="address">Letter State</th>
-                    <th class="address">Letter Zip</th>
-                    <th class="address">Letter Country</th>
-
-                    <th class="prodPlus">Product Info<br><i class="fa fa-plus-square text-center" ></i></th>
-                    <th class="prod prodMinus">What Product<br><i class="fa fa-minus-square" ></i></th>
-                    <th class="prod">About Donor</th>
-                    <th class="prod">Reference</th>
-                  </tr>
-                  <!--<div ng-repeat="donor in donors">-->
-                  <tr ng-repeat="donor in donors">
-                    <td>{{donor.fName}}</td>
-                    <td>{{donor.lName}}</td>
-                    <td>{{donor.phone}}</td>
-                    <td>{{donor.email}}</td>
-                    <td>{{donor.donation}}</td>
-                    <td>{{donor.description}}</td>
-                    <td>{{donor.chapter}}</td>
-                    <td>{{donor.loved_one}}</td>
-                    <td>{{donor.letter_fName}}</td>
-                    <td>{{donor.letter_lName}}</td>
-                    <td class="addrPlus">
-                      <i class="fa fa-caret-square-o-left" ></i>
-                      <i class="fa fa-caret-square-o-right"></i>
-                    </td>
-                    <td class="address">{{donor.letter_street}}</td>
-                    <td class="address">{{donor.letter_city}}</td>
-                    <td class="address">{{donor.letter_state}}</td>
-                    <td class="address">{{donor.letter_zip}}</td>
-                    <td class="address">{{donor.letter_country}}</td>
-
-                    <td class="prodPlus">
-                      <i class="fa fa-caret-square-o-left" ></i>
-                      <i class="fa fa-caret-square-o-right"></i>
-                    </td>
-                    <td class="prod">{{donor.product_what}}</td>
-                    <td class="prod">{{donor.product_you}}</td>
-                    <td class="prod">{{donor.product_hear}}</td>
-                  </tr>
-                  <!--</div>-->
-                </table>
-              </div>
-            </div>
-            </div>
+            
 
             <!-- top for participants -->
           <%} else if (user.local.type == "participant") { %>
@@ -260,6 +199,68 @@
                 </div>
               </div>
               <% } %>
+              <div style="width: 100% !important;">
+            <div id="donorslist" ng-controller="donorsListController">
+              <div class="text-center">
+                <table align="center" style="margin: 0; width: 100%;">
+                  <tr>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Donation</th>
+                    <th>Description</th>
+                    <th>Chapter</th>
+                    <th>Loved One</th>
+                    <th>Letter First</th>
+                    <th>Letter Last</th>
+                    <th class="addrPlus">Address<br><i class="fa fa-plus-square text-center" ></i></th>
+                    <th class="address addrMinus">Letter Street<br><i class="fa fa-minus-square" ></i> </th>
+                    <th class="address">Letter City</th>
+                    <th class="address">Letter State</th>
+                    <th class="address">Letter Zip</th>
+                    <th class="address">Letter Country</th>
+
+                    <th class="prodPlus">Product Info<br><i class="fa fa-plus-square text-center" ></i></th>
+                    <th class="prod prodMinus">What Product<br><i class="fa fa-minus-square" ></i></th>
+                    <th class="prod">About Donor</th>
+                    <th class="prod">Reference</th>
+                  </tr>
+                  <!--<div ng-repeat="donor in donors">-->
+                  <tr ng-repeat="donor in donors">
+                    <td>{{donor.fName}}</td>
+                    <td>{{donor.lName}}</td>
+                    <td>{{donor.phone}}</td>
+                    <td>{{donor.email}}</td>
+                    <td>{{donor.donation}}</td>
+                    <td>{{donor.description}}</td>
+                    <td>{{donor.chapter}}</td>
+                    <td>{{donor.loved_one}}</td>
+                    <td>{{donor.letter_fName}}</td>
+                    <td>{{donor.letter_lName}}</td>
+                    <td class="addrPlus">
+                      <i class="fa fa-caret-square-o-left" ></i>
+                      <i class="fa fa-caret-square-o-right"></i>
+                    </td>
+                    <td class="address">{{donor.letter_street}}</td>
+                    <td class="address">{{donor.letter_city}}</td>
+                    <td class="address">{{donor.letter_state}}</td>
+                    <td class="address">{{donor.letter_zip}}</td>
+                    <td class="address">{{donor.letter_country}}</td>
+
+                    <td class="prodPlus">
+                      <i class="fa fa-caret-square-o-left" ></i>
+                      <i class="fa fa-caret-square-o-right"></i>
+                    </td>
+                    <td class="prod">{{donor.product_what}}</td>
+                    <td class="prod">{{donor.product_you}}</td>
+                    <td class="prod">{{donor.product_hear}}</td>
+                  </tr>
+                  <!--</div>-->
+                </table>
+              </div>
+            </div>
+            </div>
               <hr>
           <br />
         </div>
