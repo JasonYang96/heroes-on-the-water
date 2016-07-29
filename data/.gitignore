@@ -1,0 +1,7 @@
+.vscode/
+'Snow Theme'/
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+node_modules/
