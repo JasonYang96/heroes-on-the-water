@@ -189,86 +189,86 @@
               <!-- /top tiles -->
           <br />
         <!-- /page content -->
-        <div class="row">
-                    <hr>
-                    <div class="row text-center" ng-controller="eventsController">
-                        <!--DATE AND TIME-->
-                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
-                            <h3>Date:</h3>
-                            <p>
-                                <%= region.chapters.events.date %>
-                            </p>
-                            <h3>Start:</h3>
-                            <p>
-                                <%= region.chapters.events.start %>
-                            </p>
-                            <h3>End:</h3>
-                            <p>
-                                <%= region.chapters.events.end %>
-                            </p>
-                            <h3>Venue:</h3>
-                            <p>
-                                <%= region.chapters.events.venue %>
-                            </p>
-                            <h3>Description:</h3>
-                            <p>
-                                <%= region.chapters.events.description %>
-                            </p>
-                            <br><br>
-                        </div>
+        <div class="row" ng-controller="eventsController">
+            <hr>
+            <div class="row text-center">
+                <!--DATE AND TIME-->
+                <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+                    <h3>Date:</h3>
+                    <p>
+                        <%= region.chapters.events.date %>
+                    </p>
+                    <h3>Start:</h3>
+                    <p>
+                        <%= region.chapters.events.start %>
+                    </p>
+                    <h3>End:</h3>
+                    <p>
+                        <%= region.chapters.events.end %>
+                    </p>
+                    <h3>Venue:</h3>
+                    <p>
+                        <%= region.chapters.events.venue %>
+                    </p>
+                    <h3>Description:</h3>
+                    <p>
+                        <%= region.chapters.events.description %>
+                    </p>
+                    <br><br>
+                </div>
 
-                        <!-- Users -->
-                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
-                            <h3> Participants: </h3>
-                            <% for(var i=0; i < region.chapters.events.users.length; i++) {%>
-                              <p><%= region.chapters.events.users[i] %></p>
+                <!-- Users -->
+                <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+                    <h3> Participants: </h3>
+                    <% for(var i=0; i < region.chapters.events.users.length; i++) {%>
+                      <p><%= region.chapters.events.users[i] %></p>
+                    <%} %>
+                </div>
+
+                <!--INVENTORY-->
+                <div class="col-sm-4 wow fadeIn black" data-wow-delay="1.2s">
+                    <h3>Inventory:</h3>
+                    <p>
+                        <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
+                            <p>
+                                <%= region.chapters.events.inventory[i].number %>
+                                    <%= region.chapters.events.inventory[i].item %>
+                            </p>
                             <%} %>
-                        </div>
+                    </p>
+                </div>
+            </div>
 
-                        <!--INVENTORY-->
-                        <div class="col-sm-4 wow fadeIn black" data-wow-delay="1.2s">
-                            <h3>Inventory:</h3>
-                            <p>
-                                <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
-                                    <p>
-                                        <%= region.chapters.events.inventory[i].number %>
-                                            <%= region.chapters.events.inventory[i].item %>
-                                    </p>
-                                    <%} %>
-                            </p>
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-2">
+                        <div class="form-group">
+                            <select class="form-control" ng-model="formData.item" placeholder="Select inventory item here">
+                                <optgroup label="Boating">
+                                    <option>Kayaks</option>
+                                    <option>Oars</option>
+                                </optgroup>
+                                <optgroup label="Fishing">
+                                    <option>Fishing Poles</option>
+                                    <option>Bait Sets</option>
+                                    <option>Life Vests</option>
+                                </optgroup>
+                                <optgroup label="Management">
+                                    <option>Laptops</option>
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
-
-                        <div class="row">
-                            <div class="col-xs-4 col-xs-offset-2">
-                                <div class="form-group">
-                                    <select class="form-control" ng-model="formData.item" placeholder="Select inventory item here">
-                                        <optgroup label="Boating">
-                                            <option>Kayaks</option>
-                                            <option>Oars</option>
-                                        </optgroup>
-                                        <optgroup label="Fishing">
-                                            <option>Fishing Poles</option>
-                                            <option>Bait Sets</option>
-                                            <option>Life Vests</option>
-                                        </optgroup>
-                                        <optgroup label="Management">
-                                            <option>Laptops</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-xs-4">
-                                <div class="form-group">
-                                        <input type="number" class="form-control " placeholder="Insert Number" ng-model="formData.number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class ="row">
-                            <!--ADD INVENTORY BUTTON-->
-                            <button type="submit" class="btn btn-primary btn-sm col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <input type="number" class="form-control " placeholder="Insert Number" ng-model="formData.number">
                         </div>
                     </div>
+                </div>
+                <div class ="row" >
+                    <!--ADD INVENTORY BUTTON-->
+                    <button type="submit" class="btn btn-primary btn-sm col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
+                </div>
+            </div>
           </div>
       </div>
     </div>
