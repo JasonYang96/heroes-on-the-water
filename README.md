@@ -8,7 +8,7 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 - [NodeJS](https://nodejs.org/en/download/)
 - [Node Package Manager NPM](https://www.npmjs.com/)
 - [MongoDB](https://www.mongodb.com/download-center#community)
-- A web browser (Chrome is our favorite)
+- A web browser (Chrome recommended)
 
 ### Installation Instructions
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
@@ -140,6 +140,7 @@ For screenshots, please visit [Rakshit Garg's tSpace Files](https://www.tspace.w
 * Event and inventory deletion is buggy. Regional deletion works but deleting nested documents throw errors.
 * Managing permissions, participation, volunteering, and inventory tracking systems are functional for first event only.
 * A manager can only manage one single entity, i.e. a chapter manager can only manage one single chapter and everything in that chapter.  
+* Adding permisions to managers does not work on firefox. 
 
 ### Next Steps
 
