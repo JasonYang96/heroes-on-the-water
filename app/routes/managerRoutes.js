@@ -3,9 +3,20 @@ var Model = require('../models/event');
 var donorModel = require('./donorRoutes.js');
 var User = require('../models/user');
 
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
 module.exports = function(app) {
     // admin view for everything
-    app.get('/admin', function(req, res) {
+    app.get('/admin', isLoggedIn, function(req, res) {
         Model.region.find(function(err, region) {
             if (err) {
                 res.send(err);
@@ -33,7 +44,7 @@ module.exports = function(app) {
     });
 
     // admin view of donors
-    app.get('/admin/donors', function(req, res) {
+    app.get('/admin/donors', isLoggedIn, function(req, res) {
         Model.region.find(function(err, regions) {
             if (err) {
                 res.send(err);
@@ -61,7 +72,7 @@ module.exports = function(app) {
     });
 
     // read only view of events --participant
-    app.get('/events', function(req, res) {
+    app.get('/events', isLoggedIn, function(req, res) {
         Model.region.find(function(err, regions) {
             if (err) {
                 res.send(err);
@@ -99,7 +110,7 @@ module.exports = function(app) {
     });
 
     // manager view for a specific region
-    app.get('/manager/:region_name', function(req, res) {
+    app.get('/manager/:region_name', isLoggedIn, function(req, res) {
         Model.region.findOne({"name": req.params.region_name}, function(err, region) {
             if (err)
                 res.send(err);
@@ -120,7 +131,7 @@ module.exports = function(app) {
     });
 
     // manager view for specific chapter
-    app.get('/manager/:region_name/:chapter_name', function(req, res) {
+    app.get('/manager/:region_name/:chapter_name', isLoggedIn, function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
             { $unwind: "$chapters"},
@@ -145,7 +156,7 @@ module.exports = function(app) {
     });
 
     // manager view for specific event
-    app.get('/manager/:region_name/:chapter_name/:event_name', function(req, res) {
+    app.get('/manager/:region_name/:chapter_name/:event_name', isLoggedIn, function(req, res) {
         Model.region.aggregate([
             { $match: {"name": req.params.region_name}},
             { $unwind: "$chapters"},
@@ -170,5 +181,9 @@ module.exports = function(app) {
                 });
             });
         });
+    });
+
+    app.get('*', function(req, res) {
+        res.redirect('/');
     });
 }
