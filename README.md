@@ -8,7 +8,7 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 - [NodeJS](https://nodejs.org/en/download/)
 - [Node Package Manager NPM](https://www.npmjs.com/)
 - [MongoDB](https://www.mongodb.com/download-center#community)
-- A web browser (Chrome is our favorite)
+- A web browser (Chrome recommended)
 
 ### Installation Instructions
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
@@ -25,6 +25,33 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 8. Our app runs on port 8080, please make sure there is nothing running on this port
 9. Start Server: `$ node server.js`
 10. Access Application on browser: `localhost:8080`
+
+### Usage Scenarios
+We thought you might like to see our app in action, so we loaded up a database with some filler data and made accounts for you to log in through. In order of descending privileges: 
+
+To be an admin, login with:   
+`Email: admin`  
+`Password: admin`
+
+To be a regional manager:   
+`Email: reg_manager`  
+`Password: reg_manager`  
+
+To be a chapter manager:   
+`Email: chap_manager`  
+`Password: chap_manager`  
+
+To be an event manager:   
+`Email: event_manager`  
+`Password: event_manager`  
+
+To be a volunteer:   
+`Email: volunteer`  
+`Password: volunteer`  
+
+To be a participant:   
+`Email: participant`  
+`Password: participant`
 
 ### Features
 ##### Front End
@@ -53,11 +80,10 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 
 ##### Backend
 ###### Dashboard
-* Fully responsive and integrated solution for management systems 
+* Fully responsive and integrated solution for management systems and allows for all management and signup tasks to be completed on the go via phone or tablet
 * Updates itself to dynamically show added content or information
 * Shows personalized views for each kind of user (admin will see a different view than a participant will)
 * Detects and shows viable metrics (future: making metrics reporting fully functional. It is currently only foundational)
-* Fully responsive and allows for all management and signup tasks to be completed on the go via phone or tablet
 
 ###### Admin Manager
 * Can view and manage all regions
@@ -90,7 +116,7 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 
 ###### User Management 
 * Admin can elevate user privileges 
-* Users can sign themselves up for events, to participate, volunteer, or to take charge of
+* Users can sign themselves up for events, to participate, volunteer, or to manage
 * Users can easily donate, right from the dashboard
 * Users can update their settings and changes will propagate throughout database
 
@@ -108,8 +134,13 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 * Allows management at each level, from event manager to regional manager to executive board, to easily view and improve the organization to help as many people as effectively as possible. 
 
 ### Screenshots
+For screenshots, please visit [Rakshit Garg's tSpace Files](https://www.tspace.web.att.com)  
 
 ### Known Issues
+* Event and inventory deletion is buggy. Regional deletion works but deleting nested documents throw errors.
+* Managing permissions, participation, volunteering, and inventory tracking systems are functional for first event only.
+* A manager can only manage one single entity, i.e. a chapter manager can only manage one single chapter and everything in that chapter.  
+* Adding permisions to managers does not work on firefox. 
 
 ### Next Steps
 
