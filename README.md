@@ -26,10 +26,10 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
    2. Or cloning via git on cmd  
    `$ git clone https://jy092m@codecloud.web.att.com/scm/st_how2016/swag_ramon.git` 
 4. Change into product directory: `$cd swag_ramon`
-5. Import our example database
+5. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
+6. Import our example database
   `$ mongoimport --db test --collection users --drop --file [path to swag_ramon]/json/users.json`
   `$ mongoimport --db test --collection regions --drop --file [path to swag_ramon]/json/regions.json`
-6. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
 7. Install application: `$ npm install`
 8. Our app runs on port 8080, please make sure there is nothing running on this port
 9. Start Server: `$ node server.js`
