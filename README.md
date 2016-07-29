@@ -10,6 +10,13 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 - [MongoDB](https://www.mongodb.com/download-center#community)
 - A web browser (Chrome recommended)
 
+### Technologies Used
+- PassportJS 
+- Paypal API
+- Bootstrap 3.0
+- EJS Templating Engine
+- MongoDB, NodeJS, ExpressJS, AngularJS
+
 ### Installation Instructions
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
 
