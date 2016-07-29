@@ -21,10 +21,10 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
    2. Or cloning via git on cmd  
    `$ git clone https://jy092m@codecloud.web.att.com/scm/st_how2016/swag_ramon.git`
 6. Change into product directory: `$cd swag_ramon` 
-7. Install application: `$ npm install`   
-8. Start Server: `$ node server.js`
-  - Our app runs on port 8080, please make sure there is nothing running on this port
-9. Access Application on browser: `localhost:8080`
+7. Install application: `$ npm install`
+8. Our app runs on port 8080, please make sure there is nothing running on this port
+9. Start Server: `$ node server.js`
+10. Access Application on browser: `localhost:8080`
 
 ### Features
 ##### Front End
