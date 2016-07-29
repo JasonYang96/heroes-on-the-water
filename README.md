@@ -21,13 +21,15 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
 
 2. [Install MongoDB](https://www.mongodb.com/download-center#community) for your respective OS.
-3. Create a `/data` directory in your root folder, as this is the default directory for our MongoDB database.
-4. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
-5. Clone our [code repository](https://codecloud.web.att.com/projects/ST_HOW2016) by either:
+3. Clone our [code repository](https://codecloud.web.att.com/projects/ST_HOW2016) by either:
    1. Downloading a [zip file](https://codecloud.web.att.com/plugins/servlet/archive/projects/ST_HOW2016/repos/swag_ramon?at=refs%2Fheads%2Fmaster)
    2. Or cloning via git on cmd  
-   `$ git clone https://jy092m@codecloud.web.att.com/scm/st_how2016/swag_ramon.git`
-6. Change into product directory: `$cd swag_ramon` 
+   `$ git clone https://jy092m@codecloud.web.att.com/scm/st_how2016/swag_ramon.git` 
+4. Change into product directory: `$cd swag_ramon`
+5. Import our example database
+  `$ mongoimport --db test --collection users --drop --file ./json/users.json`
+  `$ mongoimport --db test --collection regions --drop --file ./json/regions.json`
+6. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
 7. Install application: `$ npm install`
 8. Our app runs on port 8080, please make sure there is nothing running on this port
 9. Start Server: `$ node server.js`
