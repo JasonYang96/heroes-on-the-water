@@ -8,7 +8,7 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 - [NodeJS](https://nodejs.org/en/download/)
 - [Node Package Manager NPM](https://www.npmjs.com/)
 - [MongoDB](https://www.mongodb.com/download-center#community)
-- A web browser (Chrome recommended)
+- A web browser (Chrome required)
 
 ### Installation Instructions
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
