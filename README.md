@@ -134,7 +134,7 @@ To be a participant:
 * Allows management at each level, from event manager to regional manager to executive board, to easily view and improve the organization to help as many people as effectively as possible. 
 
 ### Screenshots
-[img](projects/ST_HOW2016/repos/swag_ramon/browse/views/img/press-01.png)
+[img](/browse/views/img/press-01.png)
 
 ### Known Issues
 * Event and inventory deletion is buggy. Regional deletion works but deleting nested documents throw errors.
