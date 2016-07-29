@@ -194,31 +194,40 @@
                     <div class="row text-center" ng-controller="eventsController">
                         <!--DATE AND TIME-->
                         <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
-                            <h3>Date:
+                            <h3>Date:</h3>
+                            <p>
                                 <%= region.chapters.events.date %>
-                            </h3>
-                            <p>Start:
+                            </p>
+                            <h3>Start:</h3>
+                            <p>
                                 <%= region.chapters.events.start %>
                             </p>
-                            <p>End:
+                            <h3>End:</h3>
+                            <p>
                                 <%= region.chapters.events.end %>
+                            </p>
+                            <h3>Venue:</h3>
+                            <p>
+                                <%= region.chapters.events.venue %>
+                            </p>
+                            <h3>Description:</h3>
+                            <p>
+                                <%= region.chapters.events.description %>
                             </p>
                             <br><br>
                         </div>
 
-                        <!--VENUE AND DESCRIPTION-->
+                        <!-- Users -->
                         <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
-                            <h3>Venue:
-                                <%= region.chapters.events.venue %>
-                            </h3>
-                            <p>Description:
-                                <%= region.chapters.events.description %>
-                            </p>
+                            <h3> Participants: </h3>
+                            <% for(var i=0; i < region.chapters.events.users.length; i++) {%>
+                              <p><%= region.chapters.events.users[i] %></p>
+                            <%} %>
                         </div>
 
                         <!--INVENTORY-->
                         <div class="col-sm-4 wow fadeIn black" data-wow-delay="1.2s">
-                            <h3>Inventory</h3>
+                            <h3>Inventory:</h3>
                             <p>
                                 <% for(var i=0; i < region.chapters.events.inventory.length; i++) {%>
                                     <p>
@@ -258,12 +267,6 @@
                         <div class ="row">
                             <!--ADD INVENTORY BUTTON-->
                             <button type="submit" class="btn btn-primary btn-sm col-sm-4 col-sm-offset-4" ng-click="addInventory(<%= JSON.stringify(region) %>)">Add Inventory</button>
-                        </div>
-
-                        <!--DELETE BUTTON-->
-                        <hr class="line black">
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-danger btn-sm delete" ng-click="deleteEvent(event.name)">Delete This Event</button>
                         </div>
                     </div>
           </div>
