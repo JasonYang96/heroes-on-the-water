@@ -138,8 +138,9 @@
         <div class="row" ng-controller="eventsController">
             <div class="row">
                 <div class="jumbotron text-center">
-                    <h1> Manage: <%= region.chapters.name %> </h1>
-                    <h3> Within region: <%= region.name %> </h3>
+                    <h1> Manage Chapter: <%= region.chapters.name %> </h1>
+                    <h2> Location: <%= region.chapters.location %> </h2>
+                    <h3> In Region: <%= region.name %> </h3>
                 </div>
             </div>
         <!-- FORM TO CREATE EVENTS -->
@@ -175,7 +176,6 @@
         <div class="col-sm-12 event">
                 <div class="col-sm-4">
                     <h3>Event: <%= region.chapters.events[i].name %></h3>
-                    <h4>Date: <%= region.chapters.events[i].date %></h4>
                 </div>
                 <div class="col-sm-6" ng-controller="userController">
                     <div class="col-sm-9">

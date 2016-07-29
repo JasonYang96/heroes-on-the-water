@@ -134,40 +134,16 @@
             </div>
             <div class="row">
                 <div class="jumbotron text-center" ng-controller="eventsController">
-                    <h1 class="text-center" style="color: #73879c"s>Manage:
-                        <%= region.chapters.events.name %>
+                    <h1 class="text-center" style="color: #73879c"s>
+                      Manage Event: <%= region.chapters.events.name %>
                     </h1>
-                    <h5 class="text-center">In Region:
-                        <%= region.name %>
+                    <h5 class="text-center">
+                      In Region: <%= region.name %>
                     </h5>
-                    <h5 class="text-center">In Chapter:
-                        <%= region.chapters.name %>
+                    <h5 class="text-center">
+                      In Chapter: <%= region.chapters.name %>
                     </h5>
                 </div>
-            </div>
-
-            <!-- top for participants -->
-          <%} else if (user.local.type == "participant") { %>
-          <div class="right_col" role="main">
-            <!-- top tiles -->
-            <div class="row tile_count">
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Events Attended</span>
-                <div class="count">0</div>
-                <span class="count_bottom"><i class="green">0% </i> From last month</span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Hours Spent</span>
-                <div class="count">0</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> From last month </span>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <h1>Upcoming Events</h1>
-                <h3>You have no upcoming events :(</h3>
-              </div>
             </div>
 
             <%} else if (user.local.type != "participant") { %>
@@ -251,22 +227,6 @@
                                     </p>
                                     <%} %>
                             </p>
-                        </div>
-
-                        <!--ADD INVENTORY-->
-                        <div class="row">
-                            <!-- FORM TO ADD INVENTORY -->
-                            <div id="inventory-addition-form">
-                                <!--<h1 class="text-center"> ADD INVENTORY </h1>-->
-                                <div class="col-sm-8 col-sm-offset-2 text-center">
-                                    <form>
-                                        <!--<input type="text" class="form-control text-center" placeholder="Insert Item" ng-model="formData.item">-->
-                                        <!--<input type="number" class="form-control text-center" placeholder="Insert Number" ng-model="formData.number">-->
-                                    </form>
-                                </div>
-
-                                
-                            </div>
                         </div>
 
                         <div class="row">
