@@ -10,12 +10,19 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 - [MongoDB](https://www.mongodb.com/download-center#community)
 - A web browser (Chrome required)
 
+### Technologies Used
+- PassportJS 
+- Paypal API
+- Bootstrap 3.0
+- EJS Templating Engine
+- MongoDB, NodeJS, ExpressJS, AngularJS
+
 ### Installation Instructions
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
 
 2. [Install MongoDB](https://www.mongodb.com/download-center#community) for your respective OS.
 3. Create a `/data` directory in your root folder, as this is the default directory for our MongoDB database.
-4. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod`
+4. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
 5. Clone our [code repository](https://codecloud.web.att.com/projects/ST_HOW2016) by either:
    1. Downloading a [zip file](https://codecloud.web.att.com/plugins/servlet/archive/projects/ST_HOW2016/repos/swag_ramon?at=refs%2Fheads%2Fmaster)
    2. Or cloning via git on cmd  
