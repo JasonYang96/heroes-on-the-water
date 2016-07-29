@@ -26,6 +26,33 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 9. Start Server: `$ node server.js`
 10. Access Application on browser: `localhost:8080`
 
+### Usage Scenarios
+We thought you might like to see our app in action, so we loaded up a database with some filler data and made accounts for you to log in through. In order of descending privileges: 
+
+To be an admin, login with:   
+`Email: admin`  
+`Password: admin`
+
+To be a regional manager:   
+`Email: reg_manager`  
+`Password: reg_manager`  
+
+To be a chapter manager:   
+`Email: chap_manager`  
+`Password: chap_manager`  
+
+To be an event manager:   
+`Email: event_manager`  
+`Password: event_manager`  
+
+To be a volunteer:   
+`Email: volunteer`  
+`Password: volunteer`  
+
+To be a participant:   
+`Email: participant`  
+`Password: participant`
+
 ### Features
 ##### Front End
 ###### Home Page
@@ -53,11 +80,10 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 
 ##### Backend
 ###### Dashboard
-* Fully responsive and integrated solution for management systems 
+* Fully responsive and integrated solution for management systems and allows for all management and signup tasks to be completed on the go via phone or tablet
 * Updates itself to dynamically show added content or information
 * Shows personalized views for each kind of user (admin will see a different view than a participant will)
 * Detects and shows viable metrics (future: making metrics reporting fully functional. It is currently only foundational)
-* Fully responsive and allows for all management and signup tasks to be completed on the go via phone or tablet
 
 ###### Admin Manager
 * Can view and manage all regions
@@ -90,7 +116,7 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 
 ###### User Management 
 * Admin can elevate user privileges 
-* Users can sign themselves up for events, to participate, volunteer, or to take charge of
+* Users can sign themselves up for events, to participate, volunteer, or to manage
 * Users can easily donate, right from the dashboard
 * Users can update their settings and changes will propagate throughout database
 
@@ -108,8 +134,11 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 * Allows management at each level, from event manager to regional manager to executive board, to easily view and improve the organization to help as many people as effectively as possible. 
 
 ### Screenshots
+[img](/views/img/press-01.png)
 
 ### Known Issues
+* Event and inventory deletion is buggy. Regional deletion works but deleting nested documents throw errors.
+* Managing permissions, participation, volunteering, and inventory tracking systems are functional for first event only.
 
 ### Next Steps
 
