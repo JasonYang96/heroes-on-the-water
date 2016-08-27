@@ -21,10 +21,8 @@ Swag Ramon presents a fully responsive, end to end solution for the nonprofit He
 1. [Install node and npm](https://nodejs.org/en/download/) for your respective OS.
 
 2. [Install MongoDB](https://www.mongodb.com/download-center#community) for your respective OS.
-3. Clone our [code repository](https://codecloud.web.att.com/projects/ST_HOW2016) by either:
-   1. Downloading a [zip file](https://codecloud.web.att.com/plugins/servlet/archive/projects/ST_HOW2016/repos/swag_ramon?at=refs%2Fheads%2Fmaster)
-   2. Or cloning via git on cmd  
-   `$ git clone https://jy092m@codecloud.web.att.com/scm/st_how2016/swag_ramon.git` 
+3. Clone our [code repository](https://github.com/JasonYang96/heroes-on-the-water/)
+   `$ git clone git@github.com:JasonYang96/heroes-on-the-water.git` 
 4. Change into product directory: `$cd swag_ramon`
 5. Make sure $PATH variable is updated and start a MongoDB server: `$ mongod --dbpath ./data`
 6. Import our example database
